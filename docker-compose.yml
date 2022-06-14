@@ -1,0 +1,37 @@
+version: '3.4'
+
+services:
+  # SOURCE DB
+  mysql:
+    image: mysql:latest
+    restart: always
+    volumes:
+      # - ./sql/sourcedb.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./mysql/data:/var/lib/mysql
+    ports:
+      - ${SOURCE_DB_PORT}:3306
+    environment:
+      MYSQL_DATABASE: ${SOURCE_DB_DATABASE}
+      MYSQL_USER: ${SOURCE_DB_USER}
+      MYSQL_PASSWORD: ${SOURCE_DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${SOURCE_DB_ROOT_PASSWORD}
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    depends_on:
+      - mysql
+    ports:
+      - ${PHPMYADMIN_PORT}:80
+    environment:
+      PMA_HOST: ${PHPMYADMIN_PMA_HOST}
+      MYSQL_ROOT_PASSWORD: ${PHPMYADMIN_MYSQL_ROOT_PASSWORD}
+      PMA_PORT: ${PHPMYADMIN_PMA_PORT}
+  
+  # BUISENSS ANALYTICAL TOOL
+  metabase:
+    image: metabase/metabase:latest
+    ports:
+      - ${METABSE_PORT}:3000
+    depends_on:
+      - mysql
