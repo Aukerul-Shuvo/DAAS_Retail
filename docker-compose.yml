@@ -35,3 +35,7 @@ services:
       - ${METABSE_PORT}:3000
     depends_on:
       - mysql
+
+    
+    volumes:
+      - ./metabase:/metabase.db/
