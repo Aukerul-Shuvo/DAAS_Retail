@@ -11,10 +11,12 @@ services:
     ports:
       - ${SOURCE_DB_PORT}:3306
     environment:
-      MYSQL_DATABASE: ${SOURCE_DB_DATABASE}
+      # MYSQL_DATABASE: ${SOURCE_DB_DATABASE}
       MYSQL_USER: ${SOURCE_DB_USER}
       MYSQL_PASSWORD: ${SOURCE_DB_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${SOURCE_DB_ROOT_PASSWORD}
+    command: ['--default-authentication-plugin=mysql_native_password']
+
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -31,27 +33,42 @@ services:
   # BUISENSS ANALYTICAL TOOL
   metabase:
     image: metabase/metabase:latest
+    restart: always
     ports:
       - ${METABSE_PORT}:3000
     depends_on:
-      - metabase-mysql
+      - mysql
     environment:
       MB_DB_TYPE: ${METABASE_DB_TYPE}
       MB_DB_DBNAME: ${METABASE_DB_DBNAME}
       MB_DB_PORT: 3306
-      MB_DB_USER: ${SOURCE_DB_USER}
+      MB_DB_USER: root
       MB_DB_PASS: ${SOURCE_DB_ROOT_PASSWORD}
-      MB_DB_HOST: localhost
+      MB_DB_HOST: mysql
+    # networks:
+    #   - app-network
+    #   - app2-network
 
-  metabase-mysql:
-    image: mysql:latest
-    restart: always
-    environment:
-      MYSQL_DATABASE: ${METABASE_DB_DBNAME}
-      MYSQL_USER: ${SOURCE_DB_USER}
-      MYSQL_PASSWORD: ${SOURCE_DB_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${SOURCE_DB_ROOT_PASSWORD}
-    volumes:
-      - ./metabase/metabase.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./metabase/metabase-db:/var/lib/mysql
+#   metabase-mysql:
+#     image: mysql:latest
+#     restart: always
+#     environment:
+#       MYSQL_DATABASE: ${METABASE_DB_DBNAME}
+#       MYSQL_USER: ${METABASE_DB_USER}
+#       MYSQL_PASSWORD: ${METABASE_DB_PASSWORD}
+#       MYSQL_ROOT_PASSWORD: ${SOURCE_DB_ROOT_PASSWORD}
+#     ports:
+#       - 3307:3306
+#     volumes:
+#       - ./metabase/metabase.sql:/docker-entrypoint-initdb.d/init.sql
+#       - ./metabase/metabase-db:/var/lib/mysql
+#     networks:
+#       - app2-network
+#     command: ['--default-authentication-plugin=mysql_native_password']
+
+# #Docker Networks
+# networks:
+#   app-network:
+#   app2-network:
+#     driver: bridge
 
