@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 16, 2022 at 04:50 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.11
+-- Host: mysql:3306
+-- Generation Time: Jun 24, 2022 at 10:08 AM
+-- Server version: 8.0.29
+-- PHP Version: 8.0.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,16 +28,16 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `activity` (
-  `id` int(11) NOT NULL,
-  `topic` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` int NOT NULL,
+  `topic` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `timestamp` datetime NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `model` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `model_id` int(11) DEFAULT NULL,
-  `database_id` int(11) DEFAULT NULL,
-  `table_id` int(11) DEFAULT NULL,
-  `custom_id` varchar(48) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `details` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `user_id` int DEFAULT NULL,
+  `model` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `model_id` int DEFAULT NULL,
+  `database_id` int DEFAULT NULL,
+  `table_id` int DEFAULT NULL,
+  `custom_id` varchar(48) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `details` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -63,7 +63,17 @@ INSERT INTO `activity` (`id`, `topic`, `timestamp`, `user_id`, `model`, `model_i
 (16, 'dashboard-add-cards', '2022-06-15 05:34:23', 1, 'dashboard', 1, NULL, NULL, NULL, '{\"description\":null,\"name\":\"Descriptive Analysis\",\"dashcards\":[{\"name\":\"Top 5 countries by Total Unit Price\",\"description\":null,\"id\":6,\"card_id\":6}]}'),
 (17, 'card-create', '2022-06-15 08:38:28', 1, 'card', 7, 2, NULL, NULL, '{\"name\":\"Time to Time Sale\",\"description\":null}'),
 (18, 'card-update', '2022-06-15 10:11:56', 1, 'card', 7, 2, NULL, NULL, '{\"name\":\"Time to Time Sale\",\"description\":null}'),
-(19, 'dashboard-add-cards', '2022-06-15 10:13:24', 1, 'dashboard', 1, NULL, NULL, NULL, '{\"description\":null,\"name\":\"Descriptive Analysis\",\"dashcards\":[{\"name\":\"Time to Time Sale\",\"description\":null,\"id\":7,\"card_id\":7}]}');
+(19, 'dashboard-add-cards', '2022-06-15 10:13:24', 1, 'dashboard', 1, NULL, NULL, NULL, '{\"description\":null,\"name\":\"Descriptive Analysis\",\"dashcards\":[{\"name\":\"Time to Time Sale\",\"description\":null,\"id\":7,\"card_id\":7}]}'),
+(20, 'card-create', '2022-06-21 10:26:56', 1, 'card', 8, 2, NULL, NULL, '{\"name\":\"Top most bought product\",\"description\":null}'),
+(21, 'card-update', '2022-06-21 10:28:39', 1, 'card', 8, 2, NULL, NULL, '{\"name\":\"Top most bought product\",\"description\":null}'),
+(22, 'card-create', '2022-06-21 10:31:29', 1, 'card', 9, 2, NULL, NULL, '{\"name\":\"Top most bought product\",\"description\":null}'),
+(23, 'card-update', '2022-06-21 10:32:07', 1, 'card', 9, 2, NULL, NULL, '{\"name\":\"Top most bought product\",\"description\":null}'),
+(24, 'card-update', '2022-06-21 10:32:17', 1, 'card', 9, 2, NULL, NULL, '{\"name\":\"Top most bought product\",\"description\":null}'),
+(25, 'dashboard-add-cards', '2022-06-21 10:32:53', 1, 'dashboard', 1, NULL, NULL, NULL, '{\"description\":null,\"name\":\"Descriptive Analysis\",\"dashcards\":[{\"name\":\"Top most bought product\",\"description\":null,\"id\":8,\"card_id\":9}]}'),
+(26, 'card-create', '2022-06-21 10:45:41', 1, 'card', 10, 2, NULL, NULL, '{\"name\":\"Basket of customer\",\"description\":null}'),
+(27, 'dashboard-add-cards', '2022-06-21 10:46:48', 1, 'dashboard', 1, NULL, NULL, NULL, '{\"description\":null,\"name\":\"Descriptive Analysis\",\"dashcards\":[{\"name\":\"Basket of customer\",\"description\":null,\"id\":9,\"card_id\":10}]}'),
+(28, 'card-create', '2022-06-21 12:00:48', 1, 'card', 11, 2, NULL, NULL, '{\"name\":\"Most pair count wise sort\",\"description\":null}'),
+(29, 'dashboard-add-cards', '2022-06-21 12:03:13', 1, 'dashboard', 1, NULL, NULL, NULL, '{\"description\":null,\"name\":\"Descriptive Analysis\",\"dashcards\":[{\"name\":\"Most pair count wise sort\",\"description\":null,\"id\":10,\"card_id\":11}]}');
 
 -- --------------------------------------------------------
 
@@ -72,12 +82,12 @@ INSERT INTO `activity` (`id`, `topic`, `timestamp`, `user_id`, `model`, `model_i
 --
 
 CREATE TABLE `application_permissions_revision` (
-  `id` int(11) NOT NULL,
-  `before` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Serialized JSON of the permission graph before the changes.',
-  `after` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Serialized JSON of the changes in permission graph.',
-  `user_id` int(11) NOT NULL COMMENT 'The ID of the admin who made this set of changes.',
+  `id` int NOT NULL,
+  `before` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Serialized JSON of the permission graph before the changes.',
+  `after` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Serialized JSON of the changes in permission graph.',
+  `user_id` int NOT NULL COMMENT 'The ID of the admin who made this set of changes.',
   `created_at` datetime NOT NULL COMMENT 'The timestamp of when these changes were made.',
-  `remark` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Optional remarks explaining why these changes were made.'
+  `remark` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT 'Optional remarks explaining why these changes were made.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Used to keep track of changes made to general permissions.';
 
 -- --------------------------------------------------------
@@ -87,11 +97,11 @@ CREATE TABLE `application_permissions_revision` (
 --
 
 CREATE TABLE `bookmark_ordering` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL COMMENT 'ID of the User who ordered bookmarks',
-  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'type of the Bookmark',
-  `item_id` int(11) NOT NULL COMMENT 'id of the item being bookmarked (Card, Collection, Dashboard, ...) no FK, so may no longer exist',
-  `ordering` int(11) NOT NULL COMMENT 'order of bookmark for user'
+  `id` int NOT NULL,
+  `user_id` int NOT NULL COMMENT 'ID of the User who ordered bookmarks',
+  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'type of the Bookmark',
+  `item_id` int NOT NULL COMMENT 'id of the item being bookmarked (Card, Collection, Dashboard, ...) no FK, so may no longer exist',
+  `ordering` int NOT NULL COMMENT 'order of bookmark for user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table holding ordering information for various bookmark tables';
 
 -- --------------------------------------------------------
@@ -101,10 +111,10 @@ CREATE TABLE `bookmark_ordering` (
 --
 
 CREATE TABLE `card_bookmark` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL COMMENT 'ID of the User who bookmarked the Card',
-  `card_id` int(11) NOT NULL COMMENT 'ID of the Card bookmarked by the user',
-  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) COMMENT 'The timestamp of when the bookmark was created'
+  `id` int NOT NULL,
+  `user_id` int NOT NULL COMMENT 'ID of the User who bookmarked the Card',
+  `card_id` int NOT NULL COMMENT 'ID of the Card bookmarked by the user',
+  `created_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT 'The timestamp of when the bookmark was created'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table holding bookmarks on cards';
 
 -- --------------------------------------------------------
@@ -114,9 +124,9 @@ CREATE TABLE `card_bookmark` (
 --
 
 CREATE TABLE `card_label` (
-  `id` int(11) NOT NULL,
-  `card_id` int(11) NOT NULL,
-  `label_id` int(11) NOT NULL
+  `id` int NOT NULL,
+  `card_id` int NOT NULL,
+  `label_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -126,16 +136,16 @@ CREATE TABLE `card_label` (
 --
 
 CREATE TABLE `collection` (
-  `id` int(11) NOT NULL,
-  `name` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `color` char(7) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Seven-character hex color for this Collection, including the preceding hash sign.',
+  `id` int NOT NULL,
+  `name` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `color` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Seven-character hex color for this Collection, including the preceding hash sign.',
   `archived` bit(1) NOT NULL DEFAULT b'0' COMMENT 'Whether this Collection has been archived and should be hidden from users.',
-  `location` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '/' COMMENT 'Directory-structure path of ancestor Collections. e.g. "/1/2/" means our Parent is Collection 2, and their parent is Collection 1.',
-  `personal_owner_id` int(11) DEFAULT NULL COMMENT 'If set, this Collection is a personal Collection, for exclusive use of the User with this ID.',
-  `slug` varchar(254) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `namespace` varchar(254) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'The namespace (hierachy) this Collection belongs to. NULL means the Collection is in the default namespace.',
-  `authority_level` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Nullable column to incidate collection''s authority level. Initially values are "official" and nil.'
+  `location` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '/' COMMENT 'Directory-structure path of ancestor Collections. e.g. "/1/2/" means our Parent is Collection 2, and their parent is Collection 1.',
+  `personal_owner_id` int DEFAULT NULL COMMENT 'If set, this Collection is a personal Collection, for exclusive use of the User with this ID.',
+  `slug` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `namespace` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'The namespace (hierachy) this Collection belongs to. NULL means the Collection is in the default namespace.',
+  `authority_level` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Nullable column to incidate collection''s authority level. Initially values are "official" and nil.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Collections are an optional way to organize Cards and handle permissions for them.';
 
 --
@@ -152,10 +162,10 @@ INSERT INTO `collection` (`id`, `name`, `description`, `color`, `archived`, `loc
 --
 
 CREATE TABLE `collection_bookmark` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL COMMENT 'ID of the User who bookmarked the Collection',
-  `collection_id` int(11) NOT NULL COMMENT 'ID of the Card bookmarked by the user',
-  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) COMMENT 'The timestamp of when the bookmark was created'
+  `id` int NOT NULL,
+  `user_id` int NOT NULL COMMENT 'ID of the User who bookmarked the Collection',
+  `collection_id` int NOT NULL COMMENT 'ID of the Card bookmarked by the user',
+  `created_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT 'The timestamp of when the bookmark was created'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table holding bookmarks on collections';
 
 -- --------------------------------------------------------
@@ -165,12 +175,12 @@ CREATE TABLE `collection_bookmark` (
 --
 
 CREATE TABLE `collection_permission_graph_revision` (
-  `id` int(11) NOT NULL,
-  `before` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Serialized JSON of the collections graph before the changes.',
-  `after` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Serialized JSON of the collections graph after the changes.',
-  `user_id` int(11) NOT NULL COMMENT 'The ID of the admin who made this set of changes.',
+  `id` int NOT NULL,
+  `before` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Serialized JSON of the collections graph before the changes.',
+  `after` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Serialized JSON of the collections graph after the changes.',
+  `user_id` int NOT NULL COMMENT 'The ID of the admin who made this set of changes.',
   `created_at` datetime NOT NULL COMMENT 'The timestamp of when these changes were made.',
-  `remark` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Optional remarks explaining why these changes were made.'
+  `remark` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT 'Optional remarks explaining why these changes were made.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Used to keep track of changes made to collections.';
 
 -- --------------------------------------------------------
@@ -180,13 +190,13 @@ CREATE TABLE `collection_permission_graph_revision` (
 --
 
 CREATE TABLE `computation_job` (
-  `id` int(11) NOT NULL,
-  `creator_id` int(11) DEFAULT NULL,
+  `id` int NOT NULL,
+  `creator_id` int DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `type` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `context` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `type` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `context` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `ended_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Stores submitted async computation jobs.';
 
@@ -197,12 +207,12 @@ CREATE TABLE `computation_job` (
 --
 
 CREATE TABLE `computation_job_result` (
-  `id` int(11) NOT NULL,
-  `job_id` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `job_id` int NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `permanence` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `permanence` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Stores results of async computation jobs.';
 
 -- --------------------------------------------------------
@@ -212,10 +222,10 @@ CREATE TABLE `computation_job_result` (
 --
 
 CREATE TABLE `core_session` (
-  `id` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `id` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` int NOT NULL,
   `created_at` datetime NOT NULL,
-  `anti_csrf_token` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `anti_csrf_token` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -223,6 +233,7 @@ CREATE TABLE `core_session` (
 --
 
 INSERT INTO `core_session` (`id`, `user_id`, `created_at`, `anti_csrf_token`) VALUES
+('0afcd17b-5208-4ffa-9387-1e7c7e9534ae', 1, '2022-06-16 05:52:11', NULL),
 ('8db9d7ce-2a06-4a0d-a19b-b0880138b6d9', 1, '2022-06-13 13:00:03', NULL);
 
 -- --------------------------------------------------------
@@ -232,27 +243,27 @@ INSERT INTO `core_session` (`id`, `user_id`, `created_at`, `anti_csrf_token`) VA
 --
 
 CREATE TABLE `core_user` (
-  `id` int(11) NOT NULL,
-  `email` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `first_name` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `last_name` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(254) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `password_salt` varchar(254) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` int NOT NULL,
+  `email` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `first_name` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_name` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password_salt` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `date_joined` datetime NOT NULL,
   `last_login` datetime DEFAULT NULL,
   `is_superuser` bit(1) NOT NULL DEFAULT b'0',
   `is_active` bit(1) NOT NULL DEFAULT b'1',
-  `reset_token` varchar(254) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `reset_triggered` bigint(20) DEFAULT NULL,
+  `reset_token` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `reset_triggered` bigint DEFAULT NULL,
   `is_qbnewb` bit(1) NOT NULL DEFAULT b'1',
   `google_auth` bit(1) NOT NULL DEFAULT b'0',
   `ldap_auth` bit(1) NOT NULL DEFAULT b'0',
-  `login_attributes` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `login_attributes` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `updated_at` datetime DEFAULT NULL COMMENT 'When was this User last updated?',
-  `sso_source` varchar(254) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'String to indicate the SSO backend the user is from',
-  `locale` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Preferred ISO locale (language/country) code, e.g "en" or "en-US", for this User. Overrides site default.',
+  `sso_source` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'String to indicate the SSO backend the user is from',
+  `locale` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Preferred ISO locale (language/country) code, e.g "en" or "en-US", for this User. Overrides site default.',
   `is_datasetnewb` bit(1) NOT NULL DEFAULT b'1' COMMENT 'Boolean flag to indicate if the dataset info modal has been dismissed.',
-  `settings` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Serialized JSON containing User-local Settings for this User'
+  `settings` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT 'Serialized JSON containing User-local Settings for this User'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -260,7 +271,7 @@ CREATE TABLE `core_user` (
 --
 
 INSERT INTO `core_user` (`id`, `email`, `first_name`, `last_name`, `password`, `password_salt`, `date_joined`, `last_login`, `is_superuser`, `is_active`, `reset_token`, `reset_triggered`, `is_qbnewb`, `google_auth`, `ldap_auth`, `login_attributes`, `updated_at`, `sso_source`, `locale`, `is_datasetnewb`, `settings`) VALUES
-(1, 'metabase@mail.com', 'Aukerul', 'Shuvo', '$2a$10$/TJrxtB2mn6bV9cqRcnUC.jhabGkSIlOWvCcXaO1fISd5KtoOrOvW', '55c14416-f9bf-4b66-b0d1-3a7fbc3c6b89', '2022-06-13 13:00:03', '2022-06-13 13:00:03', b'1', b'1', NULL, NULL, b'0', b'0', b'0', NULL, '2022-06-15 05:29:06', NULL, NULL, b'1', NULL);
+(1, 'metabase@mail.com', 'Aukerul', 'Shuvo', '$2a$10$/TJrxtB2mn6bV9cqRcnUC.jhabGkSIlOWvCcXaO1fISd5KtoOrOvW', '55c14416-f9bf-4b66-b0d1-3a7fbc3c6b89', '2022-06-13 13:00:03', '2022-06-16 05:52:11', b'1', b'1', NULL, NULL, b'0', b'0', b'0', NULL, '2022-06-16 05:52:11', NULL, NULL, b'1', NULL);
 
 -- --------------------------------------------------------
 
@@ -269,10 +280,10 @@ INSERT INTO `core_user` (`id`, `email`, `first_name`, `last_name`, `password`, `
 --
 
 CREATE TABLE `dashboardcard_series` (
-  `id` int(11) NOT NULL,
-  `dashboardcard_id` int(11) NOT NULL,
-  `card_id` int(11) NOT NULL,
-  `position` int(11) NOT NULL
+  `id` int NOT NULL,
+  `dashboardcard_id` int NOT NULL,
+  `card_id` int NOT NULL,
+  `position` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -282,10 +293,10 @@ CREATE TABLE `dashboardcard_series` (
 --
 
 CREATE TABLE `dashboard_bookmark` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL COMMENT 'ID of the User who bookmarked the Dashboard',
-  `dashboard_id` int(11) NOT NULL COMMENT 'ID of the Dashboard bookmarked by the user',
-  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) COMMENT 'The timestamp of when the bookmark was created'
+  `id` int NOT NULL,
+  `user_id` int NOT NULL COMMENT 'ID of the User who bookmarked the Dashboard',
+  `dashboard_id` int NOT NULL COMMENT 'ID of the Dashboard bookmarked by the user',
+  `created_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT 'The timestamp of when the bookmark was created'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Table holding bookmarks on dashboards';
 
 -- --------------------------------------------------------
@@ -295,9 +306,9 @@ CREATE TABLE `dashboard_bookmark` (
 --
 
 CREATE TABLE `dashboard_favorite` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL COMMENT 'ID of the User who favorited the Dashboard.',
-  `dashboard_id` int(11) NOT NULL COMMENT 'ID of the Dashboard favorited by the User.'
+  `id` int NOT NULL,
+  `user_id` int NOT NULL COMMENT 'ID of the User who favorited the Dashboard.',
+  `dashboard_id` int NOT NULL COMMENT 'ID of the Dashboard favorited by the User.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Presence of a row here indicates a given User has favorited a given Dashboard.';
 
 -- --------------------------------------------------------
@@ -307,20 +318,20 @@ CREATE TABLE `dashboard_favorite` (
 --
 
 CREATE TABLE `databasechangelog` (
-  `ID` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `AUTHOR` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `FILENAME` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ID` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `AUTHOR` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `FILENAME` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `DATEEXECUTED` datetime NOT NULL,
-  `ORDEREXECUTED` int(11) NOT NULL,
-  `EXECTYPE` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `MD5SUM` varchar(35) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `DESCRIPTION` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `COMMENTS` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `TAG` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `LIQUIBASE` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `CONTEXTS` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `LABELS` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `DEPLOYMENT_ID` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `ORDEREXECUTED` int NOT NULL,
+  `EXECTYPE` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `MD5SUM` varchar(35) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `DESCRIPTION` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `COMMENTS` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `TAG` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `LIQUIBASE` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `CONTEXTS` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `LABELS` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `DEPLOYMENT_ID` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -776,10 +787,10 @@ INSERT INTO `databasechangelog` (`ID`, `AUTHOR`, `FILENAME`, `DATEEXECUTED`, `OR
 --
 
 CREATE TABLE `databasechangeloglock` (
-  `ID` int(11) NOT NULL,
+  `ID` int NOT NULL,
   `LOCKED` bit(1) NOT NULL,
   `LOCKGRANTED` datetime DEFAULT NULL,
-  `LOCKEDBY` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `LOCKEDBY` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -796,7 +807,7 @@ INSERT INTO `databasechangeloglock` (`ID`, `LOCKED`, `LOCKGRANTED`, `LOCKEDBY`) 
 --
 
 CREATE TABLE `data_migrations` (
-  `id` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `timestamp` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -815,11 +826,11 @@ INSERT INTO `data_migrations` (`id`, `timestamp`) VALUES
 --
 
 CREATE TABLE `dependency` (
-  `id` int(11) NOT NULL,
-  `model` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `model_id` int(11) NOT NULL,
-  `dependent_on_model` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `dependent_on_id` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `model` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` int NOT NULL,
+  `dependent_on_model` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dependent_on_id` int NOT NULL,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -830,11 +841,11 @@ CREATE TABLE `dependency` (
 --
 
 CREATE TABLE `dimension` (
-  `id` int(11) NOT NULL,
-  `field_id` int(11) NOT NULL COMMENT 'ID of the field this dimension row applies to',
-  `name` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Short description used as the display name of this new column',
-  `type` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Either internal for a user defined remapping or external for a foreign key based remapping',
-  `human_readable_field_id` int(11) DEFAULT NULL COMMENT 'Only used with external type remappings. Indicates which field on the FK related table to use for display',
+  `id` int NOT NULL,
+  `field_id` int NOT NULL COMMENT 'ID of the field this dimension row applies to',
+  `name` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Short description used as the display name of this new column',
+  `type` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Either internal for a user defined remapping or external for a foreign key based remapping',
+  `human_readable_field_id` int DEFAULT NULL COMMENT 'Only used with external type remappings. Indicates which field on the FK related table to use for display',
   `created_at` datetime NOT NULL COMMENT 'The timestamp of when the dimension was created.',
   `updated_at` datetime NOT NULL COMMENT 'The timestamp of when these dimension was last updated.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Stores references to alternate views of existing fields, such as remapping an integer to a description, like an enum';
@@ -846,11 +857,11 @@ CREATE TABLE `dimension` (
 --
 
 CREATE TABLE `group_table_access_policy` (
-  `id` int(11) NOT NULL,
-  `group_id` int(11) NOT NULL COMMENT 'ID of the Permissions Group this policy affects.',
-  `table_id` int(11) NOT NULL COMMENT 'ID of the Table that should get automatically replaced as query source for the Permissions Group.',
-  `card_id` int(11) DEFAULT NULL,
-  `attribute_remappings` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `id` int NOT NULL,
+  `group_id` int NOT NULL COMMENT 'ID of the Permissions Group this policy affects.',
+  `table_id` int NOT NULL COMMENT 'ID of the Table that should get automatically replaced as query source for the Permissions Group.',
+  `card_id` int DEFAULT NULL,
+  `attribute_remappings` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Records that a given Card (Question) should automatically replace a given Table as query source for a given a Perms Group.';
 
 -- --------------------------------------------------------
@@ -860,10 +871,10 @@ CREATE TABLE `group_table_access_policy` (
 --
 
 CREATE TABLE `label` (
-  `id` int(11) NOT NULL,
-  `name` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `icon` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `id` int NOT NULL,
+  `name` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `icon` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -873,14 +884,21 @@ CREATE TABLE `label` (
 --
 
 CREATE TABLE `login_history` (
-  `id` int(11) NOT NULL,
-  `timestamp` timestamp(6) NOT NULL DEFAULT current_timestamp(6) COMMENT 'When this login occurred.',
-  `user_id` int(11) NOT NULL COMMENT 'ID of the User that logged in.',
-  `session_id` varchar(254) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'ID of the Session created by this login if one is currently active. NULL if Session is no longer active.',
-  `device_id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Cookie-based unique identifier for the device/browser the user logged in from.',
-  `device_description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ip_address` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `id` int NOT NULL,
+  `timestamp` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT 'When this login occurred.',
+  `user_id` int NOT NULL COMMENT 'ID of the User that logged in.',
+  `session_id` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'ID of the Session created by this login if one is currently active. NULL if Session is no longer active.',
+  `device_id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Cookie-based unique identifier for the device/browser the user logged in from.',
+  `device_description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `ip_address` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Keeps track of various logins for different users and additional info such as location and device';
+
+--
+-- Dumping data for table `login_history`
+--
+
+INSERT INTO `login_history` (`id`, `timestamp`, `user_id`, `session_id`, `device_id`, `device_description`, `ip_address`) VALUES
+(1, '2022-06-16 05:52:11.141666', 1, '0afcd17b-5208-4ffa-9387-1e7c7e9534ae', 'c4e4a36f-1364-4f57-ad74-c7292eab9694', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.115 Safari/537.36', '172.21.0.1');
 
 -- --------------------------------------------------------
 
@@ -889,28 +907,28 @@ CREATE TABLE `login_history` (
 --
 
 CREATE TABLE `metabase_database` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `name` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `details` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `engine` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `details` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `engine` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `is_sample` bit(1) NOT NULL DEFAULT b'0',
   `is_full_sync` bit(1) NOT NULL DEFAULT b'1',
-  `points_of_interest` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `caveats` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `metadata_sync_schedule` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0 50 * * * ? *' COMMENT 'The cron schedule string for when this database should undergo the metadata sync process (and analysis for new fields).',
-  `cache_field_values_schedule` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0 50 0 * * ? *' COMMENT 'The cron schedule string for when FieldValues for eligible Fields should be updated.',
-  `timezone` varchar(254) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Timezone identifier for the database, set by the sync process',
+  `points_of_interest` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `caveats` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `metadata_sync_schedule` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0 50 * * * ? *' COMMENT 'The cron schedule string for when this database should undergo the metadata sync process (and analysis for new fields).',
+  `cache_field_values_schedule` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0 50 0 * * ? *' COMMENT 'The cron schedule string for when FieldValues for eligible Fields should be updated.',
+  `timezone` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Timezone identifier for the database, set by the sync process',
   `is_on_demand` bit(1) NOT NULL DEFAULT b'0' COMMENT 'Whether we should do On-Demand caching of FieldValues for this DB. This means FieldValues are updated when their Field is used in a Dashboard or Card param.',
-  `options` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `options` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `auto_run_queries` bit(1) NOT NULL DEFAULT b'1' COMMENT 'Whether to automatically run queries when doing simple filtering and summarizing in the Query Builder.',
   `refingerprint` bit(1) DEFAULT NULL COMMENT 'Whether or not to enable periodic refingerprinting for this Database.',
-  `cache_ttl` int(11) DEFAULT NULL COMMENT 'Granular cache TTL for specific database.',
-  `initial_sync_status` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'complete' COMMENT 'String indicating whether a database has completed its initial sync and is ready to use',
-  `creator_id` int(11) DEFAULT NULL COMMENT 'ID of the admin who added the database',
-  `settings` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Serialized JSON containing Database-local Settings for this Database'
+  `cache_ttl` int DEFAULT NULL COMMENT 'Granular cache TTL for specific database.',
+  `initial_sync_status` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'complete' COMMENT 'String indicating whether a database has completed its initial sync and is ready to use',
+  `creator_id` int DEFAULT NULL COMMENT 'ID of the admin who added the database',
+  `settings` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT 'Serialized JSON containing Database-local Settings for this Database'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -928,34 +946,34 @@ INSERT INTO `metabase_database` (`id`, `created_at`, `updated_at`, `name`, `desc
 --
 
 CREATE TABLE `metabase_field` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `name` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `base_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `semantic_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `base_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `semantic_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `active` bit(1) NOT NULL DEFAULT b'1',
-  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `preview_display` bit(1) NOT NULL DEFAULT b'1',
-  `position` int(11) NOT NULL DEFAULT 0,
-  `table_id` int(11) NOT NULL,
-  `parent_id` int(11) DEFAULT NULL,
-  `display_name` varchar(254) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `visibility_type` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'normal',
-  `fk_target_field_id` int(11) DEFAULT NULL,
+  `position` int NOT NULL DEFAULT '0',
+  `table_id` int NOT NULL,
+  `parent_id` int DEFAULT NULL,
+  `display_name` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `visibility_type` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'normal',
+  `fk_target_field_id` int DEFAULT NULL,
   `last_analyzed` datetime DEFAULT NULL,
-  `points_of_interest` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `caveats` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `fingerprint` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `fingerprint_version` int(11) NOT NULL DEFAULT 0 COMMENT 'The version of the fingerprint for this Field. Used so we can keep track of which Fields need to be analyzed again when new things are added to fingerprints.',
-  `database_type` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `has_field_values` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `settings` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `database_position` int(11) NOT NULL DEFAULT 0,
-  `custom_position` int(11) NOT NULL DEFAULT 0,
-  `effective_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'The effective type of the field after any coercions.',
-  `coercion_strategy` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'A strategy to coerce the base_type into the effective_type.',
-  `nfc_path` varchar(254) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Nested field column paths, flattened'
+  `points_of_interest` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `caveats` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `fingerprint` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `fingerprint_version` int NOT NULL DEFAULT '0' COMMENT 'The version of the fingerprint for this Field. Used so we can keep track of which Fields need to be analyzed again when new things are added to fingerprints.',
+  `database_type` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `has_field_values` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `settings` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `database_position` int NOT NULL DEFAULT '0',
+  `custom_position` int NOT NULL DEFAULT '0',
+  `effective_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'The effective type of the field after any coercions.',
+  `coercion_strategy` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'A strategy to coerce the base_type into the effective_type.',
+  `nfc_path` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Nested field column paths, flattened'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1015,12 +1033,12 @@ INSERT INTO `metabase_field` (`id`, `created_at`, `updated_at`, `name`, `base_ty
 --
 
 CREATE TABLE `metabase_fieldvalues` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
-  `values` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `human_readable_values` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `field_id` int(11) NOT NULL
+  `updated_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+  `values` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `human_readable_values` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `field_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1042,22 +1060,22 @@ INSERT INTO `metabase_fieldvalues` (`id`, `created_at`, `updated_at`, `values`, 
 --
 
 CREATE TABLE `metabase_table` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `name` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `entity_type` varchar(254) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `entity_type` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `active` bit(1) NOT NULL,
-  `db_id` int(11) NOT NULL,
-  `display_name` varchar(254) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `visibility_type` varchar(254) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `schema` varchar(254) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `points_of_interest` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `caveats` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `db_id` int NOT NULL,
+  `display_name` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `visibility_type` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `schema` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `points_of_interest` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `caveats` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `show_in_getting_started` bit(1) NOT NULL DEFAULT b'0',
-  `field_order` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'database',
-  `initial_sync_status` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'complete' COMMENT 'String indicating whether a table has completed its initial sync and is ready to use'
+  `field_order` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'database',
+  `initial_sync_status` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'complete' COMMENT 'String indicating whether a table has completed its initial sync and is ready to use'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1078,18 +1096,18 @@ INSERT INTO `metabase_table` (`id`, `created_at`, `updated_at`, `name`, `descrip
 --
 
 CREATE TABLE `metric` (
-  `id` int(11) NOT NULL,
-  `table_id` int(11) NOT NULL,
-  `creator_id` int(11) NOT NULL,
-  `name` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` int NOT NULL,
+  `table_id` int NOT NULL,
+  `creator_id` int NOT NULL,
+  `name` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `archived` bit(1) DEFAULT b'0',
-  `definition` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `definition` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `points_of_interest` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `caveats` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `how_is_this_calculated` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `points_of_interest` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `caveats` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `how_is_this_calculated` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `show_in_getting_started` bit(1) NOT NULL DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1100,9 +1118,9 @@ CREATE TABLE `metric` (
 --
 
 CREATE TABLE `metric_important_field` (
-  `id` int(11) NOT NULL,
-  `metric_id` int(11) NOT NULL,
-  `field_id` int(11) NOT NULL
+  `id` int NOT NULL,
+  `metric_id` int NOT NULL,
+  `field_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1112,14 +1130,14 @@ CREATE TABLE `metric_important_field` (
 --
 
 CREATE TABLE `moderation_review` (
-  `id` int(11) NOT NULL,
-  `updated_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) COMMENT 'most recent modification time',
-  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) COMMENT 'creation time',
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'verified, misleading, confusing, not_misleading, pending',
-  `text` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `moderated_item_id` int(11) NOT NULL COMMENT 'either a document or question ID; the item that needs review',
-  `moderated_item_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'whether it''s a question or dashboard',
-  `moderator_id` int(11) NOT NULL COMMENT 'ID of the user who did the review',
+  `id` int NOT NULL,
+  `updated_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT 'most recent modification time',
+  `created_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT 'creation time',
+  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'verified, misleading, confusing, not_misleading, pending',
+  `text` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `moderated_item_id` int NOT NULL COMMENT 'either a document or question ID; the item that needs review',
+  `moderated_item_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'whether it''s a question or dashboard',
+  `moderator_id` int NOT NULL COMMENT 'ID of the user who did the review',
   `most_recent` bit(1) NOT NULL COMMENT 'tag for most recent review'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Reviews (from moderators) for a given question/dashboard (BUCM)';
 
@@ -1130,15 +1148,15 @@ CREATE TABLE `moderation_review` (
 --
 
 CREATE TABLE `native_query_snippet` (
-  `id` int(11) NOT NULL,
-  `name` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Name of the query snippet',
-  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `content` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `creator_id` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `name` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Name of the query snippet',
+  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `creator_id` int NOT NULL,
   `archived` bit(1) NOT NULL DEFAULT b'0',
-  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6),
-  `updated_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6),
-  `collection_id` int(11) DEFAULT NULL COMMENT 'ID of the Snippet Folder (Collection) this Snippet is in, if any'
+  `created_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  `updated_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  `collection_id` int DEFAULT NULL COMMENT 'ID of the Snippet Folder (Collection) this Snippet is in, if any'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Query snippets (raw text) to be substituted in native queries';
 
 -- --------------------------------------------------------
@@ -1148,9 +1166,9 @@ CREATE TABLE `native_query_snippet` (
 --
 
 CREATE TABLE `permissions` (
-  `id` int(11) NOT NULL,
-  `object` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `group_id` int(11) NOT NULL
+  `id` int NOT NULL,
+  `object` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `group_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1175,8 +1193,8 @@ INSERT INTO `permissions` (`id`, `object`, `group_id`) VALUES
 --
 
 CREATE TABLE `permissions_group` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` int NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1194,9 +1212,9 @@ INSERT INTO `permissions_group` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `permissions_group_membership` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `group_id` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `group_id` int NOT NULL,
   `is_group_manager` bit(1) NOT NULL DEFAULT b'0' COMMENT 'Boolean flag to indicate whether user is a group''s manager.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1215,12 +1233,12 @@ INSERT INTO `permissions_group_membership` (`id`, `user_id`, `group_id`, `is_gro
 --
 
 CREATE TABLE `permissions_revision` (
-  `id` int(11) NOT NULL,
-  `before` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Serialized JSON of the permissions before the changes.',
-  `after` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Serialized JSON of the permissions after the changes.',
-  `user_id` int(11) NOT NULL COMMENT 'The ID of the admin who made this set of changes.',
+  `id` int NOT NULL,
+  `before` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Serialized JSON of the permissions before the changes.',
+  `after` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Serialized JSON of the permissions after the changes.',
+  `user_id` int NOT NULL COMMENT 'The ID of the admin who made this set of changes.',
   `created_at` datetime NOT NULL COMMENT 'The timestamp of when these changes were made.',
-  `remark` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Optional remarks explaining why these changes were made.'
+  `remark` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT 'Optional remarks explaining why these changes were made.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Used to keep track of changes made to permissions.';
 
 -- --------------------------------------------------------
@@ -1230,20 +1248,20 @@ CREATE TABLE `permissions_revision` (
 --
 
 CREATE TABLE `pulse` (
-  `id` int(11) NOT NULL,
-  `creator_id` int(11) NOT NULL,
-  `name` varchar(254) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` int NOT NULL,
+  `creator_id` int NOT NULL,
+  `name` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `skip_if_empty` bit(1) NOT NULL DEFAULT b'0' COMMENT 'Skip a scheduled Pulse if none of its questions have any results',
-  `alert_condition` varchar(254) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Condition (i.e. "rows" or "goal") used as a guard for alerts',
+  `alert_condition` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Condition (i.e. "rows" or "goal") used as a guard for alerts',
   `alert_first_only` bit(1) DEFAULT NULL COMMENT 'True if the alert should be disabled after the first notification',
   `alert_above_goal` bit(1) DEFAULT NULL COMMENT 'For a goal condition, alert when above the goal',
-  `collection_id` int(11) DEFAULT NULL COMMENT 'Options ID of Collection this Pulse belongs to.',
-  `collection_position` smallint(6) DEFAULT NULL COMMENT 'Optional pinned position for this item in its Collection. NULL means item is not pinned.',
+  `collection_id` int DEFAULT NULL COMMENT 'Options ID of Collection this Pulse belongs to.',
+  `collection_position` smallint DEFAULT NULL COMMENT 'Optional pinned position for this item in its Collection. NULL means item is not pinned.',
   `archived` bit(1) DEFAULT b'0' COMMENT 'Has this pulse been archived?',
-  `dashboard_id` int(11) DEFAULT NULL COMMENT 'ID of the Dashboard if this Pulse is a Dashboard Subscription.',
-  `parameters` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `dashboard_id` int DEFAULT NULL COMMENT 'ID of the Dashboard if this Pulse is a Dashboard Subscription.',
+  `parameters` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1253,13 +1271,13 @@ CREATE TABLE `pulse` (
 --
 
 CREATE TABLE `pulse_card` (
-  `id` int(11) NOT NULL,
-  `pulse_id` int(11) NOT NULL,
-  `card_id` int(11) NOT NULL,
-  `position` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `pulse_id` int NOT NULL,
+  `card_id` int NOT NULL,
+  `position` int NOT NULL,
   `include_csv` bit(1) NOT NULL DEFAULT b'0' COMMENT 'True if a CSV of the data should be included for this pulse card',
   `include_xls` bit(1) NOT NULL DEFAULT b'0' COMMENT 'True if a XLS of the data should be included for this pulse card',
-  `dashboard_card_id` int(11) DEFAULT NULL COMMENT 'If this Pulse is a Dashboard subscription, the ID of the DashboardCard that corresponds to this PulseCard.'
+  `dashboard_card_id` int DEFAULT NULL COMMENT 'If this Pulse is a Dashboard subscription, the ID of the DashboardCard that corresponds to this PulseCard.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1269,16 +1287,16 @@ CREATE TABLE `pulse_card` (
 --
 
 CREATE TABLE `pulse_channel` (
-  `id` int(11) NOT NULL,
-  `pulse_id` int(11) NOT NULL,
-  `channel_type` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `details` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `schedule_type` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `schedule_hour` int(11) DEFAULT NULL,
-  `schedule_day` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` int NOT NULL,
+  `pulse_id` int NOT NULL,
+  `channel_type` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `details` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `schedule_type` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `schedule_hour` int DEFAULT NULL,
+  `schedule_day` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `schedule_frame` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `schedule_frame` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `enabled` bit(1) NOT NULL DEFAULT b'1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1289,9 +1307,9 @@ CREATE TABLE `pulse_channel` (
 --
 
 CREATE TABLE `pulse_channel_recipient` (
-  `id` int(11) NOT NULL,
-  `pulse_channel_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
+  `id` int NOT NULL,
+  `pulse_channel_id` int NOT NULL,
+  `user_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1301,10 +1319,10 @@ CREATE TABLE `pulse_channel_recipient` (
 --
 
 CREATE TABLE `qrtz_blob_triggers` (
-  `SCHED_NAME` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `TRIGGER_NAME` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `TRIGGER_GROUP` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `BLOB_DATA` blob DEFAULT NULL
+  `SCHED_NAME` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `TRIGGER_NAME` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `TRIGGER_GROUP` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `BLOB_DATA` blob
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Used for Quartz scheduler.';
 
 -- --------------------------------------------------------
@@ -1314,8 +1332,8 @@ CREATE TABLE `qrtz_blob_triggers` (
 --
 
 CREATE TABLE `qrtz_calendars` (
-  `SCHED_NAME` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CALENDAR_NAME` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `SCHED_NAME` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CALENDAR_NAME` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `CALENDAR` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Used for Quartz scheduler.';
 
@@ -1326,12 +1344,25 @@ CREATE TABLE `qrtz_calendars` (
 --
 
 CREATE TABLE `qrtz_cron_triggers` (
-  `SCHED_NAME` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `TRIGGER_NAME` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `TRIGGER_GROUP` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CRON_EXPRESSION` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `TIME_ZONE_ID` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `SCHED_NAME` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `TRIGGER_NAME` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `TRIGGER_GROUP` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CRON_EXPRESSION` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `TIME_ZONE_ID` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Used for Quartz scheduler.';
+
+--
+-- Dumping data for table `qrtz_cron_triggers`
+--
+
+INSERT INTO `qrtz_cron_triggers` (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`, `CRON_EXPRESSION`, `TIME_ZONE_ID`) VALUES
+('MetabaseScheduler', 'metabase.task.abandonment-emails.trigger', 'DEFAULT', '0 0 12 * * ? *', 'GMT'),
+('MetabaseScheduler', 'metabase.task.anonymous-stats.trigger', 'DEFAULT', '0 0 7 * * ? *', 'GMT'),
+('MetabaseScheduler', 'metabase.task.follow-up-emails.trigger', 'DEFAULT', '0 0 12 * * ? *', 'GMT'),
+('MetabaseScheduler', 'metabase.task.refresh-channel-cache.trigger', 'DEFAULT', '0 39 0/4 1/1 * ? *', 'GMT'),
+('MetabaseScheduler', 'metabase.task.send-pulses.trigger', 'DEFAULT', '0 0 * * * ? *', 'GMT'),
+('MetabaseScheduler', 'metabase.task.task-history-cleanup.trigger', 'DEFAULT', '0 0 * * * ? *', 'GMT'),
+('MetabaseScheduler', 'metabase.task.upgrade-checks.trigger', 'DEFAULT', '0 15 6,18 * * ? *', 'GMT');
 
 -- --------------------------------------------------------
 
@@ -1340,17 +1371,17 @@ CREATE TABLE `qrtz_cron_triggers` (
 --
 
 CREATE TABLE `qrtz_fired_triggers` (
-  `SCHED_NAME` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ENTRY_ID` varchar(95) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `TRIGGER_NAME` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `TRIGGER_GROUP` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `INSTANCE_NAME` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `FIRED_TIME` bigint(20) NOT NULL,
-  `SCHED_TIME` bigint(20) DEFAULT NULL,
-  `PRIORITY` int(11) NOT NULL,
-  `STATE` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `JOB_NAME` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `JOB_GROUP` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `SCHED_NAME` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ENTRY_ID` varchar(95) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `TRIGGER_NAME` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `TRIGGER_GROUP` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `INSTANCE_NAME` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `FIRED_TIME` bigint NOT NULL,
+  `SCHED_TIME` bigint DEFAULT NULL,
+  `PRIORITY` int NOT NULL,
+  `STATE` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `JOB_NAME` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `JOB_GROUP` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `IS_NONCONCURRENT` bit(1) DEFAULT NULL,
   `REQUESTS_RECOVERY` bit(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Used for Quartz scheduler.';
@@ -1362,17 +1393,32 @@ CREATE TABLE `qrtz_fired_triggers` (
 --
 
 CREATE TABLE `qrtz_job_details` (
-  `SCHED_NAME` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `JOB_NAME` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `JOB_GROUP` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `DESCRIPTION` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `JOB_CLASS_NAME` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `SCHED_NAME` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `JOB_NAME` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `JOB_GROUP` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `DESCRIPTION` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `JOB_CLASS_NAME` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `IS_DURABLE` bit(1) NOT NULL,
   `IS_NONCONCURRENT` bit(1) NOT NULL,
   `IS_UPDATE_DATA` bit(1) NOT NULL,
   `REQUESTS_RECOVERY` bit(1) NOT NULL,
-  `JOB_DATA` blob DEFAULT NULL
+  `JOB_DATA` blob
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Used for Quartz scheduler.';
+
+--
+-- Dumping data for table `qrtz_job_details`
+--
+
+INSERT INTO `qrtz_job_details` (`SCHED_NAME`, `JOB_NAME`, `JOB_GROUP`, `DESCRIPTION`, `JOB_CLASS_NAME`, `IS_DURABLE`, `IS_NONCONCURRENT`, `IS_UPDATE_DATA`, `REQUESTS_RECOVERY`, `JOB_DATA`) VALUES
+('MetabaseScheduler', 'metabase.task.abandonment-emails.job', 'DEFAULT', NULL, 'metabase.task.follow_up_emails.AbandonmentEmail', b'0', b'0', b'0', b'0', 0xaced0005737200156f72672e71756172747a2e4a6f62446174614d61709fb083e8bfa9b0cb020000787200266f72672e71756172747a2e7574696c732e537472696e674b65794469727479466c61674d61708208e8c3fbc55d280200015a0013616c6c6f77735472616e7369656e74446174617872001d6f72672e71756172747a2e7574696c732e4469727479466c61674d617013e62ead28760ace0200025a000564697274794c00036d617074000f4c6a6176612f7574696c2f4d61703b787000737200116a6176612e7574696c2e486173684d61700507dac1c31660d103000246000a6c6f6164466163746f724900097468726573686f6c6478703f40000000000010770800000010000000007800),
+('MetabaseScheduler', 'metabase.task.anonymous-stats.job', 'DEFAULT', NULL, 'metabase.task.send_anonymous_stats.SendAnonymousUsageStats', b'0', b'0', b'0', b'0', 0xaced0005737200156f72672e71756172747a2e4a6f62446174614d61709fb083e8bfa9b0cb020000787200266f72672e71756172747a2e7574696c732e537472696e674b65794469727479466c61674d61708208e8c3fbc55d280200015a0013616c6c6f77735472616e7369656e74446174617872001d6f72672e71756172747a2e7574696c732e4469727479466c61674d617013e62ead28760ace0200025a000564697274794c00036d617074000f4c6a6176612f7574696c2f4d61703b787000737200116a6176612e7574696c2e486173684d61700507dac1c31660d103000246000a6c6f6164466163746f724900097468726573686f6c6478703f40000000000010770800000010000000007800),
+('MetabaseScheduler', 'metabase.task.follow-up-emails.job', 'DEFAULT', NULL, 'metabase.task.follow_up_emails.FollowUpEmail', b'0', b'0', b'0', b'0', 0xaced0005737200156f72672e71756172747a2e4a6f62446174614d61709fb083e8bfa9b0cb020000787200266f72672e71756172747a2e7574696c732e537472696e674b65794469727479466c61674d61708208e8c3fbc55d280200015a0013616c6c6f77735472616e7369656e74446174617872001d6f72672e71756172747a2e7574696c732e4469727479466c61674d617013e62ead28760ace0200025a000564697274794c00036d617074000f4c6a6176612f7574696c2f4d61703b787000737200116a6176612e7574696c2e486173684d61700507dac1c31660d103000246000a6c6f6164466163746f724900097468726573686f6c6478703f40000000000010770800000010000000007800),
+('MetabaseScheduler', 'metabase.task.refresh-channel-cache.job', 'DEFAULT', NULL, 'metabase.task.refresh_slack_channel_user_cache.RefreshCache', b'0', b'0', b'0', b'0', 0xaced0005737200156f72672e71756172747a2e4a6f62446174614d61709fb083e8bfa9b0cb020000787200266f72672e71756172747a2e7574696c732e537472696e674b65794469727479466c61674d61708208e8c3fbc55d280200015a0013616c6c6f77735472616e7369656e74446174617872001d6f72672e71756172747a2e7574696c732e4469727479466c61674d617013e62ead28760ace0200025a000564697274794c00036d617074000f4c6a6176612f7574696c2f4d61703b787000737200116a6176612e7574696c2e486173684d61700507dac1c31660d103000246000a6c6f6164466163746f724900097468726573686f6c6478703f40000000000010770800000010000000007800),
+('MetabaseScheduler', 'metabase.task.send-pulses.job', 'DEFAULT', NULL, 'metabase.task.send_pulses.SendPulses', b'0', b'0', b'0', b'0', 0xaced0005737200156f72672e71756172747a2e4a6f62446174614d61709fb083e8bfa9b0cb020000787200266f72672e71756172747a2e7574696c732e537472696e674b65794469727479466c61674d61708208e8c3fbc55d280200015a0013616c6c6f77735472616e7369656e74446174617872001d6f72672e71756172747a2e7574696c732e4469727479466c61674d617013e62ead28760ace0200025a000564697274794c00036d617074000f4c6a6176612f7574696c2f4d61703b787000737200116a6176612e7574696c2e486173684d61700507dac1c31660d103000246000a6c6f6164466163746f724900097468726573686f6c6478703f40000000000010770800000010000000007800),
+('MetabaseScheduler', 'metabase.task.sync-and-analyze.job', 'DEFAULT', 'sync-and-analyze for all databases', 'metabase.task.sync_databases.SyncAndAnalyzeDatabase', b'1', b'1', b'0', b'0', 0xaced0005737200156f72672e71756172747a2e4a6f62446174614d61709fb083e8bfa9b0cb020000787200266f72672e71756172747a2e7574696c732e537472696e674b65794469727479466c61674d61708208e8c3fbc55d280200015a0013616c6c6f77735472616e7369656e74446174617872001d6f72672e71756172747a2e7574696c732e4469727479466c61674d617013e62ead28760ace0200025a000564697274794c00036d617074000f4c6a6176612f7574696c2f4d61703b787000737200116a6176612e7574696c2e486173684d61700507dac1c31660d103000246000a6c6f6164466163746f724900097468726573686f6c6478703f40000000000010770800000010000000007800),
+('MetabaseScheduler', 'metabase.task.task-history-cleanup.job', 'DEFAULT', NULL, 'metabase.task.task_history_cleanup.TaskHistoryCleanup', b'0', b'0', b'0', b'0', 0xaced0005737200156f72672e71756172747a2e4a6f62446174614d61709fb083e8bfa9b0cb020000787200266f72672e71756172747a2e7574696c732e537472696e674b65794469727479466c61674d61708208e8c3fbc55d280200015a0013616c6c6f77735472616e7369656e74446174617872001d6f72672e71756172747a2e7574696c732e4469727479466c61674d617013e62ead28760ace0200025a000564697274794c00036d617074000f4c6a6176612f7574696c2f4d61703b787000737200116a6176612e7574696c2e486173684d61700507dac1c31660d103000246000a6c6f6164466163746f724900097468726573686f6c6478703f40000000000010770800000010000000007800),
+('MetabaseScheduler', 'metabase.task.update-field-values.job', 'DEFAULT', 'update-field-values for all databases', 'metabase.task.sync_databases.UpdateFieldValues', b'1', b'1', b'0', b'0', 0xaced0005737200156f72672e71756172747a2e4a6f62446174614d61709fb083e8bfa9b0cb020000787200266f72672e71756172747a2e7574696c732e537472696e674b65794469727479466c61674d61708208e8c3fbc55d280200015a0013616c6c6f77735472616e7369656e74446174617872001d6f72672e71756172747a2e7574696c732e4469727479466c61674d617013e62ead28760ace0200025a000564697274794c00036d617074000f4c6a6176612f7574696c2f4d61703b787000737200116a6176612e7574696c2e486173684d61700507dac1c31660d103000246000a6c6f6164466163746f724900097468726573686f6c6478703f40000000000010770800000010000000007800),
+('MetabaseScheduler', 'metabase.task.upgrade-checks.job', 'DEFAULT', NULL, 'metabase.task.upgrade_checks.CheckForNewVersions', b'0', b'0', b'0', b'0', 0xaced0005737200156f72672e71756172747a2e4a6f62446174614d61709fb083e8bfa9b0cb020000787200266f72672e71756172747a2e7574696c732e537472696e674b65794469727479466c61674d61708208e8c3fbc55d280200015a0013616c6c6f77735472616e7369656e74446174617872001d6f72672e71756172747a2e7574696c732e4469727479466c61674d617013e62ead28760ace0200025a000564697274794c00036d617074000f4c6a6176612f7574696c2f4d61703b787000737200116a6176612e7574696c2e486173684d61700507dac1c31660d103000246000a6c6f6164466163746f724900097468726573686f6c6478703f40000000000010770800000010000000007800);
 
 -- --------------------------------------------------------
 
@@ -1381,9 +1427,17 @@ CREATE TABLE `qrtz_job_details` (
 --
 
 CREATE TABLE `qrtz_locks` (
-  `SCHED_NAME` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `LOCK_NAME` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL
+  `SCHED_NAME` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `LOCK_NAME` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Used for Quartz scheduler.';
+
+--
+-- Dumping data for table `qrtz_locks`
+--
+
+INSERT INTO `qrtz_locks` (`SCHED_NAME`, `LOCK_NAME`) VALUES
+('MetabaseScheduler', 'STATE_ACCESS'),
+('MetabaseScheduler', 'TRIGGER_ACCESS');
 
 -- --------------------------------------------------------
 
@@ -1392,8 +1446,8 @@ CREATE TABLE `qrtz_locks` (
 --
 
 CREATE TABLE `qrtz_paused_trigger_grps` (
-  `SCHED_NAME` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `TRIGGER_GROUP` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL
+  `SCHED_NAME` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `TRIGGER_GROUP` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Used for Quartz scheduler.';
 
 -- --------------------------------------------------------
@@ -1403,11 +1457,18 @@ CREATE TABLE `qrtz_paused_trigger_grps` (
 --
 
 CREATE TABLE `qrtz_scheduler_state` (
-  `SCHED_NAME` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `INSTANCE_NAME` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `LAST_CHECKIN_TIME` bigint(20) NOT NULL,
-  `CHECKIN_INTERVAL` bigint(20) NOT NULL
+  `SCHED_NAME` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `INSTANCE_NAME` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `LAST_CHECKIN_TIME` bigint NOT NULL,
+  `CHECKIN_INTERVAL` bigint NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Used for Quartz scheduler.';
+
+--
+-- Dumping data for table `qrtz_scheduler_state`
+--
+
+INSERT INTO `qrtz_scheduler_state` (`SCHED_NAME`, `INSTANCE_NAME`, `LAST_CHECKIN_TIME`, `CHECKIN_INTERVAL`) VALUES
+('MetabaseScheduler', '35b8fb5f33861656063297399', 1656065323141, 7500);
 
 -- --------------------------------------------------------
 
@@ -1416,12 +1477,12 @@ CREATE TABLE `qrtz_scheduler_state` (
 --
 
 CREATE TABLE `qrtz_simple_triggers` (
-  `SCHED_NAME` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `TRIGGER_NAME` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `TRIGGER_GROUP` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `REPEAT_COUNT` bigint(20) NOT NULL,
-  `REPEAT_INTERVAL` bigint(20) NOT NULL,
-  `TIMES_TRIGGERED` bigint(20) NOT NULL
+  `SCHED_NAME` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `TRIGGER_NAME` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `TRIGGER_GROUP` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `REPEAT_COUNT` bigint NOT NULL,
+  `REPEAT_INTERVAL` bigint NOT NULL,
+  `TIMES_TRIGGERED` bigint NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Used for Quartz scheduler.';
 
 -- --------------------------------------------------------
@@ -1431,16 +1492,16 @@ CREATE TABLE `qrtz_simple_triggers` (
 --
 
 CREATE TABLE `qrtz_simprop_triggers` (
-  `SCHED_NAME` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `TRIGGER_NAME` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `TRIGGER_GROUP` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `STR_PROP_1` varchar(512) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `STR_PROP_2` varchar(512) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `STR_PROP_3` varchar(512) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `INT_PROP_1` int(11) DEFAULT NULL,
-  `INT_PROP_2` int(11) DEFAULT NULL,
-  `LONG_PROP_1` bigint(20) DEFAULT NULL,
-  `LONG_PROP_2` bigint(20) DEFAULT NULL,
+  `SCHED_NAME` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `TRIGGER_NAME` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `TRIGGER_GROUP` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `STR_PROP_1` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `STR_PROP_2` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `STR_PROP_3` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `INT_PROP_1` int DEFAULT NULL,
+  `INT_PROP_2` int DEFAULT NULL,
+  `LONG_PROP_1` bigint DEFAULT NULL,
+  `LONG_PROP_2` bigint DEFAULT NULL,
   `DEC_PROP_1` decimal(13,4) DEFAULT NULL,
   `DEC_PROP_2` decimal(13,4) DEFAULT NULL,
   `BOOL_PROP_1` bit(1) DEFAULT NULL,
@@ -1454,23 +1515,36 @@ CREATE TABLE `qrtz_simprop_triggers` (
 --
 
 CREATE TABLE `qrtz_triggers` (
-  `SCHED_NAME` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `TRIGGER_NAME` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `TRIGGER_GROUP` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `JOB_NAME` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `JOB_GROUP` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `DESCRIPTION` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `NEXT_FIRE_TIME` bigint(20) DEFAULT NULL,
-  `PREV_FIRE_TIME` bigint(20) DEFAULT NULL,
-  `PRIORITY` int(11) DEFAULT NULL,
-  `TRIGGER_STATE` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `TRIGGER_TYPE` varchar(8) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `START_TIME` bigint(20) NOT NULL,
-  `END_TIME` bigint(20) DEFAULT NULL,
-  `CALENDAR_NAME` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `MISFIRE_INSTR` smallint(6) DEFAULT NULL,
-  `JOB_DATA` blob DEFAULT NULL
+  `SCHED_NAME` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `TRIGGER_NAME` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `TRIGGER_GROUP` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `JOB_NAME` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `JOB_GROUP` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `DESCRIPTION` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `NEXT_FIRE_TIME` bigint DEFAULT NULL,
+  `PREV_FIRE_TIME` bigint DEFAULT NULL,
+  `PRIORITY` int DEFAULT NULL,
+  `TRIGGER_STATE` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `TRIGGER_TYPE` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `START_TIME` bigint NOT NULL,
+  `END_TIME` bigint DEFAULT NULL,
+  `CALENDAR_NAME` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `MISFIRE_INSTR` smallint DEFAULT NULL,
+  `JOB_DATA` blob
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Used for Quartz scheduler.';
+
+--
+-- Dumping data for table `qrtz_triggers`
+--
+
+INSERT INTO `qrtz_triggers` (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`, `JOB_NAME`, `JOB_GROUP`, `DESCRIPTION`, `NEXT_FIRE_TIME`, `PREV_FIRE_TIME`, `PRIORITY`, `TRIGGER_STATE`, `TRIGGER_TYPE`, `START_TIME`, `END_TIME`, `CALENDAR_NAME`, `MISFIRE_INSTR`, `JOB_DATA`) VALUES
+('MetabaseScheduler', 'metabase.task.abandonment-emails.trigger', 'DEFAULT', 'metabase.task.abandonment-emails.job', 'DEFAULT', NULL, 1656072000000, -1, 5, 'WAITING', 'CRON', 1656063297000, 0, NULL, 0, ''),
+('MetabaseScheduler', 'metabase.task.anonymous-stats.trigger', 'DEFAULT', 'metabase.task.anonymous-stats.job', 'DEFAULT', NULL, 1656140400000, -1, 5, 'WAITING', 'CRON', 1656063297000, 0, NULL, 0, ''),
+('MetabaseScheduler', 'metabase.task.follow-up-emails.trigger', 'DEFAULT', 'metabase.task.follow-up-emails.job', 'DEFAULT', NULL, 1656072000000, -1, 5, 'WAITING', 'CRON', 1656063297000, 0, NULL, 0, ''),
+('MetabaseScheduler', 'metabase.task.refresh-channel-cache.trigger', 'DEFAULT', 'metabase.task.refresh-channel-cache.job', 'DEFAULT', NULL, 1656074340000, -1, 5, 'WAITING', 'CRON', 1656063297000, 0, NULL, 2, ''),
+('MetabaseScheduler', 'metabase.task.send-pulses.trigger', 'DEFAULT', 'metabase.task.send-pulses.job', 'DEFAULT', NULL, 1656068400000, 1656064800000, 5, 'WAITING', 'CRON', 1656063297000, 0, NULL, 1, ''),
+('MetabaseScheduler', 'metabase.task.task-history-cleanup.trigger', 'DEFAULT', 'metabase.task.task-history-cleanup.job', 'DEFAULT', NULL, 1656068400000, 1656064800000, 5, 'WAITING', 'CRON', 1656063297000, 0, NULL, 0, ''),
+('MetabaseScheduler', 'metabase.task.upgrade-checks.trigger', 'DEFAULT', 'metabase.task.upgrade-checks.job', 'DEFAULT', NULL, 1656094500000, -1, 5, 'WAITING', 'CRON', 1656063297000, 0, NULL, 0, '');
 
 -- --------------------------------------------------------
 
@@ -1480,9 +1554,147 @@ CREATE TABLE `qrtz_triggers` (
 
 CREATE TABLE `query` (
   `query_hash` binary(32) NOT NULL,
-  `average_execution_time` int(11) NOT NULL COMMENT 'Average execution time for the query, round to nearest number of milliseconds. This is updated as a rolling average.',
-  `query` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `average_execution_time` int NOT NULL COMMENT 'Average execution time for the query, round to nearest number of milliseconds. This is updated as a rolling average.',
+  `query` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Information (such as average execution time) for different queries that have been previously ran.';
+
+--
+-- Dumping data for table `query`
+--
+
+INSERT INTO `query` (`query_hash`, `average_execution_time`, `query`) VALUES
+(0x032413ca5251a463139070669594176be2421e0de696bb0f6a611db5a2c4da78, 690, '{\"constraints\":{\"max-results\":10000,\"max-results-bare-rows\":2000},\"type\":\"native\",\"middleware\":{\"js-int-to-string?\":true,\"ignore-cached-results?\":false,\"process-viz-settings?\":false},\"native\":{\"query\":\"select sum(unitprice * quantity) as \'Total Unit Price Sold\', year(invoicedate) as Year from cleaned_online_retail group by year(invoicedate) \",\"template-tags\":{}},\"database\":2,\"async?\":true,\"cache-ttl\":null}'),
+(0x03ebfeeaad8d50d0b4cbea431e89dd2a2371c4cf7643240974e67285449dfc0b, 369, '{\"type\":\"native\",\"native\":{\"query\":\"select t1.description as Item1, t2.description as Item2, t1.invoiceno as \'Invoice\' from cleaned_online_retail t1 join cleaned_online_retail t2 on t1.invoiceno = t2.invoiceno and t1.description != t2.description\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x040f8b5950b7fe11cdc313c5c8b980da45eacff9ad18dfa3100c8c85e0363adb, 25, '{\"type\":\"native\",\"native\":{\"query\":\"select t1.description as Item1, t2.description as Item2, count(invoiceno) from cleaned_online_retail t1 join cleaned_online_retail t2 on t1.invoiceno = t2.invoiceno and t1.description != t2.description\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x052f8dde048f93b84021eb6bb144efc0026e7c32e6d08c785f7594d46e3380c1, 21, '{\"type\":\"native\",\"native\":{\"query\":\"GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,\'ONLY_FULL_GROUP_BY\',\'\'));\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x05aadcea75e0fee8f6c0a6a857b37f3525553706e4b07ecd11a4371bac75613f, 2247, '{\"constraints\":{\"max-results\":10000,\"max-results-bare-rows\":2000},\"type\":\"native\",\"middleware\":{\"js-int-to-string?\":true,\"ignore-cached-results?\":false,\"process-viz-settings?\":false},\"native\":{\"query\":\"select count(quantity) as \'Product Quantity Per Basket\', customerid as \'Customer ID\', invoiceno as \'Baskets\' from cleaned_online_retail group by invoiceno, customerid\",\"template-tags\":{}},\"database\":2,\"async?\":true,\"cache-ttl\":null}'),
+(0x0621708b986865e8caad9489a93555a825c83024200e1e33f346e48e4a042f8d, 80767, '{\"type\":\"native\",\"native\":{\"query\":\"select t1.description as Item1, t2.description as Item2, count(t1.invoiceno) as \'PairCount\' from cleaned_online_retail t1 join cleaned_online_retail t2 on t1.invoiceno = t2.invoiceno and t1.description != t2.description group by t1.invoiceno\\n\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x07b28322ff64a85e9b4b70360472650f71a1ae791d95bc1277970099e490192d, 21, '{\"type\":\"native\",\"native\":{\"query\":\"select date(invoicedate) as \'Date\', description as \'Product\' from cleaned_online_retail group by customerid\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x0ec158bd38f3c2383c85b5fc52b67a07af17ee12b9d02c57c4ef3bc45a3b3676, 24, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT description FROM cleaned_online_retail GROUP BY stockcode\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x0fd5c31d9a4e5dbd73d9f3a6c2d0bec1da37dc069c36b15accd76cbda12b07a6, 87218, '{\"type\":\"native\",\"native\":{\"query\":\"select t1.description as Item1, t2.description as Item2, count(t1.invoiceno) from cleaned_online_retail t1 join cleaned_online_retail t2 on t1.invoiceno = t2.invoiceno and t1.description != t2.description group by t1.invoiceno\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x0fdaf4a9d8b0f9be2bd76127ad6a50f80475472eaf2c65745ef3be9387e99df4, 37, '{\"type\":\"native\",\"native\":{\"query\":\"select count(quantity), description from cleaned_online_retail group by description ordered by desc limit 10\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x14816fececc6f09c7600e910f98d6a68f83c6becbaa7384cab4cf38e30c12d50, 36, '{\"type\":\"native\",\"native\":{\"query\":\"select count(quantity), description from cleaned_online_retail group by description order by desc limit 10\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x16211451bbffe92bcf7161d810c94331255eec411e28d7840a9647fc3a692235, 21, '{\"type\":\"native\",\"native\":{\"query\":\"SHOW VARIABLES LIKE \'sql_mode\';\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x191a8ea0d4b61783746eda68c0133413ebdf00b635e661181083d6806b1d47dc, 82, '{\"type\":\"native\",\"native\":{\"query\":\"seelect invoicedate.date as \'Date\' from cleaned_online_retail\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x1b7a75f21a9a5cb294f28f23ec7f321ca8538d28488cef9cf55690ebfe8fca70, 24, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT sum(quantity), date(invoicedate)as \'Date\' FROM cleaned_online_retail \",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x1cefc1fc213cedb765e0c16b0a2244173594e99d925c7de8f1c0486abdc9e05f, 19, '{\"type\":\"native\",\"native\":{\"query\":\"(select description, invoiceno as \'inv1\' from cleaned_online_retail) join (select description, invoiceno as \'inv2\' from cleaned_online_retail)\\n\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x28f7f0a99cdc7905a817c6e63e9c2f54ac8a3d9dd55b16bb18e5c798f0a54142, 19, '{\"type\":\"native\",\"native\":{\"query\":\"(select description, invoiceno from cleaned_online_retail) as t1 join (select description, invoiceno from cleaned_online_retail) as t2\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x298adb3b430e84a5a154c24704903c9fb123f15b44864a77f105d04724e90809, 21, '{\"type\":\"native\",\"native\":{\"query\":\"select date(invoicedate) as \'Date\', description as \'Product\', customerid as \'Customer\' from cleaned_online_retail group by Customer\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x2a6bc9583c4cd9779e9d3266115457b7aaae048c2f6e1b189ddad02bc56e3115, 26, '{\"type\":\"native\",\"native\":{\"query\":\"select date(invoicedate) as \'Date\', description as \'Product\', customerid as \'Customer\' from cleaned_online_retail group by customerid\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x2b8d3a9b034d63fbb7e869efeed7087cf2a292577110a18bf92f1377e178fbbd, 4088, '{\"type\":\"native\",\"native\":{\"query\":\"select t1.description as Item1, t2.description as Item2, count(*) from cleaned_online_retail t1 join cleaned_online_retail t2 on t1.invoiceno = t2.invoiceno\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x2ca8e717beb6b1299ede158abab0858b3571bd1262690975721e111aa3f4e2ba, 800, '{\"type\":\"native\",\"native\":{\"query\":\"select date(invoicedate) from cleaned_online_retail\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x2dee7d140f17d1d69a7e4d01095566603f50b60243027dc9b36f7a4de0027503, 290, '{\"type\":\"native\",\"native\":{\"query\":\"(select description, invoiceno as \'inv1\' from cleaned_online_retail) \\n\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x2ea0b6e040527f5cfaafa2a5545bff99ed2581203ffdf1845a6d3b1ca0db7e16, 19, '{\"type\":\"native\",\"native\":{\"query\":\"(SELECT sum(quantity)as \'Total Product\', customerid, date(invoicedate) as \'Date\', time(invoicedate) as \'Time\' FROM cleaned_online_retail group by invoiceno)\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x2faa6065d89ebb681a273099edfb3b3c3ecb49f8627fea69f7b133bd6a556abe, 997, '{\"type\":\"native\",\"native\":{\"query\":\"select sum(quantity) as \'Total Products\', country from cleaned_online_retail group by country order by sum(quantity) desc \",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x32054462940c08531486ef01b48bc3c94cfa3e55a021f9bf9a405487d2ef4c4e, 89817, '{\"type\":\"native\",\"native\":{\"query\":\"select t1.description as Item1, t2.description as Item2, count(t1.invoiceno) as \'Count\' from cleaned_online_retail t1 join cleaned_online_retail t2 on t1.invoiceno = t2.invoiceno and t1.description != t2.description group by t1.invoiceno\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x387ca8a21d6d0b856772449990e923cd421170e24901eedd060e7460aa91fb91, 596, '{\"type\":\"native\",\"native\":{\"query\":\"select date(invoicedate) as \'Date\' from cleaned_online_retail\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x38c5834e7e9ffa685b1459ffa34beff483a7a38d1a2bbf519181b26c70b24a70, 20, '{\"type\":\"native\",\"native\":{\"query\":\"(select t1.description as Item1, t2.description as Item2, count(t1.invoiceno) as \'PairCount\' from cleaned_online_retail t1 order by PairCount desc join cleaned_online_retail t2 on t1.invoiceno = t2.invoiceno and t1.description != t2.description group by t1.invoiceno)\\n\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x3a834006d5279d34fb29d86a46166120f91d390b541095c64fa5a6624fd379d9, 20, '{\"type\":\"native\",\"native\":{\"query\":\"seelect invoicedate.date from cleaned_online_retail\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x3c0407f9f40746485b0b5a9ccb005f7c415391a37a69805d617a13833a7af350, 1724, '{\"type\":\"native\",\"native\":{\"query\":\"select description, count(quantity) as \'Quantity\' from cleaned_online_retail group by description limit 5\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x3cd4c04c729e46e8ca4c4f4489d75691cc3ece2e6f2746e99617343358a5f1ca, 1546, '{\"type\":\"native\",\"native\":{\"query\":\"select count(quantity) as \'Quantity\', customerid as \'Customer ID\', invoiceno as \'Baskets\' from cleaned_online_retail group by invoiceno, customerid\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x4266eb2397258359cf3360b9a8892b57a11e6ed67f5bf61663615df4e1cacfab, 17, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT\\r\\n    description as \'Product1\'\\r\\nFROM\\r\\n    cleaned_online_retail t1 \\r\\nLEFT JOIN (select description as \'Product2\' from cleaned_online_retail) t2 ON cleaned_online_retail.invoiceno = t1.invoiceno\\r\\n\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x430163f869deb2335794f7cf5969d837c77d51539031856fdca32c184acb4c57, 28, '{\"type\":\"native\",\"native\":{\"query\":\"select date(invoicedate) as \'Date\', description as \'Product\', customerid as \'Customer\' from cleaned_online_retail group by group by description\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x447b21470027bd380c6ebde961d6d3ffdee1a1c7ccb39602500d0cac6bfebb62, 1838, '{\"type\":\"native\",\"native\":{\"query\":\"select description as Product1, description as Product2, count(invoiceno) as \'Count\' from cleaned_online_retail group by invoiceno\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x449c29ffb4be14fb4eb0635ed1671a5a6b2dd3a83e1893f2529276bb6621ed97, 83035, '{\"database\":2,\"native\":{\"template-tags\":{},\"query\":\"(select t1.description as Item1, t2.description as Item2, count(t1.invoiceno) as \'PairCount\' from cleaned_online_retail t1 join cleaned_online_retail t2 on t1.invoiceno = t2.invoiceno and t1.description != t2.description group by t1.invoiceno)\\norder by count(t1.invoiceno) desc limit 5\\n\"},\"type\":\"native\",\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x455d160c68399243289469c0bd1475c8decfc767324ceefaad648b4a73450f61, 74, '{\"type\":\"native\",\"native\":{\"query\":\"select (pg1.description, pg2.description) as items, pg1.invoiceno from \\r\\n    (select distinct description, invoiceno\\r\\n    from cleaned_online_retail) as pg1\\r\\n    join\\r\\n    (select distinct description, invoiceno\\r\\n    from cleaned_online_retail) as pg2\\r\\n    WHERE pg1.invoiceno = pg2.invoiceno\\r\\n    )\\r\\n    )\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x47f4daa64bf7b45e6fe0255ec23872bd25aba3899ba16948fb228c160217766a, 1426, '{\"type\":\"native\",\"native\":{\"query\":\"select count(quantity) as \'Product Quantity Per Basket\', customerid as \'Customer ID\', invoiceno as \'Baskets\' from cleaned_online_retail group by invoiceno, customerid\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x483e0b7894430f4f3024bf21cc86072b010a9b6ad2d4ef05ad25da6cca61adf5, 82468, '{\"constraints\":{\"max-results\":10000,\"max-results-bare-rows\":2000},\"type\":\"native\",\"middleware\":{\"js-int-to-string?\":true,\"ignore-cached-results?\":false,\"process-viz-settings?\":false},\"native\":{\"query\":\"(select t1.description as Item1, t2.description as Item2, count(t1.invoiceno) as \'PairCount\' from cleaned_online_retail t1 join cleaned_online_retail t2 on t1.invoiceno = t2.invoiceno and t1.description != t2.description group by t1.invoiceno)\\norder by count(t1.invoiceno) desc limit 5\\n\",\"template-tags\":{}},\"database\":2,\"async?\":true,\"cache-ttl\":null}'),
+(0x4f6b320245d5fda4ffa9c8beff3cba8e9848bb09c90e493e8d2db97cfd647e06, 1928, '{\"type\":\"native\",\"native\":{\"query\":\"select count(quantity) as \'Quantity\', description from cleaned_online_retail group by description limit 5\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x5054653f75dd72847539b5d47b7d4e4702f774b4ef5f075026ce250ebafa84f7, 1437, '{\"type\":\"native\",\"native\":{\"query\":\"select count(quantity) as \'Quantity\', customerid as \'Customer ID\', invoiceno as \'Basket\' from cleaned_online_retail group by invoiceno, customerid\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x515b4d0029d47af93f266f8d31d179f2a65a33691c0be5e24a63612190189c62, 32, '{\"type\":\"native\",\"native\":{\"query\":\"select t1.description as IdItem1, t2.description as IdItem2, count(*)\\r\\nfrom cleaned_online_retail t1 join\\r\\n     cleaned_online_retail t2\\r\\n     on t1.invoiceno = t2.invoiceno and\\r\\ngroup by t1.description, t2.description\\r\\norder by count(*) desc;\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x523d12f5272407095395dd8a5195569c468d1ea351c06f75be29e92857ebec93, 26, '{\"type\":\"native\",\"native\":{\"query\":\"seelect invoicedate(date) from cleaned_online_retail\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x53245e83a991b9892ded6c1ae4662fad3d58328f0ff5312bf0422c1dadb05d3b, 21, '{\"type\":\"native\",\"native\":{\"query\":\"seelect date(invoicedate) as \'Date\' from cleaned_online_retail\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x5ef18c3739a2047d53181635d110d7787fb3339c6b41674d212254db8bd67866, 24, '{\"type\":\"native\",\"native\":{\"query\":\"(SELECT REPLACE(@@sql_mode,\'ONLY_FULL_GROUP_BY\',\'\'))\\n\\nSELECT sum(quantity)as \'Total Product\', customerid, date(invoicedate) as \'Date\', time(invoicedate) as \'Time\' FROM cleaned_online_retail group by invoiceno\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x5f09310fe9b3ae1e008235ec3140ebd97b4e10cf10934ea000d8ea942fe09527, 20, '{\"type\":\"native\",\"native\":{\"query\":\"(select description, invoiceno from cleaned_online_retail) as tab1\\n\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x5f92f3b0e5de0d36d0e970c6e90ea8a9f615d91522e7c10fc157f2e5f13902a1, 18, '{\"type\":\"native\",\"native\":{\"query\":\"select sum(quantity) as \'Total Products\', country from cleaned_online_retail group by customerid order by sum(quantity) desc \",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x61f2842ee2db021a64202deb4a619d67b0220d5d6ac7a28e2a56d0f79b68e909, 17, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT sum(quantity)as \'Total Product\', customerid, date(invoicedate) as \'Date\', time(invoicedate) as \'Time\' FROM cleaned_online_retail only_full_group_by invoiceno\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x623549fa19bad0ddc222771b71d522f505fba970f26da10b012f08ab7ba0ed8e, 20, '{\"type\":\"native\",\"native\":{\"query\":\"select description from cleaned_online_retail group by invoiceno\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x6281130aab9f816d5e2cd30621fe1e91c300cd618d2ea05c515a3ead55c1f716, 23, '{\"type\":\"native\",\"native\":{\"query\":\"select description, customerid from cleaned_online_retail group by customerid\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x62e550e510f7d10a2eadaa160fa8af300dd58e2acb1e59a89bfeca3bdf810b44, 19, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT description FROM cleaned_online_retail GROUP BY invoiceno\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x63ccba6c9e3aec21cedb387c43a9178d44ef89872c504c7be006c9a4f9a9710c, 21, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT\\r\\n    description\\r\\nFROM\\r\\n    cleaned_online_retail t1\\r\\n[LEFT]  JOIN cleaned_online_retail t2 ON\\r\\n    t1.invoiceno=t2.invoiceno;\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x649b002e20c3a0e4aabb86ddc799323bfb6af05cb8dc0f683db7cfac91c8e67b, 21, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT\\r\\n    description as \'Product1\', invoiceno\\r\\nFROM\\r\\n    cleaned_online_retail t1 \\r\\nLEFT JOIN (select description as \'Product2\', invoiceno from cleaned_online_retail) t2 ON t2.invoiceno = t1.invoiceno\\r\\n\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x666e7bae70c8206069634d154a59ae8f4d50e6ea41800ab61895425a0bc2f463, 80, '{\"type\":\"query\",\"query\":{\"source-table\":5,\"limit\":10},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x672e4faf69f5da9aa763091730d71bfbd22a7dc654d6f5dafb2caf15227b1d02, 24, '{\"type\":\"native\",\"native\":{\"query\":\"\\n\\n(SELECT sum(quantity)as \'Total Product\', customerid, date(invoicedate) as \'Date\', time(invoicedate) as \'Time\' FROM cleaned_online_retail group by invoiceno)\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x674422d821231c0f75043f3b0c29af27bb39dc834421c641d4db539895af5789, 175, '{\"type\":\"native\",\"native\":{\"query\":\"select description as Product1, description as Product2, count(invoiceno) as \'Count\' from cleaned_online_retail \",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x6ac2c8d523a655381d8ac89781f50bedbcf82dcf9d0e0406b51cbbbd4bf707fb, 18, '{\"type\":\"native\",\"native\":{\"query\":\"(select description, invoiceno from cleaned_online_retail) \\njoin \\n(select description, invoiceno from cleaned_online_retail) \",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x6b95128e70fc042de550ffb24f04c13ec809e2e796a8587caf96b08e4460cf60, 22, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT sum(quantity), date(invoicedate)as Date FROM cleaned_online_retail GROUP BY invoiceno\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x70f5031f2e18ca8afe253ba4eb3c4de8cb98e2dd02db97d503154c57e635147c, 259, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT\\r\\n    description\\r\\nFROM\\r\\n    cleaned_online_retail t1\\r\\n\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x79219793d97d6567da9842cf964ffdaa35cae6b0acaa4faa07ea48ef911ed892, 22, '{\"type\":\"native\",\"native\":{\"query\":\"select description as \'Product1\', description as \'Product2\', count(invoiceno) as \'Count\' from cleaned_online_retail group by invoiceno where Product1 != Product2\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x7a639042b560ff1488d93329463531f94c7eeb88a9e53be02919c8145f5d0370, 21, '{\"type\":\"native\",\"native\":{\"query\":\"select date(invoicedate) as \'Date\', description as \'Product\', customerid as \'Customer\' from cleaned_online_retail groupby customerid\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x7ba2c8bb54850574d96bd17e436302b1626dd244f5feb9b3f9eb7612b7eedc11, 3880, '{\"type\":\"native\",\"native\":{\"query\":\"select t1.description as Item1, t2.description as Item2, count(*) from cleaned_online_retail t1 join cleaned_online_retail t2 on t1.invoiceno = t2.invoiceno;\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x7c023a1f29a5c1c03f5b2d55193d900e4cc2e5346ca6fdf3ff4e308d2d050237, 81487, '{\"type\":\"native\",\"native\":{\"query\":\"(select t1.description as Item1, t2.description as Item2, count(t1.invoiceno) as \'PairCount\' from cleaned_online_retail t1 join cleaned_online_retail t2 on t1.invoiceno = t2.invoiceno and t1.description != t2.description group by t1.invoiceno)\\n\\n\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x7db02e7491e21c957d501a9470f2604e5b0e957c2192043b335bf649954785e8, 19, '{\"type\":\"native\",\"native\":{\"query\":\"select date(invoicedate) as \'Date\', description as \'Product\', customerid as \'Customer\' from cleaned_online_retail group by date(invoicedate)\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x7e5bbe188f87b49b6e002daab24913bd650246915a15cec09113218e6d6f8449, 21, '{\"type\":\"native\",\"native\":{\"query\":\"(select description, invoiceno as \'inv1\' from cleaned_online_retail) join (select description, invoiceno as \'inv2\' from cleaned_online_retail) on inv1 = inv2\\n\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x7fc6977872cff114679801c7a19d0b8e36e93bcb4e40f11a1b6f087eb3634678, 21, '{\"type\":\"native\",\"native\":{\"query\":\"(select description, invoiceno from cleaned_online_retail) as tab1\\nLEFT JOIN\\n(select description, invoiceno from cleaned_online_retail) as tab2\\nON tab1.invoiceno = tab2.invoiceno\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x85e4bfb91fcd8b6687e1298e5cee865bce72fddacb7e9ffe237885a01be76fc8, 323, '{\"type\":\"native\",\"native\":{\"query\":\"select t1.description as Item1, t2.description as Item2 from cleaned_online_retail t1 join cleaned_online_retail t2 on t1.invoiceno = t2.invoiceno and t1.description != t2.description\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x867f1d4e8a42428cc63f29a26cbe994b61c5ca8039992e1a362f4c5e8b4d6138, 1581, '{\"type\":\"native\",\"native\":{\"query\":\"select description, count(invoiceno) as \'Count\' from cleaned_online_retail group by invoiceno\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x869c3cfe80fdd8f74d1deb15e1ee70bdc2828a295b126834f87efc63611390fb, 20, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT sum(quantity)as \'Total Product\', customerid, date(invoicedate) FROM cleaned_online_retail group by invoiceno\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x8a34ff067383142d4753a2f7cc039c2bd302badb30cae22140c21e6f8f9efaf0, 80352, '{\"type\":\"native\",\"native\":{\"query\":\"(select t1.description as Item1, t2.description as Item2, count(t1.invoiceno) as \'PairCount\' from cleaned_online_retail t1 join cleaned_online_retail t2 on t1.invoiceno = t2.invoiceno and t1.description != t2.description group by t1.invoiceno)\\norder by PairCount desc limit 5\\n\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x8b85f296a15cfe4209833bbf7e62d1ff666b38ff91aea77a4875326b39c5c940, 1356, '{\"constraints\":{\"max-results\":10000,\"max-results-bare-rows\":2000},\"type\":\"native\",\"middleware\":{\"js-int-to-string?\":true,\"ignore-cached-results?\":false},\"native\":{\"query\":\"select country, count(distinct(stockcode)) as \'Product Counts\' from cleaned_online_retail group by country\",\"template-tags\":{}},\"database\":2,\"async?\":true,\"cache-ttl\":null}'),
+(0x8c1e88a1f7f168b2a2c3d24f2aedde3306536c7ffd74fe8a3ff4fa6755fe98b8, 21, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT\\r\\n    description as \'Product1\', invoiceno as \'inv1\'\\r\\nFROM\\r\\n    cleaned_online_retail t1 \\r\\nLEFT JOIN (select description as \'Product2\', invoiceno as \'inv2\' from cleaned_online_retail) t2 ON t2.inv2 = t1.inv1\\r\\n\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x8d30345d450b63e76bf8edef8d30f61c3fb2e9f57947dcff5cbcce8c39b0efb9, 38, '{\"type\":\"native\",\"native\":{\"query\":\"select (pg1.description, pg2.description) as items, pg1.invoiceno from \\r\\n    (select distinct description, invoiceno\\r\\n    from cleaned_online_retail) as pg1\\r\\n    join\\r\\n    (select distinct description, invoiceno\\r\\n    from cleaned_online_retail) as pg2\\r\\n    WHERE pg1.invoiceno = pg2.invoiceno\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x8d4cfab1ec5b1ba15608301f0f28db7902164989f141a32e371292419194597a, 4046, '{\"type\":\"native\",\"native\":{\"query\":\"select t1.description as IdItem1, t2.description as IdItem2, count(*) from cleaned_online_retail t1 join cleaned_online_retail t2 on t1.invoiceno = t2.invoiceno;\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x8dd03d2c3719137a54985b5563afb3825560eb4ad7991ab23a3fd94d11ac43cd, 1297, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT sum(quantity)as \'Total Product\' FROM cleaned_online_retail group by invoiceno\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x8ee7057acd9aa159adc106e0d599dda0e1ba56449b90cf0e5823bcf50399d74d, 20, '{\"type\":\"native\",\"native\":{\"query\":\"select description as \'Product1\', description as \'Product2\', count(invoiceno) as \'Count\' from cleaned_online_retail group by invoiceno where (Product1 != Product2)\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x91a107a843c594d49f925414ed08bc281157ab2e17c0c412ee0c5935d5344c37, 22, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT sum(quantity)as \'Total Product\', customerid FROM cleaned_online_retail group by invoiceno\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x9651d4f865c0e3b015f24403e8c78a07b394abe017da9dad60732bcf1b34ac06, 80359, '{\"type\":\"native\",\"native\":{\"query\":\"select t1.description as Item1, t2.description as Item2, count(t1.invoiceno) as \'Count\' from cleaned_online_retail t1 join cleaned_online_retail t2 on t1.invoiceno = t2.invoiceno and t1.description != t2.description group by t1.invoiceno\\norder by Count desc\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x966f081834d619eb2fceb43b2c0aa6503076cf12ec4daa3faeabaf5158ecb04c, 2010, '{\"constraints\":{\"max-results\":10000,\"max-results-bare-rows\":2000},\"type\":\"native\",\"middleware\":{\"js-int-to-string?\":true,\"ignore-cached-results?\":false,\"process-viz-settings?\":false},\"native\":{\"query\":\"select sum(quantity) as \'Total Products\', country from cleaned_online_retail group by country order by sum(quantity) desc \",\"template-tags\":{}},\"database\":2,\"async?\":true,\"cache-ttl\":null}'),
+(0x9a172c0b0390f3ad64e946d74457a1d799cf404eccf26488c972e85602afe097, 23, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT sum(quantity)as \'Total Product\', customerid, date(invoicedate) as \'Date\', time(invoicedate) as \'Time\' FROM cleaned_online_retail group by invoiceno;\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x9ae4c9e98ae7c47e9ef828c444220781e7afb0b95a187913231deeed50ba22aa, 2485, '{\"type\":\"native\",\"native\":{\"query\":\"select description, count(quantity) as \'Quantity\' from cleaned_online_retail group by description\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x9c37da241c09461c012724b46b9d96bdfe7d545b72e45c3c64994423145b5273, 26, '{\"type\":\"native\",\"native\":{\"query\":\"seelect date(invoicedate) from cleaned_online_retail\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x9c9fc579353f7651581f567aa05680f35062fc34f7f0ebb1ba4f582dec3bc585, 46, '{\"type\":\"native\",\"native\":{\"query\":\"select invoicedate(date) from cleaned_online_retail\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x9ca912290e54faa0306ac23bb83857a9a5c04317722c9709cc15014b01823f75, 592, '{\"database\":2,\"query\":{\"source-table\":5},\"type\":\"query\",\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0x9d3e2acc36388a5afab5523af912dd22398b62f7a7a5d958bc171293a3ebc914, 2562, '{\"constraints\":{\"max-results\":10000,\"max-results-bare-rows\":2000},\"type\":\"native\",\"middleware\":{\"js-int-to-string?\":true,\"ignore-cached-results?\":false},\"native\":{\"query\":\"SELECT `source`.`Unit Price` AS `Unit Price`, `source`.`country` AS `country`\\nFROM (select sum(unitprice * quantity) as \'Unit Price\', country from cleaned_online_retail group by country order by sum(unitprice) desc limit 5) `source`\\nLIMIT 1048575\",\"template-tags\":{}},\"database\":2,\"async?\":true,\"cache-ttl\":null}'),
+(0x9dfb88673c2da5e6096bcc95eb5e1afd96eff7bf5897b0d3cbd8011efa86541a, 20, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT\\r\\n    description as \'Product1\', invoiceno as \'inv1\'\\r\\nFROM\\r\\n    cleaned_online_retail t1 \\r\\nLEFT JOIN (select description as \'Product2\', invoiceno as \'inv2\' from cleaned_online_retail) t2 ON inv1=inv2\\r\\n\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xa00dd00d773a2e7ee0c9c7debf741129e320adc9413b11476bfa3fe4b4fdbe8a, 21, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT sum(quantity), date(invoicedate)as \'Date\' FROM cleaned_online_retail GROUP BY invoiceno\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xa00fbb72a3c164fea863747ff50b6e01ea20dcaf4326163f4c0cda4ebc772851, 21, '{\"type\":\"native\",\"native\":{\"query\":\"select t1.description as Item1, t2.description as Item2, count(invoiceno) from cleaned_online_retail t1 join cleaned_online_retail t2 on t1.invoiceno = t2.invoiceno and t1.description != t2.description \\ngroup by t1.invoiceno\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xa511bee47a44c91aa5b9cfa85bef876da136df5f3b9ac7aa676bf4a64160586c, 28, '{\"type\":\"native\",\"native\":{\"query\":\"select description, customerid from cleaned_online_retail group by invoiceno\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xa6fd0b7a7335cb60599ef84a9e02e3109406710b8c3490b0707beeeee3613d57, 26, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT\\r\\n    description as \'Product1\'\\r\\nFROM\\r\\n    cleaned_online_retail t1 \\r\\nLEFT JOIN (select description as \'Product2\' from cleaned_online_retail t2) ON cleaned_online_retail.invoiceno = t1.invoiceno\\r\\n\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xaa8b2efda6fa248e48a8a93f0c9e4dcd37432cd4653d9e128d24651529fe0860, 2402, '{\"constraints\":{\"max-results\":10000,\"max-results-bare-rows\":2000},\"type\":\"native\",\"middleware\":{\"js-int-to-string?\":true,\"ignore-cached-results?\":false,\"process-viz-settings?\":false},\"native\":{\"query\":\"select count(quantity) as \'Quantity\', description from cleaned_online_retail group by description limit 1\",\"template-tags\":{}},\"database\":2,\"async?\":true,\"cache-ttl\":null}'),
+(0xadbf7c68f9563cbd6eef1fe35e8f6cf231c5def00b7456da2ed59002f2488e86, 1148, '{\"constraints\":{\"max-results\":10000,\"max-results-bare-rows\":2000},\"type\":\"native\",\"middleware\":{\"js-int-to-string?\":true,\"ignore-cached-results?\":false,\"process-viz-settings?\":false},\"native\":{\"query\":\"select sum(quantity) as \'Quantity\', date(invoicedate) as \'Date\' from cleaned_online_retail group by date(invoicedate)\",\"template-tags\":{}},\"database\":2,\"async?\":true,\"cache-ttl\":null}'),
+(0xb2386a10cd1e806b1e8e40f87b21a6b510bd1fefe5ddf1337236985a0d35bcd1, 1402, '{\"type\":\"native\",\"native\":{\"query\":\"select count(quantity) as \'Quantity\', customerid as \'Customer ID\', invoiceno as \'invoiceno\' from cleaned_online_retail group by invoiceno, customerid\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xb23e808f5f301c7b87af5c5eae5661e401194f68a81f2b0064bbad205f502e48, 2371, '{\"constraints\":{\"max-results\":10000,\"max-results-bare-rows\":2000},\"type\":\"native\",\"middleware\":{\"js-int-to-string?\":true,\"ignore-cached-results?\":false,\"process-viz-settings?\":false},\"native\":{\"query\":\"select description, count(quantity) as \'Quantity\' from cleaned_online_retail group by description limit 5\",\"template-tags\":{}},\"database\":2,\"async?\":true,\"cache-ttl\":null}'),
+(0xb5086756cfe7117d447ed6267f0dde1087ac0976a22f28ab11785c029b3bf338, 19, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT sum(quantity)as \'Total Product\', customerid, date(invoicedate) as \'Date\', time(invoicedate) as \'Time\' FROM cleaned_online_retail group_by invoiceno\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xb5b7705369dd666dc34af362d1ade0a45c2126af55ca38854a00acd3aeb392de, 20, '{\"type\":\"native\",\"native\":{\"query\":\"select date(invoicedate) as \'Date\', description as \'Product\', customerid as \'Customer\' from cleaned_online_retail group by (customerid)\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xb823187030bd2eb4679e0dfe5942a5b34cc731c1b54edbb9029cdde44e2d0038, 17, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT sum(quantity)as \'Total Product\', customerid, date(invoicedate) as \'Date\', time(invoicedate) as \'Time\' FROM cleaned_online_retail group by invoiceno\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xb948137073c80afb197a1072905f52a371990ccc6df775268fa98fc26e6ddaeb, 1490, '{\"type\":\"native\",\"native\":{\"query\":\"select count(quantity) as \'Quantity\', customerid from cleaned_online_retail group by invoiceno, customerid\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xba4251934659d924baa9dcd49f791ed4a69ae77db4a87130b9dfb1de105eeb4e, 1309, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT sum(quantity) FROM cleaned_online_retail group by invoiceno\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xbb06b3c30f07f969356736c36f9eb2bf4db8f282cdd984a1aa31025c25ff46ce, 21, '{\"database\":2,\"native\":{\"template-tags\":{},\"query\":\"select description from cleaned_online_retail group by invoiceno\"},\"type\":\"native\",\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xbccf2325cf91636c7773eedb202158df6bc08333a8233e75e50fbcdaaee1cfd4, 22, '{\"type\":\"native\",\"native\":{\"query\":\"(select description, invoiceno from cleaned_online_retail) as t1 \\njoin (select description, invoiceno from cleaned_online_retail) as t2\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xbd46463c01e85738a6561aa45ec4a8bdc960b706624b23ff6e4f0ac35d1f2d48, 18, '{\"type\":\"native\",\"native\":{\"query\":\"(SELECT REPLACE(@@sql_mode,\'ONLY_FULL_GROUP_BY\',\'\'));\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xbec244ca6bfc1630251bdc05253bc09f96a65a6d2539eb0387a3cc0795bd1244, 79571, '{\"type\":\"native\",\"native\":{\"query\":\"select t1.description as Item1, t2.description as Item2, count(t1.invoiceno) as \'PairCount\' from cleaned_online_retail t1 join cleaned_online_retail t2 on t1.invoiceno = t2.invoiceno and t1.description != t2.description group by t1.invoiceno\\norder by PairCount desc limit 5\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xbf3e3918e01efb5457f49e950aa6052a37676abc5201e712e915520bc6ed7d28, 36, '{\"type\":\"native\",\"native\":{\"query\":\"select (pg1.description, pg2.description) as items from \\r\\n    (select distinct description, invoiceno\\r\\n    from cleaned_online_retail) as pg1\\r\\n    join\\r\\n    (select distinct description, invoiceno\\r\\n    from cleaned_online_retail) as pg2\\r\\n    WHERE pg1.invoiceno = pg2.invoiceno\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xbf54068f7c90e8b4ca3ff65a2ac88c2ec6c1273fb83ed0d0c39ce7c92aa84eb8, 74800, '{\"type\":\"native\",\"native\":{\"query\":\"(select t1.description as Item1, t2.description as Item2, count(t1.invoiceno) as \'PairCount\' from cleaned_online_retail t1 join cleaned_online_retail t2 on t1.invoiceno = t2.invoiceno and t1.description != t2.description group by t1.invoiceno)\\norder by count(t1.invoiceno) desc limit 5\\n\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xc4b8879c394c9b3551c3ffebf8a7191b2c48de3463d4bad4bb1794fd908344c4, 25, '{\"type\":\"native\",\"native\":{\"query\":\"(SELECT REPLACE(@@sql_mode,\'ONLY_FULL_GROUP_BY\',\'\'));\\n\\nSELECT sum(quantity)as \'Total Product\', customerid, date(invoicedate) as \'Date\', time(invoicedate) as \'Time\' FROM cleaned_online_retail group by invoiceno;\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xc9832ea077214a98a8eb3686ec5d4d5bf0be13bea83371bb0eabf56f4fdf1be0, 819, '{\"type\":\"native\",\"native\":{\"query\":\"select date(invoicedate) as \'Date\', description as \'Product\', customerid as \'Customer\' from cleaned_online_retail\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xcc74c57f297922f329251a25300d658bab4781bd1ec058beadc74d1d5fee9f12, 1829, '{\"type\":\"native\",\"native\":{\"query\":\"select description as \'Product1\', description as \'Product2\', count(invoiceno) as \'Count\' from cleaned_online_retail group by invoiceno\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xd025c7edcb6148b43ab552fe881b38454b0ca91cf30b5254850d963cd7866c5a, 84, '{\"type\":\"native\",\"native\":{\"query\":\"select sum(amount) from cleaned_online_retail group by country\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xd26bdcd73e1968f84a6f83d9c295bd7e6502039a36c6f9427af77b8ad487a04d, 24, '{\"type\":\"native\",\"native\":{\"query\":\"select description from cleaned_online_retail group by invoiceno;\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xd338668252d1ed76deff97b430d51ce0656fe3fb34d0d5eb1a8514a285c2a21e, 1445, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT sum(quantity) FROM cleaned_online_retail GROUP BY invoiceno\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xd427fd9b5e2685c722397ae318d25b704bd4d231b7ba8580c3f9b8717573e4d4, 24, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT\\r\\n    description\\r\\nFROM\\r\\n    cleaned_online_retail t1 \\r\\nLEFT JOIN cleaned_online_retail ON cleaned_online_retail.invoiceno = t1.invoiceno\\r\\n\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xd905bdaae7c5fa7d5f838acec4e486809e041a6d164cd11f260f7ba3bec90146, 20, '{\"type\":\"native\",\"native\":{\"query\":\"(select description, invoiceno from cleaned_online_retail) as \'tab1\'\\n\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xd9ff83d8d9116c9500711d024e8ab19924277358ae83b71e885010da985c8b98, 57, '{\"type\":\"native\",\"native\":{\"query\":\"with order_pairs as (\\r\\n    select (pg1.description, pg2.description) as items, pg1.invoicedate\\r\\n    from \\r\\n    (select distinct description, invoicedate\\r\\n    from cleaned_online_retail) as pg1\\r\\n    join\\r\\n    (select distinct description, invoicedate\\r\\n    from cleaned_online_retail) as pg2\\r\\n    ON \\r\\n    (\\r\\n    pg1.invoicedate = pg2.invoicedate AND\\r\\n    pg1.description != pg2.description AND\\r\\n    pg1.description < pg2.description\\r\\n\\r\\n    )\\r\\n    )\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xdd1b40ed37008bc13417db86f7dec381224473cc09c4788c42ed90090eba0cb9, 323, '{\"type\":\"native\",\"native\":{\"query\":\"(select description, invoiceno from cleaned_online_retail)\\n\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xe02a89024595544e8a0b6997f533365a757e769eafcc36b583908a06a5bf1178, 1891, '{\"type\":\"native\",\"native\":{\"query\":\"select count(quantity), description from cleaned_online_retail group by description limit 10\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xe22b242f9c4c3dbf41b9d96e6ac1a2994023c98c791a60b075acbb9286efbf33, 2299, '{\"type\":\"native\",\"native\":{\"query\":\"select count(quantity), description from cleaned_online_retail group by description\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xe5495d94e9195f0139a70a6f3ff0491503eb813e18e36ffb3df5cd6bdec91a79, 22, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT sum(quantity)as \'Total Product\', unique(customerid) FROM cleaned_online_retail group by invoiceno\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xe65c5d9b581523acea72181a529a2a70b55dc44d42852354d70a252451c9320e, 26, '{\"type\":\"native\",\"native\":{\"query\":\"select t1.description as Item1, t2.description as Item2, count(invoiceno) from cleaned_online_retail t1 join cleaned_online_retail t2 on t1.invoiceno = t2.invoiceno and t1.description != t2.description group by invoiceno\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xe70f9599315671e245b2feed7df2c6e30129e277460ebec7e19957ffab3e27f7, 20, '{\"type\":\"native\",\"native\":{\"query\":\"(SELECT REPLACE(@@sql_mode,\'ONLY_FULL_GROUP_BY\',\'\'))\\n\\n(SELECT sum(quantity)as \'Total Product\', customerid, date(invoicedate) as \'Date\', time(invoicedate) as \'Time\' FROM cleaned_online_retail group by invoiceno)\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xeb7279be0008aadeb6f20d44041f4f0be1fd912ec663467c81f34ea4319fd741, 308, '{\"type\":\"native\",\"native\":{\"query\":\"(select description, invoiceno from cleaned_online_retail)\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xeb7d0a1f6355e6340c9fbe3ad47c6b482f90ce844bb129eeb87ec9487af3f034, 2684, '{\"constraints\":{\"max-results\":10000,\"max-results-bare-rows\":2000},\"type\":\"native\",\"middleware\":{\"js-int-to-string?\":true,\"ignore-cached-results?\":false},\"native\":{\"query\":\"SELECT sum(quantity)as \'total sum\', country from cleaned_online_retail group by country order by sum(quantity) desc limit 5;\",\"template-tags\":{}},\"database\":2,\"async?\":true,\"cache-ttl\":null}'),
+(0xeb8d61c557bc1b798b8155df7b385776a2cd2f0cd8d50e89ef084e39df071794, 18, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT\\r\\n    *\\r\\nFROM\\r\\n    cleaned_online_retail t1 \\r\\nLEFT JOIN \\r\\nselect \\r\\n* \\r\\nfrom \\r\\ncleaned_online_retail t2 \\r\\nON t1.invoiceno= t2.invoiceno\\r\\n\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xee2181db020aed7f26ba91990eb2159c37a11d1bb48769b71bd2408cf1f1873b, 18, '{\"type\":\"native\",\"native\":{\"query\":\"select date(invoicedate) as \'Date\', description as \'Product\', customerid as \'Customer\' from cleaned_online_retail group by description\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xf1ac5f6bcc6df79fd26e7115e825efe64186f90e8a5c782e0e53d2c40bb710c4, 1640, '{\"type\":\"native\",\"native\":{\"query\":\"select count(quantity) as \'Quantity\', description from cleaned_online_retail group by description limit 1\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xf1b97735feab03eb9c9c4a1a2152d0056b63ca738d1c14990d6a871b33358f0f, 329, '{\"type\":\"native\",\"native\":{\"query\":\"select t1.description as Item1, t2.description as Item2 from cleaned_online_retail t1 join cleaned_online_retail t2 on t1.invoiceno = t2.invoiceno\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}');
+INSERT INTO `query` (`query_hash`, `average_execution_time`, `query`) VALUES
+(0xf48d146ce77acedc662b8d31a09921a281d87ef631f7ab93818fe91f296ce7bb, 19, '{\"type\":\"native\",\"native\":{\"query\":\"(SELECT REPLACE(@@sql_mode,\'ONLY_FULL_GROUP_BY\',\'\'))\\n\\nSELECT sum(quantity)as \'Total Product\', customerid, date(invoicedate) as \'Date\', time(invoicedate) as \'Time\' FROM cleaned_online_retail group by invoiceno;\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xf7afcdf23fe2f618e1c5daa4f95280407e1a7fceeed7d0396e0172169805b937, 19, '{\"type\":\"native\",\"native\":{\"query\":\" as Product1, description as Product2,\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xf8de1061a8f765daded538a88f0912c5da4263cd18a9844ac52faf4b34defd17, 1845, '{\"type\":\"native\",\"native\":{\"query\":\"select count(quantity) as \'Quantity\', description from cleaned_online_retail group by description limit 10\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xf966c73542809458fd12eca7670925c822547c763d592050111b45207a2bf1bb, 21, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT\\r\\n    description as \'Product1\'\\r\\nFROM\\r\\n    cleaned_online_retail t1 \\r\\nLEFT JOIN cleaned_online_retail ON cleaned_online_retail.invoiceno = t1.invoiceno\\r\\n\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xfbe7a008b031fdaa8d715e167a95273f0f4a5d89192dec8459149f1416dfd6b6, 21, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT\\r\\n    description as \'Product1\'\\r\\nFROM\\r\\n    cleaned_online_retail t1 \\r\\nLEFT JOIN (select description as \'Product2\' from cleaned_online_retail) t2 ON t2.invoiceno = t1.invoiceno\\r\\n\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xfd028566dc1af6c1554bc70d799796e1a0e394a0c994d17a6846af2de420713a, 19, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT\\r\\n    description\\r\\nFROM\\r\\n    cleaned_online_retail t1\\r\\nLEFT JOIN cleaned_online_retail t2 ON\\r\\n    t1.invoiceno=t2.invoiceno;\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xfe39de4fab047f25eb2b1d05e161fd486cd5c6ce1b1582f08f262246b8632945, 20, '{\"type\":\"native\",\"native\":{\"query\":\"(select description, invoiceno from cleaned_online_retail) \\njoin (select description, invoiceno from cleaned_online_retail) \",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}'),
+(0xfeca7dc898338cb6fa26153fdf957ce1472cdc9f8bfb5d23a333255131c8b1b6, 21, '{\"type\":\"native\",\"native\":{\"query\":\"SELECT\\r\\n    description\\r\\nFROM\\r\\n    cleaned_online_retail t1\\r\\nJOIN cleaned_online_retail t2 ON\\r\\n    t1.invoiceno=t2.invoiceno;\",\"template-tags\":{}},\"database\":2,\"middleware\":{\"js-int-to-string?\":true,\"add-default-userland-constraints?\":true}}');
 
 -- --------------------------------------------------------
 
@@ -1492,8 +1704,8 @@ CREATE TABLE `query` (
 
 CREATE TABLE `query_cache` (
   `query_hash` binary(32) NOT NULL,
-  `updated_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
-  `results` longblob DEFAULT NULL
+  `updated_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+  `results` longblob
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Cached results of queries are stored here when using the DB-based query cache.';
 
 -- --------------------------------------------------------
@@ -1503,21 +1715,248 @@ CREATE TABLE `query_cache` (
 --
 
 CREATE TABLE `query_execution` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `hash` binary(32) NOT NULL COMMENT 'The hash of the query dictionary. This is a 256-bit SHA3 hash of the query.',
-  `started_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
-  `running_time` int(11) NOT NULL COMMENT 'The time, in milliseconds, this query took to complete.',
-  `result_rows` int(11) NOT NULL COMMENT 'Number of rows in the query results.',
+  `started_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+  `running_time` int NOT NULL COMMENT 'The time, in milliseconds, this query took to complete.',
+  `result_rows` int NOT NULL COMMENT 'Number of rows in the query results.',
   `native` bit(1) NOT NULL COMMENT 'Whether the query was a native query, as opposed to an MBQL one (e.g., created with the GUI).',
-  `context` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Short string specifying how this query was executed, e.g. in a Dashboard or Pulse.',
-  `error` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `executor_id` int(11) DEFAULT NULL COMMENT 'The ID of the User who triggered this query execution, if any.',
-  `card_id` int(11) DEFAULT NULL COMMENT 'The ID of the Card (Question) associated with this query execution, if any.',
-  `dashboard_id` int(11) DEFAULT NULL COMMENT 'The ID of the Dashboard associated with this query execution, if any.',
-  `pulse_id` int(11) DEFAULT NULL COMMENT 'The ID of the Pulse associated with this query execution, if any.',
-  `database_id` int(11) DEFAULT NULL COMMENT 'ID of the database this query was ran against.',
+  `context` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Short string specifying how this query was executed, e.g. in a Dashboard or Pulse.',
+  `error` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `executor_id` int DEFAULT NULL COMMENT 'The ID of the User who triggered this query execution, if any.',
+  `card_id` int DEFAULT NULL COMMENT 'The ID of the Card (Question) associated with this query execution, if any.',
+  `dashboard_id` int DEFAULT NULL COMMENT 'The ID of the Dashboard associated with this query execution, if any.',
+  `pulse_id` int DEFAULT NULL COMMENT 'The ID of the Pulse associated with this query execution, if any.',
+  `database_id` int DEFAULT NULL COMMENT 'ID of the database this query was ran against.',
   `cache_hit` bit(1) DEFAULT NULL COMMENT 'Cache hit on query execution'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='A log of executed queries, used for calculating historic execution times, auditing, and other purposes.';
+
+--
+-- Dumping data for table `query_execution`
+--
+
+INSERT INTO `query_execution` (`id`, `hash`, `started_at`, `running_time`, `result_rows`, `native`, `context`, `error`, `executor_id`, `card_id`, `dashboard_id`, `pulse_id`, `database_id`, `cache_hit`) VALUES
+(1, 0x966f081834d619eb2fceb43b2c0aa6503076cf12ec4daa3faeabaf5158ecb04c, '2022-06-16 05:52:17.816854', 1689, 37, b'1', 'question', NULL, 1, 2, NULL, NULL, 2, b'0'),
+(2, 0x032413ca5251a463139070669594176be2421e0de696bb0f6a611db5a2c4da78, '2022-06-16 05:52:27.731719', 426, 2, b'1', 'question', NULL, 1, 5, NULL, NULL, 2, b'0'),
+(3, 0xadbf7c68f9563cbd6eef1fe35e8f6cf231c5def00b7456da2ed59002f2488e86, '2022-06-16 05:52:31.236890', 931, 305, b'1', 'question', NULL, 1, 7, NULL, NULL, 2, b'0'),
+(4, 0x966f081834d619eb2fceb43b2c0aa6503076cf12ec4daa3faeabaf5158ecb04c, '2022-06-16 05:52:38.713463', 1133, 37, b'1', 'question', NULL, 1, 2, NULL, NULL, 2, b'0'),
+(5, 0xadbf7c68f9563cbd6eef1fe35e8f6cf231c5def00b7456da2ed59002f2488e86, '2022-06-16 05:52:42.482043', 710, 305, b'1', 'question', NULL, 1, 7, NULL, NULL, 2, b'0'),
+(6, 0x191a8ea0d4b61783746eda68c0133413ebdf00b635e661181083d6806b1d47dc, '2022-06-21 09:05:45.327440', 82, 0, b'1', 'ad-hoc', '(conn=26) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'seelect invoicedate.date as \'Date\' from cleaned_online_retail\' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(7, 0x53245e83a991b9892ded6c1ae4662fad3d58328f0ff5312bf0422c1dadb05d3b, '2022-06-21 09:06:02.611822', 21, 0, b'1', 'ad-hoc', '(conn=26) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'seelect date(invoicedate) as \'Date\' from cleaned_online_retail\' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(8, 0x53245e83a991b9892ded6c1ae4662fad3d58328f0ff5312bf0422c1dadb05d3b, '2022-06-21 09:06:42.156054', 20, 0, b'1', 'ad-hoc', '(conn=26) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'seelect date(invoicedate) as \'Date\' from cleaned_online_retail\' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(9, 0x9c37da241c09461c012724b46b9d96bdfe7d545b72e45c3c64994423145b5273, '2022-06-21 09:06:56.991275', 26, 0, b'1', 'ad-hoc', '(conn=26) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'seelect date(invoicedate) from cleaned_online_retail\' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(10, 0x3a834006d5279d34fb29d86a46166120f91d390b541095c64fa5a6624fd379d9, '2022-06-21 09:07:14.444102', 20, 0, b'1', 'ad-hoc', '(conn=26) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'seelect invoicedate.date from cleaned_online_retail\' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(11, 0x523d12f5272407095395dd8a5195569c468d1ea351c06f75be29e92857ebec93, '2022-06-21 09:07:21.667301', 26, 0, b'1', 'ad-hoc', '(conn=26) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'seelect invoicedate(date) from cleaned_online_retail\' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(12, 0x9c9fc579353f7651581f567aa05680f35062fc34f7f0ebb1ba4f582dec3bc585, '2022-06-21 09:07:32.168105', 46, 0, b'1', 'ad-hoc', '(conn=26) FUNCTION retail.invoicedate does not exist', 1, NULL, NULL, NULL, 2, NULL),
+(13, 0x2ca8e717beb6b1299ede158abab0858b3571bd1262690975721e111aa3f4e2ba, '2022-06-21 09:07:42.400388', 800, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(14, 0x387ca8a21d6d0b856772449990e923cd421170e24901eedd060e7460aa91fb91, '2022-06-21 09:08:00.146120', 596, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(15, 0xc9832ea077214a98a8eb3686ec5d4d5bf0be13bea83371bb0eabf56f4fdf1be0, '2022-06-21 09:08:40.547287', 867, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(16, 0xb5b7705369dd666dc34af362d1ade0a45c2126af55ca38854a00acd3aeb392de, '2022-06-21 09:09:15.477465', 20, 0, b'1', 'ad-hoc', '(conn=26) Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.invoicedate\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(17, 0x2a6bc9583c4cd9779e9d3266115457b7aaae048c2f6e1b189ddad02bc56e3115, '2022-06-21 09:09:53.135522', 27, 0, b'1', 'ad-hoc', '(conn=26) Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.invoicedate\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(18, 0x7db02e7491e21c957d501a9470f2604e5b0e957c2192043b335bf649954785e8, '2022-06-21 09:10:08.063934', 19, 0, b'1', 'ad-hoc', '(conn=26) Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.description\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(19, 0x298adb3b430e84a5a154c24704903c9fb123f15b44864a77f105d04724e90809, '2022-06-21 09:10:28.367627', 21, 0, b'1', 'ad-hoc', '(conn=26) Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.invoicedate\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(20, 0x430163f869deb2335794f7cf5969d837c77d51539031856fdca32c184acb4c57, '2022-06-21 09:10:56.283875', 28, 0, b'1', 'ad-hoc', '(conn=26) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'group by description\' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(21, 0xee2181db020aed7f26ba91990eb2159c37a11d1bb48769b71bd2408cf1f1873b, '2022-06-21 09:11:09.783179', 18, 0, b'1', 'ad-hoc', '(conn=26) Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.invoicedate\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(22, 0xc9832ea077214a98a8eb3686ec5d4d5bf0be13bea83371bb0eabf56f4fdf1be0, '2022-06-21 09:11:38.557199', 650, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(23, 0x2a6bc9583c4cd9779e9d3266115457b7aaae048c2f6e1b189ddad02bc56e3115, '2022-06-21 09:12:05.633976', 19, 0, b'1', 'ad-hoc', '(conn=26) Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.invoicedate\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(24, 0x07b28322ff64a85e9b4b70360472650f71a1ae791d95bc1277970099e490192d, '2022-06-21 09:12:41.775201', 21, 0, b'1', 'ad-hoc', '(conn=26) Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.invoicedate\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(25, 0x2a6bc9583c4cd9779e9d3266115457b7aaae048c2f6e1b189ddad02bc56e3115, '2022-06-21 09:15:04.804852', 28, 0, b'1', 'ad-hoc', '(conn=26) Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.invoicedate\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(26, 0xc9832ea077214a98a8eb3686ec5d4d5bf0be13bea83371bb0eabf56f4fdf1be0, '2022-06-21 09:15:47.267379', 588, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(27, 0x7a639042b560ff1488d93329463531f94c7eeb88a9e53be02919c8145f5d0370, '2022-06-21 09:16:23.106076', 20, 0, b'1', 'ad-hoc', '(conn=26) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'customerid\' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(28, 0x2a6bc9583c4cd9779e9d3266115457b7aaae048c2f6e1b189ddad02bc56e3115, '2022-06-21 09:16:27.594551', 21, 0, b'1', 'ad-hoc', '(conn=26) Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.invoicedate\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(29, 0x7a639042b560ff1488d93329463531f94c7eeb88a9e53be02919c8145f5d0370, '2022-06-21 09:16:35.567962', 28, 0, b'1', 'ad-hoc', '(conn=26) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'customerid\' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(30, 0x966f081834d619eb2fceb43b2c0aa6503076cf12ec4daa3faeabaf5158ecb04c, '2022-06-21 09:16:47.777440', 1382, 37, b'1', 'question', NULL, 1, 2, NULL, NULL, 2, b'0'),
+(31, 0x2faa6065d89ebb681a273099edfb3b3c3ecb49f8627fea69f7b133bd6a556abe, '2022-06-21 09:17:16.158994', 997, 37, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(32, 0x5f92f3b0e5de0d36d0e970c6e90ea8a9f615d91522e7c10fc157f2e5f13902a1, '2022-06-21 09:17:29.324127', 18, 0, b'1', 'ad-hoc', '(conn=26) Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.country\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(33, 0x2faa6065d89ebb681a273099edfb3b3c3ecb49f8627fea69f7b133bd6a556abe, '2022-06-21 09:18:01.189269', 998, 37, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(34, 0x6281130aab9f816d5e2cd30621fe1e91c300cd618d2ea05c515a3ead55c1f716, '2022-06-21 09:19:29.290612', 23, 0, b'1', 'ad-hoc', '(conn=26) Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.description\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(35, 0xa511bee47a44c91aa5b9cfa85bef876da136df5f3b9ac7aa676bf4a64160586c, '2022-06-21 09:25:09.038383', 29, 0, b'1', 'ad-hoc', '(conn=30) Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.description\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(36, 0x623549fa19bad0ddc222771b71d522f505fba970f26da10b012f08ab7ba0ed8e, '2022-06-21 09:25:25.948294', 20, 0, b'1', 'ad-hoc', '(conn=30) Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.description\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(37, 0xbb06b3c30f07f969356736c36f9eb2bf4db8f282cdd984a1aa31025c25ff46ce, '2022-06-21 09:27:57.067614', 19, 0, b'1', 'ad-hoc', '(conn=30) Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.description\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(38, 0xbb06b3c30f07f969356736c36f9eb2bf4db8f282cdd984a1aa31025c25ff46ce, '2022-06-21 09:27:59.172955', 24, 0, b'1', 'ad-hoc', '(conn=30) Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.description\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(39, 0xbb06b3c30f07f969356736c36f9eb2bf4db8f282cdd984a1aa31025c25ff46ce, '2022-06-21 09:28:00.164171', 21, 0, b'1', 'ad-hoc', '(conn=30) Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.description\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(40, 0xbb06b3c30f07f969356736c36f9eb2bf4db8f282cdd984a1aa31025c25ff46ce, '2022-06-21 09:28:00.908127', 21, 0, b'1', 'ad-hoc', '(conn=30) Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.description\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(41, 0xbb06b3c30f07f969356736c36f9eb2bf4db8f282cdd984a1aa31025c25ff46ce, '2022-06-21 09:28:01.332404', 26, 0, b'1', 'ad-hoc', '(conn=30) Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.description\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(42, 0xbb06b3c30f07f969356736c36f9eb2bf4db8f282cdd984a1aa31025c25ff46ce, '2022-06-21 09:28:01.727955', 20, 0, b'1', 'ad-hoc', '(conn=30) Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.description\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(43, 0xbb06b3c30f07f969356736c36f9eb2bf4db8f282cdd984a1aa31025c25ff46ce, '2022-06-21 09:28:02.108171', 22, 0, b'1', 'ad-hoc', '(conn=30) Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.description\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(44, 0xa511bee47a44c91aa5b9cfa85bef876da136df5f3b9ac7aa676bf4a64160586c, '2022-06-21 09:28:11.407519', 23, 0, b'1', 'ad-hoc', '(conn=30) Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.description\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(45, 0x052f8dde048f93b84021eb6bb144efc0026e7c32e6d08c785f7594d46e3380c1, '2022-06-21 09:28:45.633796', 21, 0, b'1', 'ad-hoc', '(conn=30) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,\'ONLY_FULL_GROUP_BY\',\'\'))\' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(46, 0xbd46463c01e85738a6561aa45ec4a8bdc960b706624b23ff6e4f0ac35d1f2d48, '2022-06-21 09:28:56.932601', 18, 1, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(47, 0xbd46463c01e85738a6561aa45ec4a8bdc960b706624b23ff6e4f0ac35d1f2d48, '2022-06-21 09:29:04.363865', 19, 1, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(48, 0xd26bdcd73e1968f84a6f83d9c295bd7e6502039a36c6f9427af77b8ad487a04d, '2022-06-21 09:29:25.210954', 24, 0, b'1', 'ad-hoc', '(conn=30) Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.description\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(49, 0x666e7bae70c8206069634d154a59ae8f4d50e6ea41800ab61895425a0bc2f463, '2022-06-21 09:32:16.787313', 80, 10, b'0', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(50, 0x9ca912290e54faa0306ac23bb83857a9a5c04317722c9709cc15014b01823f75, '2022-06-21 09:35:59.139072', 560, 2000, b'0', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(51, 0x9ca912290e54faa0306ac23bb83857a9a5c04317722c9709cc15014b01823f75, '2022-06-21 09:36:05.700564', 544, 2000, b'0', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(52, 0x623549fa19bad0ddc222771b71d522f505fba970f26da10b012f08ab7ba0ed8e, '2022-06-21 09:37:02.229710', 23, 0, b'1', 'ad-hoc', '(conn=30) Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.description\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(53, 0x62e550e510f7d10a2eadaa160fa8af300dd58e2acb1e59a89bfeca3bdf810b44, '2022-06-21 09:37:48.162613', 19, 0, b'1', 'ad-hoc', '(conn=30) Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.description\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(54, 0x0ec158bd38f3c2383c85b5fc52b67a07af17ee12b9d02c57c4ef3bc45a3b3676, '2022-06-21 09:42:41.744283', 24, 0, b'1', 'ad-hoc', '(conn=30) Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.description\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(55, 0xd338668252d1ed76deff97b430d51ce0656fe3fb34d0d5eb1a8514a285c2a21e, '2022-06-21 09:43:38.520874', 1445, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(56, 0x6b95128e70fc042de550ffb24f04c13ec809e2e796a8587caf96b08e4460cf60, '2022-06-21 09:44:21.424147', 22, 0, b'1', 'ad-hoc', '(conn=30) Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.invoicedate\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(57, 0xa00dd00d773a2e7ee0c9c7debf741129e320adc9413b11476bfa3fe4b4fdbe8a, '2022-06-21 09:44:30.929414', 21, 0, b'1', 'ad-hoc', '(conn=30) Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.invoicedate\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(58, 0x1b7a75f21a9a5cb294f28f23ec7f321ca8538d28488cef9cf55690ebfe8fca70, '2022-06-21 09:44:45.139636', 25, 0, b'1', 'ad-hoc', '(conn=30) In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column \'retail.cleaned_online_retail.invoicedate\'; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(59, 0x1b7a75f21a9a5cb294f28f23ec7f321ca8538d28488cef9cf55690ebfe8fca70, '2022-06-21 09:44:50.987383', 16, 0, b'1', 'ad-hoc', '(conn=30) In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column \'retail.cleaned_online_retail.invoicedate\'; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(60, 0xba4251934659d924baa9dcd49f791ed4a69ae77db4a87130b9dfb1de105eeb4e, '2022-06-21 09:45:32.539185', 1309, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(61, 0x8dd03d2c3719137a54985b5563afb3825560eb4ad7991ab23a3fd94d11ac43cd, '2022-06-21 09:45:45.917276', 1297, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(62, 0x91a107a843c594d49f925414ed08bc281157ab2e17c0c412ee0c5935d5344c37, '2022-06-21 09:46:09.461363', 22, 0, b'1', 'ad-hoc', '(conn=30) Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.customerid\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(63, 0xe5495d94e9195f0139a70a6f3ff0491503eb813e18e36ffb3df5cd6bdec91a79, '2022-06-21 09:47:03.966781', 22, 0, b'1', 'ad-hoc', '(conn=30) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'unique(customerid) FROM cleaned_online_retail group by invoiceno\' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(64, 0x869c3cfe80fdd8f74d1deb15e1ee70bdc2828a295b126834f87efc63611390fb, '2022-06-21 09:47:48.232118', 20, 0, b'1', 'ad-hoc', '(conn=30) Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.customerid\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(65, 0x16211451bbffe92bcf7161d810c94331255eec411e28d7840a9647fc3a692235, '2022-06-21 09:50:09.236211', 21, 1, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(66, 0x052f8dde048f93b84021eb6bb144efc0026e7c32e6d08c785f7594d46e3380c1, '2022-06-21 09:50:48.044461', 21, 0, b'1', 'ad-hoc', '(conn=30) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,\'ONLY_FULL_GROUP_BY\',\'\'))\' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(67, 0xbd46463c01e85738a6561aa45ec4a8bdc960b706624b23ff6e4f0ac35d1f2d48, '2022-06-21 09:50:56.252379', 19, 1, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(68, 0xc4b8879c394c9b3551c3ffebf8a7191b2c48de3463d4bad4bb1794fd908344c4, '2022-06-21 09:51:29.804778', 25, 0, b'1', 'ad-hoc', '(conn=30) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'SELECT sum(quantity)as \'Total Product\', customerid, date(invoicedate) as \'Date\',\' at line 4', 1, NULL, NULL, NULL, 2, NULL),
+(69, 0xf48d146ce77acedc662b8d31a09921a281d87ef631f7ab93818fe91f296ce7bb, '2022-06-21 09:51:40.781359', 19, 0, b'1', 'ad-hoc', '(conn=30) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'SELECT sum(quantity)as \'Total Product\', customerid, date(invoicedate) as \'Date\',\' at line 4', 1, NULL, NULL, NULL, 2, NULL),
+(70, 0x5ef18c3739a2047d53181635d110d7787fb3339c6b41674d212254db8bd67866, '2022-06-21 09:51:45.091672', 24, 0, b'1', 'ad-hoc', '(conn=30) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'SELECT sum(quantity)as \'Total Product\', customerid, date(invoicedate) as \'Date\',\' at line 4', 1, NULL, NULL, NULL, 2, NULL),
+(71, 0xe70f9599315671e245b2feed7df2c6e30129e277460ebec7e19957ffab3e27f7, '2022-06-21 09:51:59.272144', 20, 0, b'1', 'ad-hoc', '(conn=30) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'(SELECT sum(quantity)as \'Total Product\', customerid, date(invoicedate) as \'Date\'\' at line 4', 1, NULL, NULL, NULL, 2, NULL),
+(72, 0x672e4faf69f5da9aa763091730d71bfbd22a7dc654d6f5dafb2caf15227b1d02, '2022-06-21 09:52:10.097755', 24, 0, b'1', 'ad-hoc', '(conn=30) Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.customerid\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(73, 0x2ea0b6e040527f5cfaafa2a5545bff99ed2581203ffdf1845a6d3b1ca0db7e16, '2022-06-21 09:52:15.944733', 19, 0, b'1', 'ad-hoc', '(conn=30) Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.customerid\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(74, 0x9a172c0b0390f3ad64e946d74457a1d799cf404eccf26488c972e85602afe097, '2022-06-21 09:53:04.984568', 23, 0, b'1', 'ad-hoc', '(conn=30) Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.customerid\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(75, 0x9a172c0b0390f3ad64e946d74457a1d799cf404eccf26488c972e85602afe097, '2022-06-21 09:54:52.540813', 19, 0, b'1', 'ad-hoc', '(conn=30) Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.customerid\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(76, 0xb823187030bd2eb4679e0dfe5942a5b34cc731c1b54edbb9029cdde44e2d0038, '2022-06-21 09:54:55.610285', 17, 0, b'1', 'ad-hoc', '(conn=30) Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column \'retail.cleaned_online_retail.customerid\' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by', 1, NULL, NULL, NULL, 2, NULL),
+(77, 0x61f2842ee2db021a64202deb4a619d67b0220d5d6ac7a28e2a56d0f79b68e909, '2022-06-21 09:55:08.928050', 17, 0, b'1', 'ad-hoc', '(conn=30) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'invoiceno\' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(78, 0xb5086756cfe7117d447ed6267f0dde1087ac0976a22f28ab11785c029b3bf338, '2022-06-21 09:55:16.071539', 19, 0, b'1', 'ad-hoc', '(conn=30) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'invoiceno\' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(79, 0xd9ff83d8d9116c9500711d024e8ab19924277358ae83b71e885010da985c8b98, '2022-06-21 10:01:40.437931', 57, 0, b'1', 'ad-hoc', '(conn=163) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'\' at line 17', 1, NULL, NULL, NULL, 2, NULL),
+(80, 0x455d160c68399243289469c0bd1475c8decfc767324ceefaad648b4a73450f61, '2022-06-21 10:12:26.020396', 74, 0, b'1', 'ad-hoc', '(conn=289) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \')\r', 1, NULL, NULL, NULL, 2, NULL),
+(81, 0x8d30345d450b63e76bf8edef8d30f61c3fb2e9f57947dcff5cbcce8c39b0efb9, '2022-06-21 10:13:04.309753', 38, 0, b'1', 'ad-hoc', '(conn=289) Operand should contain 1 column(s)', 1, NULL, NULL, NULL, 2, NULL),
+(82, 0xbf3e3918e01efb5457f49e950aa6052a37676abc5201e712e915520bc6ed7d28, '2022-06-21 10:13:17.867581', 36, 0, b'1', 'ad-hoc', '(conn=289) Operand should contain 1 column(s)', 1, NULL, NULL, NULL, 2, NULL),
+(83, 0xe22b242f9c4c3dbf41b9d96e6ac1a2994023c98c791a60b075acbb9286efbf33, '2022-06-21 10:21:57.456240', 2299, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(84, 0x14816fececc6f09c7600e910f98d6a68f83c6becbaa7384cab4cf38e30c12d50, '2022-06-21 10:23:00.148462', 36, 0, b'1', 'ad-hoc', '(conn=289) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'desc limit 10\' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(85, 0x0fdaf4a9d8b0f9be2bd76127ad6a50f80475472eaf2c65745ef3be9387e99df4, '2022-06-21 10:23:05.171410', 37, 0, b'1', 'ad-hoc', '(conn=289) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'ordered by desc limit 10\' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(86, 0xe02a89024595544e8a0b6997f533365a757e769eafcc36b583908a06a5bf1178, '2022-06-21 10:23:10.972779', 1891, 10, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(87, 0xf8de1061a8f765daded538a88f0912c5da4263cd18a9844ac52faf4b34defd17, '2022-06-21 10:23:43.823904', 1845, 10, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(88, 0x4f6b320245d5fda4ffa9c8beff3cba8e9848bb09c90e493e8d2db97cfd647e06, '2022-06-21 10:24:55.037330', 1928, 5, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(89, 0xf1ac5f6bcc6df79fd26e7115e825efe64186f90e8a5c782e0e53d2c40bb710c4, '2022-06-21 10:25:25.608971', 1624, 1, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(90, 0xf1ac5f6bcc6df79fd26e7115e825efe64186f90e8a5c782e0e53d2c40bb710c4, '2022-06-21 10:25:57.105014', 1782, 1, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(91, 0x032413ca5251a463139070669594176be2421e0de696bb0f6a611db5a2c4da78, '2022-06-21 10:27:00.446250', 1103, 2, b'1', 'dashboard', NULL, 1, 5, 1, NULL, 2, b'0'),
+(92, 0x8b85f296a15cfe4209833bbf7e62d1ff666b38ff91aea77a4875326b39c5c940, '2022-06-21 10:27:00.369923', 1330, 37, b'1', 'dashboard', NULL, 1, 3, 1, NULL, 2, b'0'),
+(93, 0xadbf7c68f9563cbd6eef1fe35e8f6cf231c5def00b7456da2ed59002f2488e86, '2022-06-21 10:27:00.406126', 1903, 305, b'1', 'dashboard', NULL, 1, 7, 1, NULL, 2, b'0'),
+(94, 0x9d3e2acc36388a5afab5523af912dd22398b62f7a7a5d958bc171293a3ebc914, '2022-06-21 10:27:00.385279', 2499, 5, b'1', 'dashboard', NULL, 1, 6, 1, NULL, 2, b'0'),
+(95, 0x966f081834d619eb2fceb43b2c0aa6503076cf12ec4daa3faeabaf5158ecb04c, '2022-06-21 10:27:00.398534', 2573, 37, b'1', 'dashboard', NULL, 1, 2, 1, NULL, 2, b'0'),
+(96, 0xeb7d0a1f6355e6340c9fbe3ad47c6b482f90ce844bb129eeb87ec9487af3f034, '2022-06-21 10:27:00.374217', 2774, 5, b'1', 'dashboard', NULL, 1, 1, 1, NULL, 2, b'0'),
+(97, 0xaa8b2efda6fa248e48a8a93f0c9e4dcd37432cd4653d9e128d24651529fe0860, '2022-06-21 10:27:01.725433', 2508, 1, b'1', 'question', NULL, 1, 8, 1, NULL, 2, b'0'),
+(98, 0xaa8b2efda6fa248e48a8a93f0c9e4dcd37432cd4653d9e128d24651529fe0860, '2022-06-21 10:27:43.430036', 1607, 1, b'1', 'question', NULL, 1, 8, NULL, NULL, 2, b'0'),
+(99, 0xaa8b2efda6fa248e48a8a93f0c9e4dcd37432cd4653d9e128d24651529fe0860, '2022-06-21 10:28:09.574019', 2260, 1, b'1', 'question', NULL, 1, 8, NULL, NULL, 2, b'0'),
+(100, 0x9ae4c9e98ae7c47e9ef828c444220781e7afb0b95a187913231deeed50ba22aa, '2022-06-21 10:29:46.001539', 2485, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(101, 0x3c0407f9f40746485b0b5a9ccb005f7c415391a37a69805d617a13833a7af350, '2022-06-21 10:31:03.424840', 1724, 5, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(102, 0x032413ca5251a463139070669594176be2421e0de696bb0f6a611db5a2c4da78, '2022-06-21 10:31:33.086780', 1232, 2, b'1', 'dashboard', NULL, 1, 5, 1, NULL, 2, b'0'),
+(103, 0xadbf7c68f9563cbd6eef1fe35e8f6cf231c5def00b7456da2ed59002f2488e86, '2022-06-21 10:31:33.084067', 1379, 305, b'1', 'dashboard', NULL, 1, 7, 1, NULL, 2, b'0'),
+(104, 0x8b85f296a15cfe4209833bbf7e62d1ff666b38ff91aea77a4875326b39c5c940, '2022-06-21 10:31:33.072668', 1476, 37, b'1', 'dashboard', NULL, 1, 3, 1, NULL, 2, b'0'),
+(105, 0x9d3e2acc36388a5afab5523af912dd22398b62f7a7a5d958bc171293a3ebc914, '2022-06-21 10:31:33.166290', 2418, 5, b'1', 'dashboard', NULL, 1, 6, 1, NULL, 2, b'0'),
+(106, 0xeb7d0a1f6355e6340c9fbe3ad47c6b482f90ce844bb129eeb87ec9487af3f034, '2022-06-21 10:31:33.164688', 2555, 5, b'1', 'dashboard', NULL, 1, 1, 1, NULL, 2, b'0'),
+(107, 0x966f081834d619eb2fceb43b2c0aa6503076cf12ec4daa3faeabaf5158ecb04c, '2022-06-21 10:31:33.056623', 2837, 37, b'1', 'dashboard', NULL, 1, 2, 1, NULL, 2, b'0'),
+(108, 0xb23e808f5f301c7b87af5c5eae5661e401194f68a81f2b0064bbad205f502e48, '2022-06-21 10:31:34.495783', 2503, 5, b'1', 'question', NULL, 1, 9, 1, NULL, 2, b'0'),
+(109, 0xb23e808f5f301c7b87af5c5eae5661e401194f68a81f2b0064bbad205f502e48, '2022-06-21 10:31:52.064550', 1764, 5, b'1', 'question', NULL, 1, 9, NULL, NULL, 2, b'0'),
+(110, 0x032413ca5251a463139070669594176be2421e0de696bb0f6a611db5a2c4da78, '2022-06-21 10:32:23.489185', 1047, 2, b'1', 'dashboard', NULL, 1, 5, 1, NULL, 2, b'0'),
+(111, 0x8b85f296a15cfe4209833bbf7e62d1ff666b38ff91aea77a4875326b39c5c940, '2022-06-21 10:32:23.533583', 1442, 37, b'1', 'dashboard', NULL, 1, 3, 1, NULL, 2, b'0'),
+(112, 0xadbf7c68f9563cbd6eef1fe35e8f6cf231c5def00b7456da2ed59002f2488e86, '2022-06-21 10:32:23.483288', 1597, 305, b'1', 'dashboard', NULL, 1, 7, 1, NULL, 2, b'0'),
+(113, 0xeb7d0a1f6355e6340c9fbe3ad47c6b482f90ce844bb129eeb87ec9487af3f034, '2022-06-21 10:32:23.529173', 2431, 5, b'1', 'dashboard', NULL, 1, 1, 1, NULL, 2, b'0'),
+(114, 0x9d3e2acc36388a5afab5523af912dd22398b62f7a7a5d958bc171293a3ebc914, '2022-06-21 10:32:23.493780', 2879, 5, b'1', 'dashboard', NULL, 1, 6, 1, NULL, 2, b'0'),
+(115, 0x966f081834d619eb2fceb43b2c0aa6503076cf12ec4daa3faeabaf5158ecb04c, '2022-06-21 10:32:23.485516', 2943, 37, b'1', 'dashboard', NULL, 1, 2, 1, NULL, 2, b'0'),
+(116, 0xb23e808f5f301c7b87af5c5eae5661e401194f68a81f2b0064bbad205f502e48, '2022-06-21 10:32:24.555127', 2785, 5, b'1', 'question', NULL, 1, 9, 1, NULL, 2, b'0'),
+(117, 0xb23e808f5f301c7b87af5c5eae5661e401194f68a81f2b0064bbad205f502e48, '2022-06-21 10:33:28.285070', 1301, 5, b'1', 'question', NULL, 1, 9, NULL, NULL, 2, b'0'),
+(118, 0xb948137073c80afb197a1072905f52a371990ccc6df775268fa98fc26e6ddaeb, '2022-06-21 10:34:26.829471', 1490, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(119, 0x5054653f75dd72847539b5d47b7d4e4702f774b4ef5f075026ce250ebafa84f7, '2022-06-21 10:35:00.169256', 1437, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(120, 0xb2386a10cd1e806b1e8e40f87b21a6b510bd1fefe5ddf1337236985a0d35bcd1, '2022-06-21 10:35:27.330811', 1402, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(121, 0x3cd4c04c729e46e8ca4c4f4489d75691cc3ece2e6f2746e99617343358a5f1ca, '2022-06-21 10:43:54.845090', 1546, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(122, 0x47f4daa64bf7b45e6fe0255ec23872bd25aba3899ba16948fb228c160217766a, '2022-06-21 10:44:49.370103', 1426, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(123, 0x032413ca5251a463139070669594176be2421e0de696bb0f6a611db5a2c4da78, '2022-06-21 10:45:46.016352', 891, 2, b'1', 'dashboard', NULL, 1, 5, 1, NULL, 2, b'0'),
+(124, 0x8b85f296a15cfe4209833bbf7e62d1ff666b38ff91aea77a4875326b39c5c940, '2022-06-21 10:45:46.030273', 1143, 37, b'1', 'dashboard', NULL, 1, 3, 1, NULL, 2, b'0'),
+(125, 0xadbf7c68f9563cbd6eef1fe35e8f6cf231c5def00b7456da2ed59002f2488e86, '2022-06-21 10:45:45.975617', 1317, 305, b'1', 'dashboard', NULL, 1, 7, 1, NULL, 2, b'0'),
+(126, 0x966f081834d619eb2fceb43b2c0aa6503076cf12ec4daa3faeabaf5158ecb04c, '2022-06-21 10:45:45.967293', 2121, 37, b'1', 'dashboard', NULL, 1, 2, 1, NULL, 2, b'0'),
+(127, 0xeb7d0a1f6355e6340c9fbe3ad47c6b482f90ce844bb129eeb87ec9487af3f034, '2022-06-21 10:45:45.968982', 2255, 5, b'1', 'dashboard', NULL, 1, 1, 1, NULL, 2, b'0'),
+(128, 0x9d3e2acc36388a5afab5523af912dd22398b62f7a7a5d958bc171293a3ebc914, '2022-06-21 10:45:46.030752', 2239, 5, b'1', 'dashboard', NULL, 1, 6, 1, NULL, 2, b'0'),
+(129, 0xb23e808f5f301c7b87af5c5eae5661e401194f68a81f2b0064bbad205f502e48, '2022-06-21 10:45:46.930905', 2254, 5, b'1', 'dashboard', NULL, 1, 9, 1, NULL, 2, b'0'),
+(130, 0x05aadcea75e0fee8f6c0a6a857b37f3525553706e4b07ecd11a4371bac75613f, '2022-06-21 10:45:47.320022', 2206, 2000, b'1', 'question', NULL, 1, 10, 1, NULL, 2, b'0'),
+(131, 0x674422d821231c0f75043f3b0c29af27bb39dc834421c641d4db539895af5789, '2022-06-21 10:49:23.795772', 175, 1, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(132, 0x447b21470027bd380c6ebde961d6d3ffdee1a1c7ccb39602500d0cac6bfebb62, '2022-06-21 10:49:47.939649', 1838, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(133, 0x867f1d4e8a42428cc63f29a26cbe994b61c5ca8039992e1a362f4c5e8b4d6138, '2022-06-21 10:50:51.090326', 1581, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(134, 0xf7afcdf23fe2f618e1c5daa4f95280407e1a7fceeed7d0396e0172169805b937, '2022-06-21 10:51:30.385173', 19, 0, b'1', 'ad-hoc', '(conn=400) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'as Product1, description as Product2,\' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(135, 0xcc74c57f297922f329251a25300d658bab4781bd1ec058beadc74d1d5fee9f12, '2022-06-21 10:51:59.108055', 1829, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(136, 0x79219793d97d6567da9842cf964ffdaa35cae6b0acaa4faa07ea48ef911ed892, '2022-06-21 10:52:21.827233', 22, 0, b'1', 'ad-hoc', '(conn=400) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'where Product1 != Product2\' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(137, 0x8ee7057acd9aa159adc106e0d599dda0e1ba56449b90cf0e5823bcf50399d74d, '2022-06-21 10:52:38.035525', 20, 0, b'1', 'ad-hoc', '(conn=400) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'where (Product1 != Product2)\' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(138, 0xeb7279be0008aadeb6f20d44041f4f0be1fd912ec663467c81f34ea4319fd741, '2022-06-21 10:53:52.928373', 308, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(139, 0x28f7f0a99cdc7905a817c6e63e9c2f54ac8a3d9dd55b16bb18e5c798f0a54142, '2022-06-21 10:54:19.334191', 19, 0, b'1', 'ad-hoc', '(conn=400) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'as t1 join (select description, invoiceno from cleaned_online_retail) as t2\' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(140, 0xbccf2325cf91636c7773eedb202158df6bc08333a8233e75e50fbcdaaee1cfd4, '2022-06-21 10:54:33.373567', 22, 0, b'1', 'ad-hoc', '(conn=400) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'as t1 ', 1, NULL, NULL, NULL, 2, NULL),
+(141, 0xfe39de4fab047f25eb2b1d05e161fd486cd5c6ce1b1582f08f262246b8632945, '2022-06-21 10:54:41.486540', 20, 0, b'1', 'ad-hoc', '(conn=400) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'join (select description, invoiceno from cleaned_online_retail)\' at line 3', 1, NULL, NULL, NULL, 2, NULL),
+(142, 0x6ac2c8d523a655381d8ac89781f50bedbcf82dcf9d0e0406b51cbbbd4bf707fb, '2022-06-21 10:54:48.352201', 18, 0, b'1', 'ad-hoc', '(conn=400) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'join ', 1, NULL, NULL, NULL, 2, NULL),
+(143, 0x7fc6977872cff114679801c7a19d0b8e36e93bcb4e40f11a1b6f087eb3634678, '2022-06-21 10:58:36.628874', 21, 0, b'1', 'ad-hoc', '(conn=400) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'as tab1', 1, NULL, NULL, NULL, 2, NULL),
+(144, 0x5f09310fe9b3ae1e008235ec3140ebd97b4e10cf10934ea000d8ea942fe09527, '2022-06-21 10:58:50.178153', 20, 0, b'1', 'ad-hoc', '(conn=400) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'as tab1\' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(145, 0xd905bdaae7c5fa7d5f838acec4e486809e041a6d164cd11f260f7ba3bec90146, '2022-06-21 10:58:57.407295', 20, 0, b'1', 'ad-hoc', '(conn=400) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'as \'tab1\'\' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(146, 0xd905bdaae7c5fa7d5f838acec4e486809e041a6d164cd11f260f7ba3bec90146, '2022-06-21 10:59:00.425706', 21, 0, b'1', 'ad-hoc', '(conn=400) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'as \'tab1\'\' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(147, 0xd905bdaae7c5fa7d5f838acec4e486809e041a6d164cd11f260f7ba3bec90146, '2022-06-21 10:59:01.450585', 16, 0, b'1', 'ad-hoc', '(conn=400) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'as \'tab1\'\' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(148, 0xd905bdaae7c5fa7d5f838acec4e486809e041a6d164cd11f260f7ba3bec90146, '2022-06-21 10:59:01.940305', 20, 0, b'1', 'ad-hoc', '(conn=400) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'as \'tab1\'\' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(149, 0xdd1b40ed37008bc13417db86f7dec381224473cc09c4788c42ed90090eba0cb9, '2022-06-21 10:59:10.062499', 323, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(150, 0x2dee7d140f17d1d69a7e4d01095566603f50b60243027dc9b36f7a4de0027503, '2022-06-21 11:00:29.376155', 290, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(151, 0x1cefc1fc213cedb765e0c16b0a2244173594e99d925c7de8f1c0486abdc9e05f, '2022-06-21 11:00:50.549734', 19, 0, b'1', 'ad-hoc', '(conn=400) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'join (select description, invoiceno as \'inv2\' from cleaned_online_retail)\' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(152, 0x7e5bbe188f87b49b6e002daab24913bd650246915a15cec09113218e6d6f8449, '2022-06-21 11:01:07.555612', 21, 0, b'1', 'ad-hoc', '(conn=400) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'join (select description, invoiceno as \'inv2\' from cleaned_online_retail) on inv\' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(153, 0x63ccba6c9e3aec21cedb387c43a9178d44ef89872c504c7be006c9a4f9a9710c, '2022-06-21 11:04:41.866073', 21, 0, b'1', 'ad-hoc', '(conn=400) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'[LEFT]  JOIN cleaned_online_retail t2 ON\r', 1, NULL, NULL, NULL, 2, NULL),
+(154, 0x63ccba6c9e3aec21cedb387c43a9178d44ef89872c504c7be006c9a4f9a9710c, '2022-06-21 11:04:44.017901', 17, 0, b'1', 'ad-hoc', '(conn=400) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'[LEFT]  JOIN cleaned_online_retail t2 ON\r', 1, NULL, NULL, NULL, 2, NULL),
+(155, 0xfd028566dc1af6c1554bc70d799796e1a0e394a0c994d17a6846af2de420713a, '2022-06-21 11:05:23.648000', 19, 0, b'1', 'ad-hoc', '(conn=400) Column \'description\' in field list is ambiguous', 1, NULL, NULL, NULL, 2, NULL),
+(156, 0xfeca7dc898338cb6fa26153fdf957ce1472cdc9f8bfb5d23a333255131c8b1b6, '2022-06-21 11:05:28.799377', 21, 0, b'1', 'ad-hoc', '(conn=400) Column \'description\' in field list is ambiguous', 1, NULL, NULL, NULL, 2, NULL),
+(157, 0x70f5031f2e18ca8afe253ba4eb3c4de8cb98e2dd02db97d503154c57e635147c, '2022-06-21 11:05:36.810037', 259, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(158, 0xd427fd9b5e2685c722397ae318d25b704bd4d231b7ba8580c3f9b8717573e4d4, '2022-06-21 11:06:53.938930', 24, 0, b'1', 'ad-hoc', '(conn=400) Column \'description\' in field list is ambiguous', 1, NULL, NULL, NULL, 2, NULL),
+(159, 0xf966c73542809458fd12eca7670925c822547c763d592050111b45207a2bf1bb, '2022-06-21 11:07:17.977318', 21, 0, b'1', 'ad-hoc', '(conn=400) Column \'description\' in field list is ambiguous', 1, NULL, NULL, NULL, 2, NULL),
+(160, 0xf966c73542809458fd12eca7670925c822547c763d592050111b45207a2bf1bb, '2022-06-21 11:07:22.531224', 18, 0, b'1', 'ad-hoc', '(conn=400) Column \'description\' in field list is ambiguous', 1, NULL, NULL, NULL, 2, NULL),
+(161, 0xa6fd0b7a7335cb60599ef84a9e02e3109406710b8c3490b0707beeeee3613d57, '2022-06-21 11:08:13.978824', 26, 0, b'1', 'ad-hoc', '(conn=400) Every derived table must have its own alias', 1, NULL, NULL, NULL, 2, NULL),
+(162, 0x4266eb2397258359cf3360b9a8892b57a11e6ed67f5bf61663615df4e1cacfab, '2022-06-21 11:08:22.225267', 17, 0, b'1', 'ad-hoc', '(conn=400) Unknown column \'cleaned_online_retail.invoiceno\' in \'on clause\'', 1, NULL, NULL, NULL, 2, NULL),
+(163, 0xfbe7a008b031fdaa8d715e167a95273f0f4a5d89192dec8459149f1416dfd6b6, '2022-06-21 11:08:35.449753', 21, 0, b'1', 'ad-hoc', '(conn=400) Unknown column \'t2.invoiceno\' in \'on clause\'', 1, NULL, NULL, NULL, 2, NULL),
+(164, 0x649b002e20c3a0e4aabb86ddc799323bfb6af05cb8dc0f683db7cfac91c8e67b, '2022-06-21 11:09:29.176949', 21, 0, b'1', 'ad-hoc', '(conn=400) Column \'invoiceno\' in field list is ambiguous', 1, NULL, NULL, NULL, 2, NULL),
+(165, 0x8c1e88a1f7f168b2a2c3d24f2aedde3306536c7ffd74fe8a3ff4fa6755fe98b8, '2022-06-21 11:10:10.354520', 21, 0, b'1', 'ad-hoc', '(conn=400) Unknown column \'t1.inv1\' in \'on clause\'', 1, NULL, NULL, NULL, 2, NULL),
+(166, 0x9dfb88673c2da5e6096bcc95eb5e1afd96eff7bf5897b0d3cbd8011efa86541a, '2022-06-21 11:10:35.020434', 20, 0, b'1', 'ad-hoc', '(conn=400) Unknown column \'inv1\' in \'on clause\'', 1, NULL, NULL, NULL, 2, NULL),
+(167, 0xeb8d61c557bc1b798b8155df7b385776a2cd2f0cd8d50e89ef084e39df071794, '2022-06-21 11:12:17.468256', 18, 0, b'1', 'ad-hoc', '(conn=400) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'select \r', 1, NULL, NULL, NULL, 2, NULL),
+(168, 0x515b4d0029d47af93f266f8d31d179f2a65a33691c0be5e24a63612190189c62, '2022-06-21 11:22:53.239489', 32, 0, b'1', 'ad-hoc', '(conn=464) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'group by t1.description, t2.description\r', 1, NULL, NULL, NULL, 2, NULL),
+(169, 0x8d4cfab1ec5b1ba15608301f0f28db7902164989f141a32e371292419194597a, '2022-06-21 11:24:18.964164', 4046, 1, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(170, 0x7ba2c8bb54850574d96bd17e436302b1626dd244f5feb9b3f9eb7612b7eedc11, '2022-06-21 11:24:46.903615', 3868, 1, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(171, 0x7ba2c8bb54850574d96bd17e436302b1626dd244f5feb9b3f9eb7612b7eedc11, '2022-06-21 11:25:12.980340', 3983, 1, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(172, 0x2b8d3a9b034d63fbb7e869efeed7087cf2a292577110a18bf92f1377e178fbbd, '2022-06-21 11:25:28.045158', 4088, 1, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(173, 0xf1b97735feab03eb9c9c4a1a2152d0056b63ca738d1c14990d6a871b33358f0f, '2022-06-21 11:26:19.379171', 329, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(174, 0x85e4bfb91fcd8b6687e1298e5cee865bce72fddacb7e9ffe237885a01be76fc8, '2022-06-21 11:27:48.171466', 322, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(175, 0x03ebfeeaad8d50d0b4cbea431e89dd2a2371c4cf7643240974e67285449dfc0b, '2022-06-21 11:28:28.949194', 369, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(176, 0xe65c5d9b581523acea72181a529a2a70b55dc44d42852354d70a252451c9320e, '2022-06-21 11:29:25.290771', 26, 0, b'1', 'ad-hoc', '(conn=464) Column \'invoiceno\' in field list is ambiguous', 1, NULL, NULL, NULL, 2, NULL),
+(177, 0xa00fbb72a3c164fea863747ff50b6e01ea20dcaf4326163f4c0cda4ebc772851, '2022-06-21 11:29:53.999836', 21, 0, b'1', 'ad-hoc', '(conn=464) Column \'invoiceno\' in field list is ambiguous', 1, NULL, NULL, NULL, 2, NULL),
+(178, 0x040f8b5950b7fe11cdc313c5c8b980da45eacff9ad18dfa3100c8c85e0363adb, '2022-06-21 11:30:03.326193', 25, 0, b'1', 'ad-hoc', '(conn=464) Column \'invoiceno\' in field list is ambiguous', 1, NULL, NULL, NULL, 2, NULL),
+(179, 0x85e4bfb91fcd8b6687e1298e5cee865bce72fddacb7e9ffe237885a01be76fc8, '2022-06-21 11:30:16.129444', 334, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(180, 0x040f8b5950b7fe11cdc313c5c8b980da45eacff9ad18dfa3100c8c85e0363adb, '2022-06-21 11:30:40.973106', 22, 0, b'1', 'ad-hoc', '(conn=464) Column \'invoiceno\' in field list is ambiguous', 1, NULL, NULL, NULL, 2, NULL),
+(181, 0x0fd5c31d9a4e5dbd73d9f3a6c2d0bec1da37dc069c36b15accd76cbda12b07a6, '2022-06-21 11:31:07.987916', 87218, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(182, 0x32054462940c08531486ef01b48bc3c94cfa3e55a021f9bf9a405487d2ef4c4e, '2022-06-21 11:32:55.874252', 95013, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(183, 0x32054462940c08531486ef01b48bc3c94cfa3e55a021f9bf9a405487d2ef4c4e, '2022-06-21 11:34:41.950192', 43048, 0, b'1', 'ad-hoc', '(conn=464) Query execution was interrupted', 1, NULL, NULL, NULL, 2, NULL),
+(184, 0x9651d4f865c0e3b015f24403e8c78a07b394abe017da9dad60732bcf1b34ac06, '2022-06-21 11:35:42.880742', 80359, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(185, 0xbec244ca6bfc1630251bdc05253bc09f96a65a6d2539eb0387a3cc0795bd1244, '2022-06-21 11:38:36.829946', 79571, 5, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(186, 0x0621708b986865e8caad9489a93555a825c83024200e1e33f346e48e4a042f8d, '2022-06-21 11:41:07.427809', 80767, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(187, 0x38c5834e7e9ffa685b1459ffa34beff483a7a38d1a2bbf519181b26c70b24a70, '2022-06-21 11:42:30.665655', 20, 0, b'1', 'ad-hoc', '(conn=464) You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'join cleaned_online_retail t2 on t1.invoiceno = t2.invoiceno and t1.description \' at line 2', 1, NULL, NULL, NULL, 2, NULL),
+(188, 0x7c023a1f29a5c1c03f5b2d55193d900e4cc2e5346ca6fdf3ff4e308d2d050237, '2022-06-21 11:42:54.042898', 81630, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(189, 0x8a34ff067383142d4753a2f7cc039c2bd302badb30cae22140c21e6f8f9efaf0, '2022-06-21 11:44:30.434532', 80352, 5, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(190, 0x7c023a1f29a5c1c03f5b2d55193d900e4cc2e5346ca6fdf3ff4e308d2d050237, '2022-06-21 11:46:23.632851', 80199, 2000, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(191, 0xbf54068f7c90e8b4ca3ff65a2ac88c2ec6c1273fb83ed0d0c39ce7c92aa84eb8, '2022-06-21 11:50:46.108161', 81146, 5, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(192, 0xbf54068f7c90e8b4ca3ff65a2ac88c2ec6c1273fb83ed0d0c39ce7c92aa84eb8, '2022-06-21 11:53:40.517783', 10025, 0, b'1', 'ad-hoc', '(conn=464) Query execution was interrupted', 1, NULL, NULL, NULL, 2, NULL);
+INSERT INTO `query_execution` (`id`, `hash`, `started_at`, `running_time`, `result_rows`, `native`, `context`, `error`, `executor_id`, `card_id`, `dashboard_id`, `pulse_id`, `database_id`, `cache_hit`) VALUES
+(193, 0x449c29ffb4be14fb4eb0635ed1671a5a6b2dd3a83e1893f2529276bb6621ed97, '2022-06-21 11:54:30.146618', 83035, 5, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(194, 0xbf54068f7c90e8b4ca3ff65a2ac88c2ec6c1273fb83ed0d0c39ce7c92aa84eb8, '2022-06-21 11:56:44.596766', 81689, 5, b'1', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(195, 0x032413ca5251a463139070669594176be2421e0de696bb0f6a611db5a2c4da78, '2022-06-21 12:00:53.638522', 1105, 2, b'1', 'dashboard', NULL, 1, 5, 1, NULL, 2, b'0'),
+(196, 0xadbf7c68f9563cbd6eef1fe35e8f6cf231c5def00b7456da2ed59002f2488e86, '2022-06-21 12:00:53.636579', 1380, 305, b'1', 'dashboard', NULL, 1, 7, 1, NULL, 2, b'0'),
+(197, 0x8b85f296a15cfe4209833bbf7e62d1ff666b38ff91aea77a4875326b39c5c940, '2022-06-21 12:00:53.696573', 1554, 37, b'1', 'dashboard', NULL, 1, 3, 1, NULL, 2, b'0'),
+(198, 0x966f081834d619eb2fceb43b2c0aa6503076cf12ec4daa3faeabaf5158ecb04c, '2022-06-21 12:00:53.661235', 2553, 37, b'1', 'dashboard', NULL, 1, 2, 1, NULL, 2, b'0'),
+(199, 0xeb7d0a1f6355e6340c9fbe3ad47c6b482f90ce844bb129eeb87ec9487af3f034, '2022-06-21 12:00:53.718442', 2769, 5, b'1', 'dashboard', NULL, 1, 1, 1, NULL, 2, b'0'),
+(200, 0x9d3e2acc36388a5afab5523af912dd22398b62f7a7a5d958bc171293a3ebc914, '2022-06-21 12:00:53.639875', 3114, 5, b'1', 'dashboard', NULL, 1, 6, 1, NULL, 2, b'0'),
+(201, 0xb23e808f5f301c7b87af5c5eae5661e401194f68a81f2b0064bbad205f502e48, '2022-06-21 12:00:54.769191', 2654, 5, b'1', 'dashboard', NULL, 1, 9, 1, NULL, 2, b'0'),
+(202, 0x05aadcea75e0fee8f6c0a6a857b37f3525553706e4b07ecd11a4371bac75613f, '2022-06-21 12:00:55.068127', 2613, 2000, b'1', 'dashboard', NULL, 1, 10, 1, NULL, 2, b'0'),
+(203, 0x483e0b7894430f4f3024bf21cc86072b010a9b6ad2d4ef05ad25da6cca61adf5, '2022-06-21 12:00:55.403551', 82468, 5, b'1', 'question', NULL, 1, 11, 1, NULL, 2, b'0'),
+(204, 0xd025c7edcb6148b43ab552fe881b38454b0ca91cf30b5254850d963cd7866c5a, '2022-06-24 08:31:56.480323', 84, 0, b'1', 'ad-hoc', '(conn=13) Unknown column \'amount\' in \'field list\'', 1, NULL, NULL, NULL, 2, NULL),
+(205, 0x9ca912290e54faa0306ac23bb83857a9a5c04317722c9709cc15014b01823f75, '2022-06-24 08:32:23.530334', 785, 2000, b'0', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(206, 0x9ca912290e54faa0306ac23bb83857a9a5c04317722c9709cc15014b01823f75, '2022-06-24 08:32:32.030197', 542, 2000, b'0', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(207, 0x9ca912290e54faa0306ac23bb83857a9a5c04317722c9709cc15014b01823f75, '2022-06-24 08:32:43.617457', 534, 2000, b'0', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(208, 0x9ca912290e54faa0306ac23bb83857a9a5c04317722c9709cc15014b01823f75, '2022-06-24 08:33:25.237479', 482, 2000, b'0', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(209, 0x9ca912290e54faa0306ac23bb83857a9a5c04317722c9709cc15014b01823f75, '2022-06-24 08:33:42.869347', 459, 2000, b'0', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(210, 0x9ca912290e54faa0306ac23bb83857a9a5c04317722c9709cc15014b01823f75, '2022-06-24 08:36:18.007051', 419, 2000, b'0', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(211, 0x9ca912290e54faa0306ac23bb83857a9a5c04317722c9709cc15014b01823f75, '2022-06-24 09:06:45.365060', 751, 2000, b'0', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(212, 0x9ca912290e54faa0306ac23bb83857a9a5c04317722c9709cc15014b01823f75, '2022-06-24 09:29:33.964622', 408, 2000, b'0', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(213, 0x9ca912290e54faa0306ac23bb83857a9a5c04317722c9709cc15014b01823f75, '2022-06-24 09:31:17.733383', 393, 2000, b'0', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(214, 0x9ca912290e54faa0306ac23bb83857a9a5c04317722c9709cc15014b01823f75, '2022-06-24 09:31:19.499734', 306, 2000, b'0', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(215, 0x9ca912290e54faa0306ac23bb83857a9a5c04317722c9709cc15014b01823f75, '2022-06-24 09:32:51.008823', 382, 2000, b'0', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(216, 0x9ca912290e54faa0306ac23bb83857a9a5c04317722c9709cc15014b01823f75, '2022-06-24 09:37:48.410704', 1524, 2000, b'0', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(217, 0x9ca912290e54faa0306ac23bb83857a9a5c04317722c9709cc15014b01823f75, '2022-06-24 09:38:34.825797', 815, 2000, b'0', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(218, 0x9ca912290e54faa0306ac23bb83857a9a5c04317722c9709cc15014b01823f75, '2022-06-24 10:00:45.967674', 590, 2000, b'0', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(219, 0x9ca912290e54faa0306ac23bb83857a9a5c04317722c9709cc15014b01823f75, '2022-06-24 10:00:50.380855', 487, 2000, b'0', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0'),
+(220, 0x9ca912290e54faa0306ac23bb83857a9a5c04317722c9709cc15014b01823f75, '2022-06-24 10:03:17.587737', 473, 2000, b'0', 'ad-hoc', NULL, 1, NULL, NULL, NULL, 2, b'0');
 
 -- --------------------------------------------------------
 
@@ -1526,27 +1965,27 @@ CREATE TABLE `query_execution` (
 --
 
 CREATE TABLE `report_card` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `name` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `display` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `dataset_query` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `visualization_settings` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `creator_id` int(11) NOT NULL,
-  `database_id` int(11) NOT NULL,
-  `table_id` int(11) DEFAULT NULL,
-  `query_type` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `display` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dataset_query` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `visualization_settings` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `creator_id` int NOT NULL,
+  `database_id` int NOT NULL,
+  `table_id` int DEFAULT NULL,
+  `query_type` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `archived` bit(1) NOT NULL DEFAULT b'0',
-  `collection_id` int(11) DEFAULT NULL COMMENT 'Optional ID of Collection this Card belongs to.',
-  `public_uuid` char(36) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Unique UUID used to in publically-accessible links to this Card.',
-  `made_public_by_id` int(11) DEFAULT NULL COMMENT 'The ID of the User who first publically shared this Card.',
+  `collection_id` int DEFAULT NULL COMMENT 'Optional ID of Collection this Card belongs to.',
+  `public_uuid` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Unique UUID used to in publically-accessible links to this Card.',
+  `made_public_by_id` int DEFAULT NULL COMMENT 'The ID of the User who first publically shared this Card.',
   `enable_embedding` bit(1) NOT NULL DEFAULT b'0' COMMENT 'Is this Card allowed to be embedded in different websites (using a signed JWT)?',
-  `embedding_params` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `cache_ttl` int(11) DEFAULT NULL COMMENT 'The maximum time, in seconds, to return cached results for this Card rather than running a new query.',
-  `result_metadata` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `collection_position` smallint(6) DEFAULT NULL COMMENT 'Optional pinned position for this item in its Collection. NULL means item is not pinned.',
+  `embedding_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `cache_ttl` int DEFAULT NULL COMMENT 'The maximum time, in seconds, to return cached results for this Card rather than running a new query.',
+  `result_metadata` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `collection_position` smallint DEFAULT NULL COMMENT 'Optional pinned position for this item in its Collection. NULL means item is not pinned.',
   `dataset` bit(1) NOT NULL DEFAULT b'0' COMMENT 'Indicate whether question is a dataset'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1555,13 +1994,17 @@ CREATE TABLE `report_card` (
 --
 
 INSERT INTO `report_card` (`id`, `created_at`, `updated_at`, `name`, `description`, `display`, `dataset_query`, `visualization_settings`, `creator_id`, `database_id`, `table_id`, `query_type`, `archived`, `collection_id`, `public_uuid`, `made_public_by_id`, `enable_embedding`, `embedding_params`, `cache_ttl`, `result_metadata`, `collection_position`, `dataset`) VALUES
-(1, '2022-06-14 10:31:28', '2022-06-15 10:12:13', 'Top 5 countries by total quantity', NULL, 'row', '{\"type\":\"native\",\"native\":{\"query\":\"SELECT sum(quantity)as \'total sum\', country from cleaned_online_retail group by country order by sum(quantity) desc limit 5;\",\"template-tags\":{}},\"database\":2}', '{\"series_settings\":{\"total sum\":{\"axis\":null}},\"graph.dimensions\":[\"country\"],\"graph.metrics\":[\"total sum\"]}', 1, 2, NULL, 'native', b'0', NULL, NULL, NULL, b'0', NULL, NULL, '[{\"display_name\":\"total sum\",\"field_ref\":[\"field\",\"total sum\",{\"base-type\":\"type/Decimal\"}],\"name\":\"total sum\",\"base_type\":\"type/Decimal\",\"effective_type\":\"type/Decimal\",\"semantic_type\":null,\"fingerprint\":{\"global\":{\"distinct-count\":5,\"nil%\":0.0},\"type\":{\"type/Number\":{\"min\":109848.0,\"q1\":115548.0,\"q3\":1152229.25,\"max\":4008533.0,\"sd\":1730005.3748011014,\"avg\":914457.2}}}},{\"display_name\":\"country\",\"field_ref\":[\"field\",\"country\",{\"base-type\":\"type/Text\"}],\"name\":\"country\",\"base_type\":\"type/Text\",\"effective_type\":\"type/Text\",\"semantic_type\":\"type/Country\",\"fingerprint\":{\"global\":{\"distinct-count\":5,\"nil%\":0.0},\"type\":{\"type/Text\":{\"percent-json\":0.0,\"percent-url\":0.0,\"percent-email\":0.0,\"percent-state\":0.0,\"average-length\":8.4}}}}]', NULL, b'0'),
-(2, '2022-06-14 10:47:16', '2022-06-15 10:12:13', 'Grouping countries by total quantity', NULL, 'bar', '{\"type\":\"native\",\"native\":{\"query\":\"select sum(quantity) as \'Total Products\', country from cleaned_online_retail group by country order by sum(quantity) desc \",\"template-tags\":{}},\"database\":2}', '{\"map.colors\":[\"#daecfb\",\"#aad1f4\",\"#7ab7ec\",\"#499ce5\",\"hsl(208.20000000000005, 79.7%, 42.1%)\"],\"map.dimension\":\"country\",\"map.region\":\"world_countries\",\"graph.dimensions\":[\"country\"],\"graph.metrics\":[\"Total Products\"]}', 1, 2, NULL, 'native', b'0', NULL, NULL, NULL, b'0', NULL, NULL, '[{\"display_name\":\"Total Products\",\"field_ref\":[\"field\",\"Total Products\",{\"base-type\":\"type/Decimal\"}],\"name\":\"Total Products\",\"base_type\":\"type/Decimal\",\"effective_type\":\"type/Decimal\",\"semantic_type\":null,\"fingerprint\":{\"global\":{\"distinct-count\":37,\"nil%\":0.0},\"type\":{\"type/Number\":{\"min\":75.0,\"q1\":972.5,\"q3\":25619.5,\"max\":4008533.0,\"sd\":656468.7047167367,\"avg\":132618.5945945946}}}},{\"display_name\":\"country\",\"field_ref\":[\"field\",\"country\",{\"base-type\":\"type/Text\"}],\"name\":\"country\",\"base_type\":\"type/Text\",\"effective_type\":\"type/Text\",\"semantic_type\":\"type/Country\",\"fingerprint\":{\"global\":{\"distinct-count\":37,\"nil%\":0.0},\"type\":{\"type/Text\":{\"percent-json\":0.0,\"percent-url\":0.0,\"percent-email\":0.0,\"percent-state\":0.0,\"average-length\":8.135135135135135}}}}]', NULL, b'0'),
-(3, '2022-06-15 05:07:35', '2022-06-15 10:12:12', 'Total product counts per region', NULL, 'bar', '{\"type\":\"native\",\"native\":{\"query\":\"select country, count(distinct(stockcode)) as \'Product Counts\' from cleaned_online_retail group by country\",\"template-tags\":{}},\"database\":2}', '{\"graph.dimensions\":[\"country\"],\"graph.metrics\":[\"Product Counts\"]}', 1, 2, NULL, 'native', b'0', NULL, NULL, NULL, b'0', NULL, NULL, '[{\"display_name\":\"country\",\"field_ref\":[\"field\",\"country\",{\"base-type\":\"type/Text\"}],\"name\":\"country\",\"base_type\":\"type/Text\",\"effective_type\":\"type/Text\",\"semantic_type\":\"type/Country\",\"fingerprint\":{\"global\":{\"distinct-count\":37,\"nil%\":0.0},\"type\":{\"type/Text\":{\"percent-json\":0.0,\"percent-url\":0.0,\"percent-email\":0.0,\"percent-state\":0.0,\"average-length\":8.135135135135135}}}},{\"display_name\":\"Product Counts\",\"field_ref\":[\"field\",\"Product Counts\",{\"base-type\":\"type/BigInteger\"}],\"name\":\"Product Counts\",\"base_type\":\"type/BigInteger\",\"effective_type\":\"type/BigInteger\",\"semantic_type\":null,\"fingerprint\":{\"global\":{\"distinct-count\":37,\"nil%\":0.0},\"type\":{\"type/Number\":{\"min\":9.0,\"q1\":91.25,\"q3\":621.5,\"max\":3661.0,\"sd\":716.5792194710768,\"avg\":513.0}}}}]', NULL, b'0'),
+(1, '2022-06-14 10:31:28', '2022-06-21 12:00:56', 'Top 5 countries by total quantity', NULL, 'row', '{\"type\":\"native\",\"native\":{\"query\":\"SELECT sum(quantity)as \'total sum\', country from cleaned_online_retail group by country order by sum(quantity) desc limit 5;\",\"template-tags\":{}},\"database\":2}', '{\"series_settings\":{\"total sum\":{\"axis\":null}},\"graph.dimensions\":[\"country\"],\"graph.metrics\":[\"total sum\"]}', 1, 2, NULL, 'native', b'0', NULL, NULL, NULL, b'0', NULL, NULL, '[{\"display_name\":\"total sum\",\"field_ref\":[\"field\",\"total sum\",{\"base-type\":\"type/Decimal\"}],\"name\":\"total sum\",\"base_type\":\"type/Decimal\",\"effective_type\":\"type/Decimal\",\"semantic_type\":null,\"fingerprint\":{\"global\":{\"distinct-count\":5,\"nil%\":0.0},\"type\":{\"type/Number\":{\"min\":109848.0,\"q1\":115548.0,\"q3\":1152229.25,\"max\":4008533.0,\"sd\":1730005.3748011014,\"avg\":914457.2}}}},{\"display_name\":\"country\",\"field_ref\":[\"field\",\"country\",{\"base-type\":\"type/Text\"}],\"name\":\"country\",\"base_type\":\"type/Text\",\"effective_type\":\"type/Text\",\"semantic_type\":\"type/Country\",\"fingerprint\":{\"global\":{\"distinct-count\":5,\"nil%\":0.0},\"type\":{\"type/Text\":{\"percent-json\":0.0,\"percent-url\":0.0,\"percent-email\":0.0,\"percent-state\":0.0,\"average-length\":8.4}}}}]', NULL, b'0'),
+(2, '2022-06-14 10:47:16', '2022-06-21 12:00:56', 'Grouping countries by total quantity', NULL, 'bar', '{\"type\":\"native\",\"native\":{\"query\":\"select sum(quantity) as \'Total Products\', country from cleaned_online_retail group by country order by sum(quantity) desc \",\"template-tags\":{}},\"database\":2}', '{\"map.colors\":[\"#daecfb\",\"#aad1f4\",\"#7ab7ec\",\"#499ce5\",\"hsl(208.20000000000005, 79.7%, 42.1%)\"],\"map.dimension\":\"country\",\"map.region\":\"world_countries\",\"graph.dimensions\":[\"country\"],\"graph.metrics\":[\"Total Products\"]}', 1, 2, NULL, 'native', b'0', NULL, NULL, NULL, b'0', NULL, NULL, '[{\"display_name\":\"Total Products\",\"field_ref\":[\"field\",\"Total Products\",{\"base-type\":\"type/Decimal\"}],\"name\":\"Total Products\",\"base_type\":\"type/Decimal\",\"effective_type\":\"type/Decimal\",\"semantic_type\":null,\"fingerprint\":{\"global\":{\"distinct-count\":37,\"nil%\":0.0},\"type\":{\"type/Number\":{\"min\":75.0,\"q1\":972.5,\"q3\":25619.5,\"max\":4008533.0,\"sd\":656468.7047167367,\"avg\":132618.5945945946}}}},{\"display_name\":\"country\",\"field_ref\":[\"field\",\"country\",{\"base-type\":\"type/Text\"}],\"name\":\"country\",\"base_type\":\"type/Text\",\"effective_type\":\"type/Text\",\"semantic_type\":\"type/Country\",\"fingerprint\":{\"global\":{\"distinct-count\":37,\"nil%\":0.0},\"type\":{\"type/Text\":{\"percent-json\":0.0,\"percent-url\":0.0,\"percent-email\":0.0,\"percent-state\":0.0,\"average-length\":8.135135135135135}}}}]', NULL, b'0'),
+(3, '2022-06-15 05:07:35', '2022-06-21 12:00:55', 'Total product counts per region', NULL, 'bar', '{\"type\":\"native\",\"native\":{\"query\":\"select country, count(distinct(stockcode)) as \'Product Counts\' from cleaned_online_retail group by country\",\"template-tags\":{}},\"database\":2}', '{\"graph.dimensions\":[\"country\"],\"graph.metrics\":[\"Product Counts\"]}', 1, 2, NULL, 'native', b'0', NULL, NULL, NULL, b'0', NULL, NULL, '[{\"display_name\":\"country\",\"field_ref\":[\"field\",\"country\",{\"base-type\":\"type/Text\"}],\"name\":\"country\",\"base_type\":\"type/Text\",\"effective_type\":\"type/Text\",\"semantic_type\":\"type/Country\",\"fingerprint\":{\"global\":{\"distinct-count\":37,\"nil%\":0.0},\"type\":{\"type/Text\":{\"percent-json\":0.0,\"percent-url\":0.0,\"percent-email\":0.0,\"percent-state\":0.0,\"average-length\":8.135135135135135}}}},{\"display_name\":\"Product Counts\",\"field_ref\":[\"field\",\"Product Counts\",{\"base-type\":\"type/BigInteger\"}],\"name\":\"Product Counts\",\"base_type\":\"type/BigInteger\",\"effective_type\":\"type/BigInteger\",\"semantic_type\":null,\"fingerprint\":{\"global\":{\"distinct-count\":37,\"nil%\":0.0},\"type\":{\"type/Number\":{\"min\":9.0,\"q1\":91.25,\"q3\":621.5,\"max\":3661.0,\"sd\":716.5792194710768,\"avg\":513.0}}}}]', NULL, b'0'),
 (4, '2022-06-15 05:14:31', '2022-06-15 05:32:51', 'Top 5 countries by Total Unit Price', NULL, 'row', '{\"type\":\"native\",\"native\":{\"query\":\"select sum(unitprice) as \'Unit Price\', country from cleaned_online_retail group by country order by sum(unitprice) desc limit 5\",\"template-tags\":{}},\"database\":2}', '{\"graph.dimensions\":[\"country\"],\"graph.metrics\":[\"Unit Price\"]}', 1, 2, NULL, 'native', b'0', NULL, NULL, NULL, b'0', NULL, NULL, '[{\"display_name\":\"Unit Price\",\"field_ref\":[\"field\",\"Unit Price\",{\"base-type\":\"type/Float\"}],\"name\":\"Unit Price\",\"base_type\":\"type/Float\",\"effective_type\":\"type/Float\",\"semantic_type\":null,\"fingerprint\":{\"global\":{\"distinct-count\":5,\"nil%\":0.0},\"type\":{\"type/Number\":{\"min\":25108.890000000007,\"q1\":34526.72250000038,\"q3\":326722.74599957815,\"max\":1178277.2639983122,\"sd\":510895.6312829625,\"avg\":264435.39479966264}}}},{\"display_name\":\"country\",\"field_ref\":[\"field\",\"country\",{\"base-type\":\"type/Text\"}],\"name\":\"country\",\"base_type\":\"type/Text\",\"effective_type\":\"type/Text\",\"semantic_type\":\"type/Country\",\"fingerprint\":{\"global\":{\"distinct-count\":5,\"nil%\":0.0},\"type\":{\"type/Text\":{\"percent-json\":0.0,\"percent-url\":0.0,\"percent-email\":0.0,\"percent-state\":0.0,\"average-length\":8.0}}}}]', NULL, b'0'),
-(5, '2022-06-15 05:24:28', '2022-06-15 10:12:12', 'Total Unit Price sold by year', NULL, 'row', '{\"type\":\"native\",\"native\":{\"query\":\"select sum(unitprice * quantity) as \'Total Unit Price Sold\', year(invoicedate) as Year from cleaned_online_retail group by year(invoicedate) \",\"template-tags\":{}},\"database\":2}', '{\"graph.dimensions\":[\"Year\"],\"graph.metrics\":[\"Total Unit Price Sold\"]}', 1, 2, NULL, 'native', b'0', NULL, NULL, NULL, b'0', NULL, NULL, '[{\"display_name\":\"Total Unit Price Sold\",\"field_ref\":[\"field\",\"Total Unit Price Sold\",{\"base-type\":\"type/Float\"}],\"name\":\"Total Unit Price Sold\",\"base_type\":\"type/Float\",\"effective_type\":\"type/Float\",\"semantic_type\":null,\"fingerprint\":{\"global\":{\"distinct-count\":2,\"nil%\":0.0},\"type\":{\"type/Number\":{\"min\":554604.020000018,\"q1\":554604.020000018,\"q3\":7745461.79400296,\"max\":7745461.79400296,\"sd\":5084704.294545483,\"avg\":4150032.9070014893}}}},{\"display_name\":\"Year\",\"field_ref\":[\"field\",\"Year\",{\"base-type\":\"type/Integer\"}],\"name\":\"Year\",\"base_type\":\"type/Integer\",\"effective_type\":\"type/Integer\",\"semantic_type\":null,\"fingerprint\":{\"global\":{\"distinct-count\":2,\"nil%\":0.0},\"type\":{\"type/Number\":{\"min\":2010.0,\"q1\":2010.0,\"q3\":2011.0,\"max\":2011.0,\"sd\":0.7071067811865476,\"avg\":2010.5}}}}]', NULL, b'0'),
-(6, '2022-06-15 05:32:45', '2022-06-15 10:12:13', 'Top 5 countries by Total Unit Price', NULL, 'row', '{\"type\":\"native\",\"native\":{\"query\":\"SELECT `source`.`Unit Price` AS `Unit Price`, `source`.`country` AS `country`\\nFROM (select sum(unitprice * quantity) as \'Unit Price\', country from cleaned_online_retail group by country order by sum(unitprice) desc limit 5) `source`\\nLIMIT 1048575\",\"template-tags\":{}},\"database\":2}', '{\"graph.dimensions\":[\"country\"],\"graph.metrics\":[\"Unit Price\"]}', 1, 2, NULL, 'native', b'0', NULL, NULL, NULL, b'0', NULL, NULL, '[{\"display_name\":\"Unit Price\",\"field_ref\":[\"field\",\"Unit Price\",{\"base-type\":\"type/Float\"}],\"name\":\"Unit Price\",\"base_type\":\"type/Float\",\"effective_type\":\"type/Float\",\"semantic_type\":null,\"fingerprint\":{\"global\":{\"distinct-count\":5,\"nil%\":0.0},\"type\":{\"type/Number\":{\"min\":9120.39,\"q1\":149814.72749999992,\"q3\":1879682.2635006425,\"max\":6767873.394002574,\"sd\":2952415.2024992867,\"avg\":1489138.0108005141}}}},{\"display_name\":\"country\",\"field_ref\":[\"field\",\"country\",{\"base-type\":\"type/Text\"}],\"name\":\"country\",\"base_type\":\"type/Text\",\"effective_type\":\"type/Text\",\"semantic_type\":\"type/Country\",\"fingerprint\":{\"global\":{\"distinct-count\":5,\"nil%\":0.0},\"type\":{\"type/Text\":{\"percent-json\":0.0,\"percent-url\":0.0,\"percent-email\":0.0,\"percent-state\":0.0,\"average-length\":8.0}}}}]', NULL, b'0'),
-(7, '2022-06-15 08:38:28', '2022-06-15 10:12:55', 'Time to Time Sale', NULL, 'line', '{\"type\":\"native\",\"native\":{\"query\":\"select sum(quantity) as \'Quantity\', date(invoicedate) as \'Date\' from cleaned_online_retail group by date(invoicedate)\",\"template-tags\":{}},\"database\":2}', '{\"graph.dimensions\":[\"Date\"],\"graph.metrics\":[\"Quantity\"],\"series_settings\":{\"Quantity\":{\"display\":\"area\"}}}', 1, 2, NULL, 'native', b'0', NULL, NULL, NULL, b'0', NULL, NULL, '[{\"display_name\":\"Quantity\",\"field_ref\":[\"field\",\"Quantity\",{\"base-type\":\"type/Decimal\"}],\"name\":\"Quantity\",\"base_type\":\"type/Decimal\",\"effective_type\":\"type/Decimal\",\"semantic_type\":null,\"fingerprint\":{\"global\":{\"distinct-count\":303,\"nil%\":0.0},\"type\":{\"type/Number\":{\"min\":2048.0,\"q1\":10519.152563362004,\"q3\":20084.794189845867,\"max\":45741.0,\"sd\":8282.29005038455,\"avg\":16088.15737704918}}}},{\"display_name\":\"Date\",\"field_ref\":[\"field\",\"Date\",{\"base-type\":\"type/Date\"}],\"name\":\"Date\",\"base_type\":\"type/Date\",\"effective_type\":\"type/Date\",\"semantic_type\":null,\"fingerprint\":{\"global\":{\"distinct-count\":305,\"nil%\":0.0},\"type\":{\"type/DateTime\":{\"earliest\":\"2010-12-01T00:00:00Z\",\"latest\":\"2011-12-09T00:00:00Z\"}}}}]', NULL, b'0');
+(5, '2022-06-15 05:24:28', '2022-06-21 12:00:55', 'Total Unit Price sold by year', NULL, 'row', '{\"type\":\"native\",\"native\":{\"query\":\"select sum(unitprice * quantity) as \'Total Unit Price Sold\', year(invoicedate) as Year from cleaned_online_retail group by year(invoicedate) \",\"template-tags\":{}},\"database\":2}', '{\"graph.dimensions\":[\"Year\"],\"graph.metrics\":[\"Total Unit Price Sold\"]}', 1, 2, NULL, 'native', b'0', NULL, NULL, NULL, b'0', NULL, NULL, '[{\"display_name\":\"Total Unit Price Sold\",\"field_ref\":[\"field\",\"Total Unit Price Sold\",{\"base-type\":\"type/Float\"}],\"name\":\"Total Unit Price Sold\",\"base_type\":\"type/Float\",\"effective_type\":\"type/Float\",\"semantic_type\":null,\"fingerprint\":{\"global\":{\"distinct-count\":2,\"nil%\":0.0},\"type\":{\"type/Number\":{\"min\":554604.020000018,\"q1\":554604.020000018,\"q3\":7745461.79400296,\"max\":7745461.79400296,\"sd\":5084704.294545483,\"avg\":4150032.9070014893}}}},{\"display_name\":\"Year\",\"field_ref\":[\"field\",\"Year\",{\"base-type\":\"type/Integer\"}],\"name\":\"Year\",\"base_type\":\"type/Integer\",\"effective_type\":\"type/Integer\",\"semantic_type\":null,\"fingerprint\":{\"global\":{\"distinct-count\":2,\"nil%\":0.0},\"type\":{\"type/Number\":{\"min\":2010.0,\"q1\":2010.0,\"q3\":2011.0,\"max\":2011.0,\"sd\":0.7071067811865476,\"avg\":2010.5}}}}]', NULL, b'0'),
+(6, '2022-06-15 05:32:45', '2022-06-21 12:00:57', 'Top 5 countries by Total Unit Price', NULL, 'row', '{\"type\":\"native\",\"native\":{\"query\":\"SELECT `source`.`Unit Price` AS `Unit Price`, `source`.`country` AS `country`\\nFROM (select sum(unitprice * quantity) as \'Unit Price\', country from cleaned_online_retail group by country order by sum(unitprice) desc limit 5) `source`\\nLIMIT 1048575\",\"template-tags\":{}},\"database\":2}', '{\"graph.dimensions\":[\"country\"],\"graph.metrics\":[\"Unit Price\"]}', 1, 2, NULL, 'native', b'0', NULL, NULL, NULL, b'0', NULL, NULL, '[{\"display_name\":\"Unit Price\",\"field_ref\":[\"field\",\"Unit Price\",{\"base-type\":\"type/Float\"}],\"name\":\"Unit Price\",\"base_type\":\"type/Float\",\"effective_type\":\"type/Float\",\"semantic_type\":null,\"fingerprint\":{\"global\":{\"distinct-count\":5,\"nil%\":0.0},\"type\":{\"type/Number\":{\"min\":9120.39,\"q1\":149814.72749999992,\"q3\":1879682.2635006425,\"max\":6767873.394002574,\"sd\":2952415.2024992867,\"avg\":1489138.0108005141}}}},{\"display_name\":\"country\",\"field_ref\":[\"field\",\"country\",{\"base-type\":\"type/Text\"}],\"name\":\"country\",\"base_type\":\"type/Text\",\"effective_type\":\"type/Text\",\"semantic_type\":\"type/Country\",\"fingerprint\":{\"global\":{\"distinct-count\":5,\"nil%\":0.0},\"type\":{\"type/Text\":{\"percent-json\":0.0,\"percent-url\":0.0,\"percent-email\":0.0,\"percent-state\":0.0,\"average-length\":8.0}}}}]', NULL, b'0'),
+(7, '2022-06-15 08:38:28', '2022-06-21 12:00:55', 'Time to Time Sale', NULL, 'line', '{\"type\":\"native\",\"native\":{\"query\":\"select sum(quantity) as \'Quantity\', date(invoicedate) as \'Date\' from cleaned_online_retail group by date(invoicedate)\",\"template-tags\":{}},\"database\":2}', '{\"graph.dimensions\":[\"Date\"],\"graph.metrics\":[\"Quantity\"],\"series_settings\":{\"Quantity\":{\"display\":\"area\"}}}', 1, 2, NULL, 'native', b'0', NULL, NULL, NULL, b'0', NULL, NULL, '[{\"display_name\":\"Quantity\",\"field_ref\":[\"field\",\"Quantity\",{\"base-type\":\"type/Decimal\"}],\"name\":\"Quantity\",\"base_type\":\"type/Decimal\",\"effective_type\":\"type/Decimal\",\"semantic_type\":null,\"fingerprint\":{\"global\":{\"distinct-count\":303,\"nil%\":0.0},\"type\":{\"type/Number\":{\"min\":2048.0,\"q1\":10519.152563362004,\"q3\":20084.794189845867,\"max\":45741.0,\"sd\":8282.29005038455,\"avg\":16088.15737704918}}}},{\"display_name\":\"Date\",\"field_ref\":[\"field\",\"Date\",{\"base-type\":\"type/Date\"}],\"name\":\"Date\",\"base_type\":\"type/Date\",\"effective_type\":\"type/Date\",\"semantic_type\":null,\"fingerprint\":{\"global\":{\"distinct-count\":305,\"nil%\":0.0},\"type\":{\"type/DateTime\":{\"earliest\":\"2010-12-01T00:00:00Z\",\"latest\":\"2011-12-09T00:00:00Z\"}}}}]', NULL, b'0'),
+(8, '2022-06-21 10:26:57', '2022-06-21 10:28:40', 'Top most bought product', NULL, 'pie', '{\"type\":\"native\",\"native\":{\"query\":\"select count(quantity) as \'Quantity\', description from cleaned_online_retail group by description limit 1\",\"template-tags\":{}},\"database\":2}', '{\"graph.dimensions\":[\"description\"],\"graph.metrics\":[\"Quantity\"]}', 1, 2, NULL, 'native', b'0', 1, NULL, NULL, b'0', NULL, NULL, '[{\"display_name\":\"Quantity\",\"field_ref\":[\"field\",\"Quantity\",{\"base-type\":\"type/BigInteger\"}],\"name\":\"Quantity\",\"base_type\":\"type/BigInteger\",\"effective_type\":\"type/BigInteger\",\"semantic_type\":\"type/Quantity\",\"fingerprint\":{\"global\":{\"distinct-count\":1,\"nil%\":0.0},\"type\":{\"type/Number\":{\"min\":2070.0,\"q1\":2070.0,\"q3\":2070.0,\"max\":2070.0,\"sd\":null,\"avg\":2070.0}}}},{\"display_name\":\"description\",\"field_ref\":[\"field\",\"description\",{\"base-type\":\"type/Text\"}],\"name\":\"description\",\"base_type\":\"type/Text\",\"effective_type\":\"type/Text\",\"semantic_type\":\"type/Description\",\"fingerprint\":{\"global\":{\"distinct-count\":1,\"nil%\":0.0},\"type\":{\"type/Text\":{\"percent-json\":0.0,\"percent-url\":0.0,\"percent-email\":0.0,\"percent-state\":0.0,\"average-length\":34.0}}}}]', NULL, b'0'),
+(9, '2022-06-21 10:31:29', '2022-06-21 12:00:57', 'Top most bought product', NULL, 'bar', '{\"type\":\"native\",\"native\":{\"query\":\"select description, count(quantity) as \'Quantity\' from cleaned_online_retail group by description limit 5\",\"template-tags\":{}},\"database\":2}', '{\"graph.dimensions\":[\"description\"],\"graph.metrics\":[\"Quantity\"]}', 1, 2, NULL, 'native', b'0', NULL, NULL, NULL, b'0', NULL, NULL, '[{\"display_name\":\"description\",\"field_ref\":[\"field\",\"description\",{\"base-type\":\"type/Text\"}],\"name\":\"description\",\"base_type\":\"type/Text\",\"effective_type\":\"type/Text\",\"semantic_type\":\"type/Description\",\"fingerprint\":{\"global\":{\"distinct-count\":5,\"nil%\":0.0},\"type\":{\"type/Text\":{\"percent-json\":0.0,\"percent-url\":0.0,\"percent-email\":0.0,\"percent-state\":0.0,\"average-length\":29.6}}}},{\"display_name\":\"Quantity\",\"field_ref\":[\"field\",\"Quantity\",{\"base-type\":\"type/BigInteger\"}],\"name\":\"Quantity\",\"base_type\":\"type/BigInteger\",\"effective_type\":\"type/BigInteger\",\"semantic_type\":\"type/Quantity\",\"fingerprint\":{\"global\":{\"distinct-count\":5,\"nil%\":0.0},\"type\":{\"type/Number\":{\"min\":250.0,\"q1\":256.75,\"q3\":767.25,\"max\":2070.0,\"sd\":795.6376687915172,\"avg\":648.4}}}}]', NULL, b'0'),
+(10, '2022-06-21 10:45:41', '2022-06-21 12:00:58', 'Basket of customer', NULL, 'bar', '{\"type\":\"native\",\"native\":{\"query\":\"select count(quantity) as \'Product Quantity Per Basket\', customerid as \'Customer ID\', invoiceno as \'Baskets\' from cleaned_online_retail group by invoiceno, customerid\",\"template-tags\":{}},\"database\":2}', '{\"graph.dimensions\":[\"Baskets\"],\"graph.metrics\":[\"Product Quantity Per Basket\"]}', 1, 2, NULL, 'native', b'0', NULL, NULL, NULL, b'0', NULL, NULL, '[{\"display_name\":\"Product Quantity Per Basket\",\"field_ref\":[\"field\",\"Product Quantity Per Basket\",{\"base-type\":\"type/BigInteger\"}],\"name\":\"Product Quantity Per Basket\",\"base_type\":\"type/BigInteger\",\"effective_type\":\"type/BigInteger\",\"semantic_type\":\"type/Quantity\",\"fingerprint\":{\"global\":{\"distinct-count\":96,\"nil%\":0.0},\"type\":{\"type/Number\":{\"min\":1.0,\"q1\":2.5830908730521505,\"q3\":21.750615862705306,\"max\":171.0,\"sd\":19.478640489459675,\"avg\":16.2925}}}},{\"display_name\":\"Customer ID\",\"field_ref\":[\"field\",\"Customer ID\",{\"base-type\":\"type/BigInteger\"}],\"name\":\"Customer ID\",\"base_type\":\"type/BigInteger\",\"effective_type\":\"type/BigInteger\",\"semantic_type\":null,\"fingerprint\":{\"global\":{\"distinct-count\":1050,\"nil%\":0.0},\"type\":{\"type/Number\":{\"min\":12347.0,\"q1\":13808.734391534392,\"q3\":16918.829479136624,\"max\":18283.0,\"sd\":1750.9227510795579,\"avg\":15355.376999999999}}}},{\"display_name\":\"Baskets\",\"field_ref\":[\"field\",\"Baskets\",{\"base-type\":\"type/Text\"}],\"name\":\"Baskets\",\"base_type\":\"type/Text\",\"effective_type\":\"type/Text\",\"semantic_type\":null,\"fingerprint\":{\"global\":{\"distinct-count\":2000,\"nil%\":0.0},\"type\":{\"type/Text\":{\"percent-json\":0.0,\"percent-url\":0.0,\"percent-email\":0.0,\"percent-state\":0.0,\"average-length\":6.1815}}}}]', NULL, b'0'),
+(11, '2022-06-21 12:00:49', '2022-06-21 12:02:18', 'Most pair count wise sort', NULL, 'table', '{\"type\":\"native\",\"native\":{\"query\":\"(select t1.description as Item1, t2.description as Item2, count(t1.invoiceno) as \'PairCount\' from cleaned_online_retail t1 join cleaned_online_retail t2 on t1.invoiceno = t2.invoiceno and t1.description != t2.description group by t1.invoiceno)\\norder by count(t1.invoiceno) desc limit 5\\n\",\"template-tags\":{}},\"database\":2}', '{\"graph.dimensions\":[\"Item1\",\"Item2\"],\"graph.metrics\":[\"PairCount\"],\"scatter.bubble\":null,\"pie.dimension\":\"Item1\",\"pie.metric\":\"PairCount\",\"scalar.switch_positive_negative\":true,\"table.pivot_column\":\"Item1\",\"table.cell_column\":\"PairCount\"}', 1, 2, NULL, 'native', b'0', NULL, NULL, NULL, b'0', NULL, NULL, '[{\"display_name\":\"Item1\",\"field_ref\":[\"field\",\"Item1\",{\"base-type\":\"type/Text\"}],\"name\":\"Item1\",\"base_type\":\"type/Text\",\"effective_type\":\"type/Text\",\"semantic_type\":null,\"fingerprint\":{\"global\":{\"distinct-count\":5,\"nil%\":0.0},\"type\":{\"type/Text\":{\"percent-json\":0.0,\"percent-url\":0.0,\"percent-email\":0.0,\"percent-state\":0.0,\"average-length\":26.0}}}},{\"display_name\":\"Item2\",\"field_ref\":[\"field\",\"Item2\",{\"base-type\":\"type/Text\"}],\"name\":\"Item2\",\"base_type\":\"type/Text\",\"effective_type\":\"type/Text\",\"semantic_type\":null,\"fingerprint\":{\"global\":{\"distinct-count\":5,\"nil%\":0.0},\"type\":{\"type/Text\":{\"percent-json\":0.0,\"percent-url\":0.0,\"percent-email\":0.0,\"percent-state\":0.0,\"average-length\":26.0}}}},{\"display_name\":\"PairCount\",\"field_ref\":[\"field\",\"PairCount\",{\"base-type\":\"type/BigInteger\"}],\"name\":\"PairCount\",\"base_type\":\"type/BigInteger\",\"effective_type\":\"type/BigInteger\",\"semantic_type\":\"type/Quantity\",\"fingerprint\":{\"global\":{\"distinct-count\":5,\"nil%\":0.0},\"type\":{\"type/Number\":{\"min\":188788.0,\"q1\":193384.0,\"q3\":285966.0,\"max\":293220.0,\"sd\":51508.27866663766,\"avg\":247955.2}}}}]', NULL, b'0');
 
 -- --------------------------------------------------------
 
@@ -1570,11 +2013,11 @@ INSERT INTO `report_card` (`id`, `created_at`, `updated_at`, `name`, `descriptio
 --
 
 CREATE TABLE `report_cardfavorite` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `card_id` int(11) NOT NULL,
-  `owner_id` int(11) NOT NULL
+  `card_id` int NOT NULL,
+  `owner_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1584,25 +2027,25 @@ CREATE TABLE `report_cardfavorite` (
 --
 
 CREATE TABLE `report_dashboard` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `name` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `creator_id` int(11) NOT NULL,
-  `parameters` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `points_of_interest` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `caveats` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `creator_id` int NOT NULL,
+  `parameters` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `points_of_interest` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `caveats` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `show_in_getting_started` bit(1) NOT NULL DEFAULT b'0',
-  `public_uuid` char(36) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Unique UUID used to in publically-accessible links to this Dashboard.',
-  `made_public_by_id` int(11) DEFAULT NULL COMMENT 'The ID of the User who first publically shared this Dashboard.',
+  `public_uuid` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Unique UUID used to in publically-accessible links to this Dashboard.',
+  `made_public_by_id` int DEFAULT NULL COMMENT 'The ID of the User who first publically shared this Dashboard.',
   `enable_embedding` bit(1) NOT NULL DEFAULT b'0' COMMENT 'Is this Dashboard allowed to be embedded in different websites (using a signed JWT)?',
-  `embedding_params` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `embedding_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `archived` bit(1) NOT NULL DEFAULT b'0' COMMENT 'Is this Dashboard archived (effectively treated as deleted?)',
-  `position` int(11) DEFAULT NULL COMMENT 'The position this Dashboard should appear in the Dashboards list, lower-numbered positions appearing before higher numbered ones.',
-  `collection_id` int(11) DEFAULT NULL COMMENT 'Optional ID of Collection this Dashboard belongs to.',
-  `collection_position` smallint(6) DEFAULT NULL COMMENT 'Optional pinned position for this item in its Collection. NULL means item is not pinned.',
-  `cache_ttl` int(11) DEFAULT NULL COMMENT 'Granular cache TTL for specific dashboard.'
+  `position` int DEFAULT NULL COMMENT 'The position this Dashboard should appear in the Dashboards list, lower-numbered positions appearing before higher numbered ones.',
+  `collection_id` int DEFAULT NULL COMMENT 'Optional ID of Collection this Dashboard belongs to.',
+  `collection_position` smallint DEFAULT NULL COMMENT 'Optional pinned position for this item in its Collection. NULL means item is not pinned.',
+  `cache_ttl` int DEFAULT NULL COMMENT 'Granular cache TTL for specific dashboard.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1610,7 +2053,7 @@ CREATE TABLE `report_dashboard` (
 --
 
 INSERT INTO `report_dashboard` (`id`, `created_at`, `updated_at`, `name`, `description`, `creator_id`, `parameters`, `points_of_interest`, `caveats`, `show_in_getting_started`, `public_uuid`, `made_public_by_id`, `enable_embedding`, `embedding_params`, `archived`, `position`, `collection_id`, `collection_position`, `cache_ttl`) VALUES
-(1, '2022-06-14 07:24:32', '2022-06-15 10:13:24', 'Descriptive Analysis', NULL, 1, '[]', NULL, NULL, b'0', NULL, NULL, b'0', NULL, b'0', NULL, NULL, NULL, NULL);
+(1, '2022-06-14 07:24:32', '2022-06-21 12:03:14', 'Descriptive Analysis', NULL, 1, '[]', NULL, NULL, b'0', NULL, NULL, b'0', NULL, b'0', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1619,17 +2062,17 @@ INSERT INTO `report_dashboard` (`id`, `created_at`, `updated_at`, `name`, `descr
 --
 
 CREATE TABLE `report_dashboardcard` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `sizeX` int(11) NOT NULL,
-  `sizeY` int(11) NOT NULL,
-  `row` int(11) NOT NULL DEFAULT 0,
-  `col` int(11) NOT NULL DEFAULT 0,
-  `card_id` int(11) DEFAULT NULL,
-  `dashboard_id` int(11) NOT NULL,
-  `parameter_mappings` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `visualization_settings` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `sizeX` int NOT NULL,
+  `sizeY` int NOT NULL,
+  `row` int NOT NULL DEFAULT '0',
+  `col` int NOT NULL DEFAULT '0',
+  `card_id` int DEFAULT NULL,
+  `dashboard_id` int NOT NULL,
+  `parameter_mappings` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `visualization_settings` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1637,12 +2080,15 @@ CREATE TABLE `report_dashboardcard` (
 --
 
 INSERT INTO `report_dashboardcard` (`id`, `created_at`, `updated_at`, `sizeX`, `sizeY`, `row`, `col`, `card_id`, `dashboard_id`, `parameter_mappings`, `visualization_settings`) VALUES
-(1, '2022-06-14 10:31:50', '2022-06-15 10:13:24', 18, 4, 0, 0, 1, 1, '[]', '{}'),
-(2, '2022-06-14 10:47:34', '2022-06-15 10:13:24', 18, 5, 8, 0, 2, 1, '[]', '{\"map.colors\":[\"#daecfb\",\"#aad1f4\",\"#7ab7ec\",\"#499ce5\",\"hsl(208.20000000000005, 79.7%, 42.1%)\"],\"map.dimension\":\"country\",\"map.region\":\"world_countries\",\"graph.dimensions\":[\"country\"],\"graph.y_axis.title_text\":\"Total Quantity\",\"graph.metrics\":[\"Total Products\"]}'),
-(3, '2022-06-15 05:08:57', '2022-06-15 10:13:24', 18, 4, 4, 0, 3, 1, '[]', '{}'),
-(5, '2022-06-15 05:28:46', '2022-06-15 10:13:24', 18, 4, 17, 0, 5, 1, '[]', '{}'),
-(6, '2022-06-15 05:34:23', '2022-06-15 10:13:24', 18, 4, 13, 0, 6, 1, '[]', '{}'),
-(7, '2022-06-15 10:13:24', '2022-06-15 10:13:24', 18, 4, 21, 0, 7, 1, '[]', '{}');
+(1, '2022-06-14 10:31:50', '2022-06-21 12:03:14', 18, 4, 0, 0, 1, 1, '[]', '{}'),
+(2, '2022-06-14 10:47:34', '2022-06-21 12:03:14', 18, 5, 8, 0, 2, 1, '[]', '{\"map.colors\":[\"#daecfb\",\"#aad1f4\",\"#7ab7ec\",\"#499ce5\",\"hsl(208.20000000000005, 79.7%, 42.1%)\"],\"map.dimension\":\"country\",\"map.region\":\"world_countries\",\"graph.dimensions\":[\"country\"],\"graph.y_axis.title_text\":\"Total Quantity\",\"graph.metrics\":[\"Total Products\"]}'),
+(3, '2022-06-15 05:08:57', '2022-06-21 12:03:14', 18, 4, 4, 0, 3, 1, '[]', '{}'),
+(5, '2022-06-15 05:28:46', '2022-06-21 12:03:14', 18, 4, 17, 0, 5, 1, '[]', '{}'),
+(6, '2022-06-15 05:34:23', '2022-06-21 12:03:14', 18, 4, 13, 0, 6, 1, '[]', '{}'),
+(7, '2022-06-15 10:13:24', '2022-06-21 12:03:14', 18, 4, 21, 0, 7, 1, '[]', '{}'),
+(8, '2022-06-21 10:32:53', '2022-06-21 12:03:14', 18, 8, 25, 0, 9, 1, '[]', '{}'),
+(9, '2022-06-21 10:46:48', '2022-06-21 12:03:14', 18, 8, 33, 0, 10, 1, '[]', '{}'),
+(10, '2022-06-21 12:03:14', '2022-06-21 12:03:14', 18, 5, 41, 0, 11, 1, '[]', '{}');
 
 -- --------------------------------------------------------
 
@@ -1651,15 +2097,15 @@ INSERT INTO `report_dashboardcard` (`id`, `created_at`, `updated_at`, `sizeX`, `
 --
 
 CREATE TABLE `revision` (
-  `id` int(11) NOT NULL,
-  `model` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `model_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `timestamp` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
-  `object` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` int NOT NULL,
+  `model` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `timestamp` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+  `object` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `is_reversion` bit(1) NOT NULL DEFAULT b'0',
   `is_creation` bit(1) NOT NULL DEFAULT b'0',
-  `message` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `message` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1671,17 +2117,8 @@ INSERT INTO `revision` (`id`, `model`, `model_id`, `user_id`, `timestamp`, `obje
 (7, 'Card', 2, 1, '2022-06-14 10:47:16.472000', '{\"description\":null,\"archived\":false,\"collection_position\":null,\"table_id\":null,\"database_id\":2,\"enable_embedding\":false,\"collection_id\":null,\"query_type\":\"native\",\"name\":\"Grouping countries by total quantity\",\"creator_id\":1,\"made_public_by_id\":null,\"embedding_params\":null,\"cache_ttl\":null,\"dataset_query\":{\"type\":\"native\",\"native\":{\"query\":\"select sum(quantity) as \'Total Products\', country from cleaned_online_retail group by country order by sum(quantity) desc \",\"template-tags\":{}},\"database\":2},\"id\":2,\"display\":\"bar\",\"visualization_settings\":{\"map.colors\":[\"#daecfb\",\"#aad1f4\",\"#7ab7ec\",\"#499ce5\",\"hsl(208.20000000000005, 79.7%, 42.1%)\"],\"map.dimension\":\"country\",\"map.region\":\"world_countries\",\"graph.dimensions\":[\"country\"],\"graph.metrics\":[\"Total Products\"]},\"dataset\":false,\"public_uuid\":null}', b'0', b'1', NULL),
 (18, 'Card', 3, 1, '2022-06-15 05:07:35.392000', '{\"description\":null,\"archived\":false,\"collection_position\":null,\"table_id\":null,\"database_id\":2,\"enable_embedding\":false,\"collection_id\":null,\"query_type\":\"native\",\"name\":\"Total product counts per region\",\"creator_id\":1,\"made_public_by_id\":null,\"embedding_params\":null,\"cache_ttl\":null,\"dataset_query\":{\"type\":\"native\",\"native\":{\"query\":\"select country, count(distinct(stockcode)) as \'Product Counts\' from cleaned_online_retail group by country\",\"template-tags\":{}},\"database\":2},\"id\":3,\"display\":\"bar\",\"visualization_settings\":{\"graph.dimensions\":[\"country\"],\"graph.metrics\":[\"Product Counts\"]},\"dataset\":false,\"public_uuid\":null}', b'0', b'1', NULL),
 (22, 'Card', 4, 1, '2022-06-15 05:14:31.257000', '{\"description\":null,\"archived\":false,\"collection_position\":null,\"table_id\":null,\"database_id\":2,\"enable_embedding\":false,\"collection_id\":null,\"query_type\":\"native\",\"name\":\"Top 5 countries by Total Unit Price\",\"creator_id\":1,\"made_public_by_id\":null,\"embedding_params\":null,\"cache_ttl\":null,\"dataset_query\":{\"type\":\"native\",\"native\":{\"query\":\"select sum(unitprice) as \'Unit Price\', country from cleaned_online_retail group by country order by sum(unitprice) desc limit 5\",\"template-tags\":{}},\"database\":2},\"id\":4,\"display\":\"row\",\"visualization_settings\":{\"graph.dimensions\":[\"country\"],\"graph.metrics\":[\"Unit Price\"]},\"dataset\":false,\"public_uuid\":null}', b'0', b'1', NULL),
-(24, 'Dashboard', 1, 1, '2022-06-15 05:15:09.985000', '{\"description\":null,\"name\":\"Descriptive Analysis\",\"cache_ttl\":null,\"cards\":[{\"sizeX\":18,\"sizeY\":4,\"row\":0,\"col\":0,\"id\":1,\"card_id\":1,\"series\":[]},{\"sizeX\":18,\"sizeY\":7,\"row\":4,\"col\":0,\"id\":2,\"card_id\":2,\"series\":[]},{\"sizeX\":18,\"sizeY\":6,\"row\":11,\"col\":0,\"id\":3,\"card_id\":3,\"series\":[]},{\"sizeX\":18,\"sizeY\":5,\"row\":17,\"col\":0,\"id\":4,\"card_id\":4,\"series\":[]}]}', b'0', b'0', NULL),
-(25, 'Dashboard', 1, 1, '2022-06-15 05:15:09.996000', '{\"description\":null,\"name\":\"Descriptive Analysis\",\"cache_ttl\":null,\"cards\":[{\"sizeX\":18,\"sizeY\":4,\"row\":0,\"col\":0,\"id\":1,\"card_id\":1,\"series\":[]},{\"sizeX\":18,\"sizeY\":7,\"row\":4,\"col\":0,\"id\":2,\"card_id\":2,\"series\":[]},{\"sizeX\":18,\"sizeY\":6,\"row\":11,\"col\":0,\"id\":3,\"card_id\":3,\"series\":[]},{\"sizeX\":18,\"sizeY\":5,\"row\":17,\"col\":0,\"id\":4,\"card_id\":4,\"series\":[]}]}', b'0', b'0', NULL),
 (26, 'Card', 5, 1, '2022-06-15 05:24:28.239000', '{\"description\":null,\"archived\":false,\"collection_position\":null,\"table_id\":null,\"database_id\":2,\"enable_embedding\":false,\"collection_id\":null,\"query_type\":\"native\",\"name\":\"Total Unit Price sold by year\",\"creator_id\":1,\"made_public_by_id\":null,\"embedding_params\":null,\"cache_ttl\":null,\"dataset_query\":{\"type\":\"native\",\"native\":{\"query\":\"select sum(unitprice * quantity) as \'Total Unit Price Sold\', year(invoicedate) as Year from cleaned_online_retail group by year(invoicedate) \",\"template-tags\":{}},\"database\":2},\"id\":5,\"display\":\"row\",\"visualization_settings\":{\"graph.dimensions\":[\"Year\"],\"graph.metrics\":[\"Total Unit Price Sold\"]},\"dataset\":false,\"public_uuid\":null}', b'0', b'1', NULL),
-(27, 'Dashboard', 1, 1, '2022-06-15 05:28:46.739000', '{\"description\":null,\"name\":\"Descriptive Analysis\",\"cache_ttl\":null,\"cards\":[{\"sizeX\":18,\"sizeY\":4,\"row\":0,\"col\":0,\"id\":1,\"card_id\":1,\"series\":[]},{\"sizeX\":18,\"sizeY\":7,\"row\":4,\"col\":0,\"id\":2,\"card_id\":2,\"series\":[]},{\"sizeX\":18,\"sizeY\":6,\"row\":11,\"col\":0,\"id\":3,\"card_id\":3,\"series\":[]},{\"sizeX\":18,\"sizeY\":5,\"row\":17,\"col\":0,\"id\":4,\"card_id\":4,\"series\":[]},{\"sizeX\":2,\"sizeY\":2,\"row\":0,\"col\":0,\"id\":5,\"card_id\":5,\"series\":[]}]}', b'0', b'0', NULL),
-(28, 'Dashboard', 1, 1, '2022-06-15 05:28:46.778000', '{\"description\":null,\"name\":\"Descriptive Analysis\",\"cache_ttl\":null,\"cards\":[{\"sizeX\":18,\"sizeY\":4,\"row\":0,\"col\":0,\"id\":1,\"card_id\":1,\"series\":[]},{\"sizeX\":18,\"sizeY\":7,\"row\":4,\"col\":0,\"id\":2,\"card_id\":2,\"series\":[]},{\"sizeX\":18,\"sizeY\":6,\"row\":11,\"col\":0,\"id\":3,\"card_id\":3,\"series\":[]},{\"sizeX\":18,\"sizeY\":5,\"row\":17,\"col\":0,\"id\":4,\"card_id\":4,\"series\":[]},{\"sizeX\":18,\"sizeY\":6,\"row\":22,\"col\":0,\"id\":5,\"card_id\":5,\"series\":[]}]}', b'0', b'0', NULL),
-(29, 'Dashboard', 1, 1, '2022-06-15 05:28:46.789000', '{\"description\":null,\"name\":\"Descriptive Analysis\",\"cache_ttl\":null,\"cards\":[{\"sizeX\":18,\"sizeY\":4,\"row\":0,\"col\":0,\"id\":1,\"card_id\":1,\"series\":[]},{\"sizeX\":18,\"sizeY\":7,\"row\":4,\"col\":0,\"id\":2,\"card_id\":2,\"series\":[]},{\"sizeX\":18,\"sizeY\":6,\"row\":11,\"col\":0,\"id\":3,\"card_id\":3,\"series\":[]},{\"sizeX\":18,\"sizeY\":5,\"row\":17,\"col\":0,\"id\":4,\"card_id\":4,\"series\":[]},{\"sizeX\":18,\"sizeY\":6,\"row\":22,\"col\":0,\"id\":5,\"card_id\":5,\"series\":[]}]}', b'0', b'0', NULL),
 (30, 'Card', 6, 1, '2022-06-15 05:32:45.640000', '{\"description\":null,\"archived\":false,\"collection_position\":null,\"table_id\":null,\"database_id\":2,\"enable_embedding\":false,\"collection_id\":null,\"query_type\":\"native\",\"name\":\"Top 5 countries by Total Unit Price\",\"creator_id\":1,\"made_public_by_id\":null,\"embedding_params\":null,\"cache_ttl\":null,\"dataset_query\":{\"type\":\"native\",\"native\":{\"query\":\"SELECT `source`.`Unit Price` AS `Unit Price`, `source`.`country` AS `country`\\nFROM (select sum(unitprice * quantity) as \'Unit Price\', country from cleaned_online_retail group by country order by sum(unitprice) desc limit 5) `source`\\nLIMIT 1048575\",\"template-tags\":{}},\"database\":2},\"id\":6,\"display\":\"row\",\"visualization_settings\":{\"graph.dimensions\":[\"country\"],\"graph.metrics\":[\"Unit Price\"]},\"dataset\":false,\"public_uuid\":null}', b'0', b'1', NULL),
-(31, 'Dashboard', 1, 1, '2022-06-15 05:34:23.850000', '{\"description\":null,\"name\":\"Descriptive Analysis\",\"cache_ttl\":null,\"cards\":[{\"sizeX\":18,\"sizeY\":4,\"row\":0,\"col\":0,\"id\":1,\"card_id\":1,\"series\":[]},{\"sizeX\":18,\"sizeY\":7,\"row\":4,\"col\":0,\"id\":2,\"card_id\":2,\"series\":[]},{\"sizeX\":18,\"sizeY\":6,\"row\":11,\"col\":0,\"id\":3,\"card_id\":3,\"series\":[]},{\"sizeX\":18,\"sizeY\":6,\"row\":22,\"col\":0,\"id\":5,\"card_id\":5,\"series\":[]}]}', b'0', b'0', NULL),
-(32, 'Dashboard', 1, 1, '2022-06-15 05:34:23.862000', '{\"description\":null,\"name\":\"Descriptive Analysis\",\"cache_ttl\":null,\"cards\":[{\"sizeX\":18,\"sizeY\":4,\"row\":0,\"col\":0,\"id\":1,\"card_id\":1,\"series\":[]},{\"sizeX\":18,\"sizeY\":7,\"row\":4,\"col\":0,\"id\":2,\"card_id\":2,\"series\":[]},{\"sizeX\":18,\"sizeY\":6,\"row\":11,\"col\":0,\"id\":3,\"card_id\":3,\"series\":[]},{\"sizeX\":18,\"sizeY\":6,\"row\":22,\"col\":0,\"id\":5,\"card_id\":5,\"series\":[]},{\"sizeX\":2,\"sizeY\":2,\"row\":0,\"col\":0,\"id\":6,\"card_id\":6,\"series\":[]}]}', b'0', b'0', NULL),
-(33, 'Dashboard', 1, 1, '2022-06-15 05:34:23.896000', '{\"description\":null,\"name\":\"Descriptive Analysis\",\"cache_ttl\":null,\"cards\":[{\"sizeX\":18,\"sizeY\":4,\"row\":6,\"col\":0,\"id\":1,\"card_id\":1,\"series\":[]},{\"sizeX\":18,\"sizeY\":7,\"row\":10,\"col\":0,\"id\":2,\"card_id\":2,\"series\":[]},{\"sizeX\":18,\"sizeY\":6,\"row\":0,\"col\":0,\"id\":3,\"card_id\":3,\"series\":[]},{\"sizeX\":18,\"sizeY\":6,\"row\":21,\"col\":0,\"id\":5,\"card_id\":5,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":17,\"col\":0,\"id\":6,\"card_id\":6,\"series\":[]}]}', b'0', b'0', NULL),
-(34, 'Dashboard', 1, 1, '2022-06-15 05:34:23.917000', '{\"description\":null,\"name\":\"Descriptive Analysis\",\"cache_ttl\":null,\"cards\":[{\"sizeX\":18,\"sizeY\":4,\"row\":6,\"col\":0,\"id\":1,\"card_id\":1,\"series\":[]},{\"sizeX\":18,\"sizeY\":7,\"row\":10,\"col\":0,\"id\":2,\"card_id\":2,\"series\":[]},{\"sizeX\":18,\"sizeY\":6,\"row\":0,\"col\":0,\"id\":3,\"card_id\":3,\"series\":[]},{\"sizeX\":18,\"sizeY\":6,\"row\":21,\"col\":0,\"id\":5,\"card_id\":5,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":17,\"col\":0,\"id\":6,\"card_id\":6,\"series\":[]}]}', b'0', b'0', NULL),
 (35, 'Dashboard', 1, 1, '2022-06-15 08:04:51.793000', '{\"description\":null,\"name\":\"Descriptive Analysis\",\"cache_ttl\":null,\"cards\":[{\"sizeX\":18,\"sizeY\":4,\"row\":6,\"col\":0,\"id\":1,\"card_id\":1,\"series\":[]},{\"sizeX\":18,\"sizeY\":7,\"row\":10,\"col\":0,\"id\":2,\"card_id\":2,\"series\":[]},{\"sizeX\":18,\"sizeY\":6,\"row\":0,\"col\":0,\"id\":3,\"card_id\":3,\"series\":[]},{\"sizeX\":18,\"sizeY\":6,\"row\":21,\"col\":0,\"id\":5,\"card_id\":5,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":17,\"col\":0,\"id\":6,\"card_id\":6,\"series\":[]}]}', b'0', b'0', NULL),
 (36, 'Dashboard', 1, 1, '2022-06-15 08:19:30.506000', '{\"description\":null,\"name\":\"Descriptive Analysis\",\"cache_ttl\":null,\"cards\":[{\"sizeX\":18,\"sizeY\":4,\"row\":4,\"col\":0,\"id\":1,\"card_id\":1,\"series\":[]},{\"sizeX\":18,\"sizeY\":5,\"row\":8,\"col\":0,\"id\":2,\"card_id\":2,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":0,\"col\":0,\"id\":3,\"card_id\":3,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":17,\"col\":0,\"id\":5,\"card_id\":5,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":13,\"col\":0,\"id\":6,\"card_id\":6,\"series\":[]}]}', b'0', b'0', NULL),
 (37, 'Dashboard', 1, 1, '2022-06-15 08:19:30.523000', '{\"description\":null,\"name\":\"Descriptive Analysis\",\"cache_ttl\":null,\"cards\":[{\"sizeX\":18,\"sizeY\":4,\"row\":4,\"col\":0,\"id\":1,\"card_id\":1,\"series\":[]},{\"sizeX\":18,\"sizeY\":5,\"row\":8,\"col\":0,\"id\":2,\"card_id\":2,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":0,\"col\":0,\"id\":3,\"card_id\":3,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":17,\"col\":0,\"id\":5,\"card_id\":5,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":13,\"col\":0,\"id\":6,\"card_id\":6,\"series\":[]}]}', b'0', b'0', NULL),
@@ -1689,7 +2126,23 @@ INSERT INTO `revision` (`id`, `model`, `model_id`, `user_id`, `timestamp`, `obje
 (39, 'Card', 7, 1, '2022-06-15 10:11:56.087000', '{\"description\":null,\"archived\":false,\"collection_position\":null,\"table_id\":null,\"database_id\":2,\"enable_embedding\":false,\"collection_id\":null,\"query_type\":\"native\",\"name\":\"Time to Time Sale\",\"creator_id\":1,\"made_public_by_id\":null,\"embedding_params\":null,\"cache_ttl\":null,\"dataset_query\":{\"type\":\"native\",\"native\":{\"query\":\"select sum(quantity) as \'Quantity\', date(invoicedate) as \'Date\' from cleaned_online_retail group by date(invoicedate)\",\"template-tags\":{}},\"database\":2},\"id\":7,\"display\":\"line\",\"visualization_settings\":{\"graph.dimensions\":[\"Date\"],\"series_settings\":{\"Quantity\":{\"display\":\"area\"}},\"graph.metrics\":[\"Quantity\"]},\"dataset\":false,\"public_uuid\":null}', b'0', b'0', NULL),
 (40, 'Dashboard', 1, 1, '2022-06-15 10:13:24.344000', '{\"description\":null,\"name\":\"Descriptive Analysis\",\"cache_ttl\":null,\"cards\":[{\"sizeX\":18,\"sizeY\":4,\"row\":4,\"col\":0,\"id\":1,\"card_id\":1,\"series\":[]},{\"sizeX\":18,\"sizeY\":5,\"row\":8,\"col\":0,\"id\":2,\"card_id\":2,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":0,\"col\":0,\"id\":3,\"card_id\":3,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":17,\"col\":0,\"id\":5,\"card_id\":5,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":13,\"col\":0,\"id\":6,\"card_id\":6,\"series\":[]},{\"sizeX\":2,\"sizeY\":2,\"row\":0,\"col\":0,\"id\":7,\"card_id\":7,\"series\":[]}]}', b'0', b'0', NULL),
 (41, 'Dashboard', 1, 1, '2022-06-15 10:13:24.392000', '{\"description\":null,\"name\":\"Descriptive Analysis\",\"cache_ttl\":null,\"cards\":[{\"sizeX\":18,\"sizeY\":4,\"row\":0,\"col\":0,\"id\":1,\"card_id\":1,\"series\":[]},{\"sizeX\":18,\"sizeY\":5,\"row\":8,\"col\":0,\"id\":2,\"card_id\":2,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":4,\"col\":0,\"id\":3,\"card_id\":3,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":17,\"col\":0,\"id\":5,\"card_id\":5,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":13,\"col\":0,\"id\":6,\"card_id\":6,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":21,\"col\":0,\"id\":7,\"card_id\":7,\"series\":[]}]}', b'0', b'0', NULL),
-(42, 'Dashboard', 1, 1, '2022-06-15 10:13:24.409000', '{\"description\":null,\"name\":\"Descriptive Analysis\",\"cache_ttl\":null,\"cards\":[{\"sizeX\":18,\"sizeY\":4,\"row\":0,\"col\":0,\"id\":1,\"card_id\":1,\"series\":[]},{\"sizeX\":18,\"sizeY\":5,\"row\":8,\"col\":0,\"id\":2,\"card_id\":2,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":4,\"col\":0,\"id\":3,\"card_id\":3,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":17,\"col\":0,\"id\":5,\"card_id\":5,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":13,\"col\":0,\"id\":6,\"card_id\":6,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":21,\"col\":0,\"id\":7,\"card_id\":7,\"series\":[]}]}', b'0', b'0', NULL);
+(42, 'Dashboard', 1, 1, '2022-06-15 10:13:24.409000', '{\"description\":null,\"name\":\"Descriptive Analysis\",\"cache_ttl\":null,\"cards\":[{\"sizeX\":18,\"sizeY\":4,\"row\":0,\"col\":0,\"id\":1,\"card_id\":1,\"series\":[]},{\"sizeX\":18,\"sizeY\":5,\"row\":8,\"col\":0,\"id\":2,\"card_id\":2,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":4,\"col\":0,\"id\":3,\"card_id\":3,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":17,\"col\":0,\"id\":5,\"card_id\":5,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":13,\"col\":0,\"id\":6,\"card_id\":6,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":21,\"col\":0,\"id\":7,\"card_id\":7,\"series\":[]}]}', b'0', b'0', NULL),
+(43, 'Card', 8, 1, '2022-06-21 10:26:56.000000', '{\"description\":null,\"archived\":false,\"collection_position\":null,\"table_id\":null,\"database_id\":2,\"enable_embedding\":false,\"collection_id\":null,\"query_type\":\"native\",\"name\":\"Top most bought product\",\"creator_id\":1,\"made_public_by_id\":null,\"embedding_params\":null,\"cache_ttl\":null,\"dataset_query\":{\"type\":\"native\",\"native\":{\"query\":\"select count(quantity) as \'Quantity\', description from cleaned_online_retail group by description limit 1\",\"template-tags\":{}},\"database\":2},\"id\":8,\"display\":\"pie\",\"visualization_settings\":{\"graph.dimensions\":[\"description\"],\"graph.metrics\":[\"Quantity\"]},\"dataset\":false,\"public_uuid\":null}', b'0', b'1', NULL),
+(44, 'Card', 8, 1, '2022-06-21 10:28:39.000000', '{\"description\":null,\"archived\":false,\"collection_position\":null,\"table_id\":null,\"database_id\":2,\"enable_embedding\":false,\"collection_id\":1,\"query_type\":\"native\",\"name\":\"Top most bought product\",\"creator_id\":1,\"made_public_by_id\":null,\"embedding_params\":null,\"cache_ttl\":null,\"dataset_query\":{\"type\":\"native\",\"native\":{\"query\":\"select count(quantity) as \'Quantity\', description from cleaned_online_retail group by description limit 1\",\"template-tags\":{}},\"database\":2},\"id\":8,\"display\":\"pie\",\"visualization_settings\":{\"graph.dimensions\":[\"description\"],\"graph.metrics\":[\"Quantity\"]},\"dataset\":false,\"public_uuid\":null}', b'0', b'0', NULL),
+(45, 'Card', 9, 1, '2022-06-21 10:31:29.000000', '{\"description\":null,\"archived\":false,\"collection_position\":null,\"table_id\":null,\"database_id\":2,\"enable_embedding\":false,\"collection_id\":null,\"query_type\":\"native\",\"name\":\"Top most bought product\",\"creator_id\":1,\"made_public_by_id\":null,\"embedding_params\":null,\"cache_ttl\":null,\"dataset_query\":{\"type\":\"native\",\"native\":{\"query\":\"select description, count(quantity) as \'Quantity\' from cleaned_online_retail group by description limit 5\",\"template-tags\":{}},\"database\":2},\"id\":9,\"display\":\"bar\",\"visualization_settings\":{\"graph.dimensions\":[\"description\"],\"graph.metrics\":[\"Quantity\"]},\"dataset\":false,\"public_uuid\":null}', b'0', b'1', NULL),
+(46, 'Card', 9, 1, '2022-06-21 10:32:07.000000', '{\"description\":null,\"archived\":false,\"collection_position\":null,\"table_id\":null,\"database_id\":2,\"enable_embedding\":false,\"collection_id\":1,\"query_type\":\"native\",\"name\":\"Top most bought product\",\"creator_id\":1,\"made_public_by_id\":null,\"embedding_params\":null,\"cache_ttl\":null,\"dataset_query\":{\"type\":\"native\",\"native\":{\"query\":\"select description, count(quantity) as \'Quantity\' from cleaned_online_retail group by description limit 5\",\"template-tags\":{}},\"database\":2},\"id\":9,\"display\":\"bar\",\"visualization_settings\":{\"graph.dimensions\":[\"description\"],\"graph.metrics\":[\"Quantity\"]},\"dataset\":false,\"public_uuid\":null}', b'0', b'0', NULL),
+(47, 'Card', 9, 1, '2022-06-21 10:32:17.000000', '{\"description\":null,\"archived\":false,\"collection_position\":null,\"table_id\":null,\"database_id\":2,\"enable_embedding\":false,\"collection_id\":null,\"query_type\":\"native\",\"name\":\"Top most bought product\",\"creator_id\":1,\"made_public_by_id\":null,\"embedding_params\":null,\"cache_ttl\":null,\"dataset_query\":{\"type\":\"native\",\"native\":{\"query\":\"select description, count(quantity) as \'Quantity\' from cleaned_online_retail group by description limit 5\",\"template-tags\":{}},\"database\":2},\"id\":9,\"display\":\"bar\",\"visualization_settings\":{\"graph.dimensions\":[\"description\"],\"graph.metrics\":[\"Quantity\"]},\"dataset\":false,\"public_uuid\":null}', b'0', b'0', NULL),
+(48, 'Dashboard', 1, 1, '2022-06-21 10:32:53.000000', '{\"description\":null,\"name\":\"Descriptive Analysis\",\"cache_ttl\":null,\"cards\":[{\"sizeX\":18,\"sizeY\":4,\"row\":0,\"col\":0,\"id\":1,\"card_id\":1,\"series\":[]},{\"sizeX\":18,\"sizeY\":5,\"row\":8,\"col\":0,\"id\":2,\"card_id\":2,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":4,\"col\":0,\"id\":3,\"card_id\":3,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":17,\"col\":0,\"id\":5,\"card_id\":5,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":13,\"col\":0,\"id\":6,\"card_id\":6,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":21,\"col\":0,\"id\":7,\"card_id\":7,\"series\":[]},{\"sizeX\":2,\"sizeY\":2,\"row\":0,\"col\":0,\"id\":8,\"card_id\":9,\"series\":[]}]}', b'0', b'0', NULL),
+(49, 'Dashboard', 1, 1, '2022-06-21 10:32:53.000000', '{\"description\":null,\"name\":\"Descriptive Analysis\",\"cache_ttl\":null,\"cards\":[{\"sizeX\":18,\"sizeY\":4,\"row\":0,\"col\":0,\"id\":1,\"card_id\":1,\"series\":[]},{\"sizeX\":18,\"sizeY\":5,\"row\":8,\"col\":0,\"id\":2,\"card_id\":2,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":4,\"col\":0,\"id\":3,\"card_id\":3,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":17,\"col\":0,\"id\":5,\"card_id\":5,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":13,\"col\":0,\"id\":6,\"card_id\":6,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":21,\"col\":0,\"id\":7,\"card_id\":7,\"series\":[]},{\"sizeX\":18,\"sizeY\":8,\"row\":25,\"col\":0,\"id\":8,\"card_id\":9,\"series\":[]}]}', b'0', b'0', NULL),
+(50, 'Dashboard', 1, 1, '2022-06-21 10:32:53.000000', '{\"description\":null,\"name\":\"Descriptive Analysis\",\"cache_ttl\":null,\"cards\":[{\"sizeX\":18,\"sizeY\":4,\"row\":0,\"col\":0,\"id\":1,\"card_id\":1,\"series\":[]},{\"sizeX\":18,\"sizeY\":5,\"row\":8,\"col\":0,\"id\":2,\"card_id\":2,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":4,\"col\":0,\"id\":3,\"card_id\":3,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":17,\"col\":0,\"id\":5,\"card_id\":5,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":13,\"col\":0,\"id\":6,\"card_id\":6,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":21,\"col\":0,\"id\":7,\"card_id\":7,\"series\":[]},{\"sizeX\":18,\"sizeY\":8,\"row\":25,\"col\":0,\"id\":8,\"card_id\":9,\"series\":[]}]}', b'0', b'0', NULL),
+(51, 'Card', 10, 1, '2022-06-21 10:45:41.000000', '{\"description\":null,\"archived\":false,\"collection_position\":null,\"table_id\":null,\"database_id\":2,\"enable_embedding\":false,\"collection_id\":null,\"query_type\":\"native\",\"name\":\"Basket of customer\",\"creator_id\":1,\"made_public_by_id\":null,\"embedding_params\":null,\"cache_ttl\":null,\"dataset_query\":{\"type\":\"native\",\"native\":{\"query\":\"select count(quantity) as \'Product Quantity Per Basket\', customerid as \'Customer ID\', invoiceno as \'Baskets\' from cleaned_online_retail group by invoiceno, customerid\",\"template-tags\":{}},\"database\":2},\"id\":10,\"display\":\"bar\",\"visualization_settings\":{\"graph.dimensions\":[\"Baskets\"],\"graph.metrics\":[\"Product Quantity Per Basket\"]},\"dataset\":false,\"public_uuid\":null}', b'0', b'1', NULL),
+(52, 'Dashboard', 1, 1, '2022-06-21 10:46:48.000000', '{\"description\":null,\"name\":\"Descriptive Analysis\",\"cache_ttl\":null,\"cards\":[{\"sizeX\":18,\"sizeY\":4,\"row\":0,\"col\":0,\"id\":1,\"card_id\":1,\"series\":[]},{\"sizeX\":18,\"sizeY\":5,\"row\":8,\"col\":0,\"id\":2,\"card_id\":2,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":4,\"col\":0,\"id\":3,\"card_id\":3,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":17,\"col\":0,\"id\":5,\"card_id\":5,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":13,\"col\":0,\"id\":6,\"card_id\":6,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":21,\"col\":0,\"id\":7,\"card_id\":7,\"series\":[]},{\"sizeX\":18,\"sizeY\":8,\"row\":25,\"col\":0,\"id\":8,\"card_id\":9,\"series\":[]},{\"sizeX\":2,\"sizeY\":2,\"row\":0,\"col\":0,\"id\":9,\"card_id\":10,\"series\":[]}]}', b'0', b'0', NULL),
+(53, 'Dashboard', 1, 1, '2022-06-21 10:46:48.000000', '{\"description\":null,\"name\":\"Descriptive Analysis\",\"cache_ttl\":null,\"cards\":[{\"sizeX\":18,\"sizeY\":4,\"row\":0,\"col\":0,\"id\":1,\"card_id\":1,\"series\":[]},{\"sizeX\":18,\"sizeY\":5,\"row\":8,\"col\":0,\"id\":2,\"card_id\":2,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":4,\"col\":0,\"id\":3,\"card_id\":3,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":17,\"col\":0,\"id\":5,\"card_id\":5,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":13,\"col\":0,\"id\":6,\"card_id\":6,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":21,\"col\":0,\"id\":7,\"card_id\":7,\"series\":[]},{\"sizeX\":18,\"sizeY\":8,\"row\":25,\"col\":0,\"id\":8,\"card_id\":9,\"series\":[]},{\"sizeX\":18,\"sizeY\":8,\"row\":33,\"col\":0,\"id\":9,\"card_id\":10,\"series\":[]}]}', b'0', b'0', NULL),
+(54, 'Dashboard', 1, 1, '2022-06-21 10:46:48.000000', '{\"description\":null,\"name\":\"Descriptive Analysis\",\"cache_ttl\":null,\"cards\":[{\"sizeX\":18,\"sizeY\":4,\"row\":0,\"col\":0,\"id\":1,\"card_id\":1,\"series\":[]},{\"sizeX\":18,\"sizeY\":5,\"row\":8,\"col\":0,\"id\":2,\"card_id\":2,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":4,\"col\":0,\"id\":3,\"card_id\":3,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":17,\"col\":0,\"id\":5,\"card_id\":5,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":13,\"col\":0,\"id\":6,\"card_id\":6,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":21,\"col\":0,\"id\":7,\"card_id\":7,\"series\":[]},{\"sizeX\":18,\"sizeY\":8,\"row\":25,\"col\":0,\"id\":8,\"card_id\":9,\"series\":[]},{\"sizeX\":18,\"sizeY\":8,\"row\":33,\"col\":0,\"id\":9,\"card_id\":10,\"series\":[]}]}', b'0', b'0', NULL),
+(55, 'Card', 11, 1, '2022-06-21 12:00:48.000000', '{\"description\":null,\"archived\":false,\"collection_position\":null,\"table_id\":null,\"database_id\":2,\"enable_embedding\":false,\"collection_id\":null,\"query_type\":\"native\",\"name\":\"Most pair count wise sort\",\"creator_id\":1,\"made_public_by_id\":null,\"embedding_params\":null,\"cache_ttl\":null,\"dataset_query\":{\"type\":\"native\",\"native\":{\"query\":\"(select t1.description as Item1, t2.description as Item2, count(t1.invoiceno) as \'PairCount\' from cleaned_online_retail t1 join cleaned_online_retail t2 on t1.invoiceno = t2.invoiceno and t1.description != t2.description group by t1.invoiceno)\\norder by count(t1.invoiceno) desc limit 5\\n\",\"template-tags\":{}},\"database\":2},\"id\":11,\"display\":\"table\",\"visualization_settings\":{\"graph.dimensions\":[\"Item1\",\"Item2\"],\"scatter.bubble\":null,\"pie.dimension\":\"Item1\",\"pie.metric\":\"PairCount\",\"scalar.switch_positive_negative\":true,\"table.pivot_column\":\"Item1\",\"table.cell_column\":\"PairCount\",\"graph.metrics\":[\"PairCount\"]},\"dataset\":false,\"public_uuid\":null}', b'0', b'1', NULL),
+(56, 'Dashboard', 1, 1, '2022-06-21 12:03:13.000000', '{\"description\":null,\"name\":\"Descriptive Analysis\",\"cache_ttl\":null,\"cards\":[{\"sizeX\":18,\"sizeY\":4,\"row\":0,\"col\":0,\"id\":1,\"card_id\":1,\"series\":[]},{\"sizeX\":18,\"sizeY\":5,\"row\":8,\"col\":0,\"id\":2,\"card_id\":2,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":4,\"col\":0,\"id\":3,\"card_id\":3,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":17,\"col\":0,\"id\":5,\"card_id\":5,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":13,\"col\":0,\"id\":6,\"card_id\":6,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":21,\"col\":0,\"id\":7,\"card_id\":7,\"series\":[]},{\"sizeX\":18,\"sizeY\":8,\"row\":25,\"col\":0,\"id\":8,\"card_id\":9,\"series\":[]},{\"sizeX\":18,\"sizeY\":8,\"row\":33,\"col\":0,\"id\":9,\"card_id\":10,\"series\":[]},{\"sizeX\":2,\"sizeY\":2,\"row\":0,\"col\":0,\"id\":10,\"card_id\":11,\"series\":[]}]}', b'0', b'0', NULL),
+(57, 'Dashboard', 1, 1, '2022-06-21 12:03:14.000000', '{\"description\":null,\"name\":\"Descriptive Analysis\",\"cache_ttl\":null,\"cards\":[{\"sizeX\":18,\"sizeY\":4,\"row\":0,\"col\":0,\"id\":1,\"card_id\":1,\"series\":[]},{\"sizeX\":18,\"sizeY\":5,\"row\":8,\"col\":0,\"id\":2,\"card_id\":2,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":4,\"col\":0,\"id\":3,\"card_id\":3,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":17,\"col\":0,\"id\":5,\"card_id\":5,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":13,\"col\":0,\"id\":6,\"card_id\":6,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":21,\"col\":0,\"id\":7,\"card_id\":7,\"series\":[]},{\"sizeX\":18,\"sizeY\":8,\"row\":25,\"col\":0,\"id\":8,\"card_id\":9,\"series\":[]},{\"sizeX\":18,\"sizeY\":8,\"row\":33,\"col\":0,\"id\":9,\"card_id\":10,\"series\":[]},{\"sizeX\":18,\"sizeY\":5,\"row\":41,\"col\":0,\"id\":10,\"card_id\":11,\"series\":[]}]}', b'0', b'0', NULL),
+(58, 'Dashboard', 1, 1, '2022-06-21 12:03:14.000000', '{\"description\":null,\"name\":\"Descriptive Analysis\",\"cache_ttl\":null,\"cards\":[{\"sizeX\":18,\"sizeY\":4,\"row\":0,\"col\":0,\"id\":1,\"card_id\":1,\"series\":[]},{\"sizeX\":18,\"sizeY\":5,\"row\":8,\"col\":0,\"id\":2,\"card_id\":2,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":4,\"col\":0,\"id\":3,\"card_id\":3,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":17,\"col\":0,\"id\":5,\"card_id\":5,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":13,\"col\":0,\"id\":6,\"card_id\":6,\"series\":[]},{\"sizeX\":18,\"sizeY\":4,\"row\":21,\"col\":0,\"id\":7,\"card_id\":7,\"series\":[]},{\"sizeX\":18,\"sizeY\":8,\"row\":25,\"col\":0,\"id\":8,\"card_id\":9,\"series\":[]},{\"sizeX\":18,\"sizeY\":8,\"row\":33,\"col\":0,\"id\":9,\"card_id\":10,\"series\":[]},{\"sizeX\":18,\"sizeY\":5,\"row\":41,\"col\":0,\"id\":10,\"card_id\":11,\"series\":[]}]}', b'0', b'0', NULL);
 
 -- --------------------------------------------------------
 
@@ -1698,14 +2151,14 @@ INSERT INTO `revision` (`id`, `model`, `model_id`, `user_id`, `timestamp`, `obje
 --
 
 CREATE TABLE `secret` (
-  `id` int(11) NOT NULL,
-  `version` int(11) NOT NULL DEFAULT 1,
-  `creator_id` int(11) DEFAULT NULL COMMENT 'User ID who created this secret instance',
-  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6) COMMENT 'Timestamp for when this secret instance was created',
+  `id` int NOT NULL,
+  `version` int NOT NULL DEFAULT '1',
+  `creator_id` int DEFAULT NULL COMMENT 'User ID who created this secret instance',
+  `created_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6) COMMENT 'Timestamp for when this secret instance was created',
   `updated_at` timestamp(6) NULL DEFAULT NULL COMMENT 'Timestamp for when this secret record was updated. Only relevant when non-value field changes since a value change will result in a new version being inserted.',
-  `name` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The name of this secret record.',
-  `kind` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The kind of secret this record represents; the value is interpreted as a Clojure keyword with a hierarchy. Ex: ''bytes'' means generic binary data, ''jks-keystore'' extends ''bytes'' but has a specific meaning.',
-  `source` varchar(254) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'The source of secret record, which controls how Metabase interprets the value (ex: ''file-path'' means the ''simple_value'' is not the real value, but a pointer to a file that contains the value).',
+  `name` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The name of this secret record.',
+  `kind` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'The kind of secret this record represents; the value is interpreted as a Clojure keyword with a hierarchy. Ex: ''bytes'' means generic binary data, ''jks-keystore'' extends ''bytes'' but has a specific meaning.',
+  `source` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'The source of secret record, which controls how Metabase interprets the value (ex: ''file-path'' means the ''simple_value'' is not the real value, but a pointer to a file that contains the value).',
   `value` blob NOT NULL COMMENT 'The base64 encoded binary value of this secret record. If encryption is enabled, this will be the output of the encryption procedure on the plaintext. If not, it will be the base64 encoded plaintext.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Storage for managed secrets (passwords, binary data, etc.)';
 
@@ -1716,17 +2169,17 @@ CREATE TABLE `secret` (
 --
 
 CREATE TABLE `segment` (
-  `id` int(11) NOT NULL,
-  `table_id` int(11) NOT NULL,
-  `creator_id` int(11) NOT NULL,
-  `name` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` int NOT NULL,
+  `table_id` int NOT NULL,
+  `creator_id` int NOT NULL,
+  `name` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `archived` bit(1) DEFAULT b'0',
-  `definition` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `definition` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `points_of_interest` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `caveats` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `points_of_interest` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `caveats` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `show_in_getting_started` bit(1) NOT NULL DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1737,8 +2190,8 @@ CREATE TABLE `segment` (
 --
 
 CREATE TABLE `setting` (
-  `key` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `value` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `key` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1751,17 +2204,17 @@ INSERT INTO `setting` (`key`, `value`) VALUES
 ('anon-tracking-enabled', 'false'),
 ('instance-creation', '2022-06-13T12:58:58.32834Z'),
 ('redirect-all-requests-to-https', 'false'),
-('settings-last-updated', '2022-06-15 11:08:48.135'),
+('settings-last-updated', '2022-06-24 09:34:57'),
 ('setup-token', '96bcdaef-5dd6-4410-9d65-e5a6cc90c6f4'),
 ('show-database-syncing-modal', 'false'),
 ('site-locale', 'en'),
 ('site-name', 'metabase@mail.com'),
 ('site-url', 'http://localhost:9000'),
-('startup-time-millis', '2703');
+('startup-time-millis', '2402');
 INSERT INTO `setting` (`key`, `value`) VALUES
 ('version-info', '{\"latest\":{\"version\":\"v0.43.3\",\"released\":\"2022-06-13\",\"patch\":true,\"highlights\":[\"Slack setup doesn\'t work if channels cache was recently cleared\",\"Custom Expression field is not respecting the modal size\",\"Bump google oauth version\",\"Relative filter with a lower \\\"Starting from\\\" period is confusing\",\"Cannot print large dashboards (multi page)\",\"Sync of JSON columns fails in schemas where schema names contains system characters\",\"Sync of fields fails, when table name contains uppercase characters\",\"Preview function in Notebook does not respect the columns selected on base source\",\"Viewing Metadata for a Model and cancelling can result in error, and further in blank screen\",\"Do not offer \\\"Explore results\\\" unless the database supports it\",\"Cannot view Object Detail of non-numeric IDs\",\"Incorrect use of types during Postgres JSON unfolding\",\"Click Behavior not redirecting in some cases\",\"Uploading certificates causes failure in TrustManager/KeyManager because of bad MIME-type\",\"New Slack App does not allow selecting private channels for pulses\",\"Query executions hitting the cache are not recorded\",\"Pulse fails when there is a column type `time`\"]},\"older\":[{\"version\":\"v0.43.2\",\"released\":\"2022-05-31\",\"patch\":true,\"highlights\":[\"Bump transitive com.google.code.gson/gson\",\"Login page: Whitelabeled logo clips top of page if vertical\",\"Sign in input fields are outside of screen on mobile\",\"Filters are taking 100% viewport width on mobile/tablet in v.43.1\",\"Updating data permissions counts questions as tables\",\"Fix deadlock in pivot table connection management\",\"Size of bubbles not respected on scatter chart\",\"Strings in the time series chrome UI aren\'t tagged for translation\",\"dont read settings at require time\",\"Unable to edit field name and description in Field page\",\"Custom Expression aggregation in Metrics does not work\",\"CPU spiking every hour since v0.43.0 upgrade\",\"Negative Y axis points not rendered on scatter plot\",\"X-ray charts don\'t seem to respect whitelabel colors\",\"Users with `block` permissions see ambiguous error message when they open a dashboard\",\"It is possible to change filter column when filter date columns from the table header\",\"We should cut the \\\"Navigation bar color\\\" option from /admin/settings/whitelabel\",\"Site URL setting reverting to default randomly\",\"Cannot use Click Behavior for filters with multiple options selected\",\"Click Behavior with filter pass-thru causes permission error (even for admins)\"]},{\"version\":\"v0.43.1\",\"released\":\"2022-05-16\",\"patch\":true,\"highlights\":[]},{\"version\":\"v0.43.0\",\"released\":\"2022-05-02\",\"patch\":false,\"highlights\":[\"Inconsistent colors in relative datetime filtering in sidebar\",\"Non-admin database manager can delete database using the API\",\"Query Builder data picker can \\\"forget\\\" about multiple schemas\",\"Data Model > Visibility buttons should \\\"signal\\\" they are clickable\",\"Date filter in the chart footer shows \\\"Previous\\\" filter type when \\\"All Time\\\" is selected\",\"\\\"Next\\\" relative filter tokens should read \\\"from now\\\" instead of \\\"ago\\\"\",\"Can\'t change a relative month filter\'s values when using the \\\"starting from\\\" feature\",\"Date preview is wrong when using the \\\"Starting from…\\\" action when it pushes back before the current year\",\"`Include this quarter` action is missing the words \\\"this quarter\\\"\",\"Purple borders in date filter popover should be blue\",\"In the relative date picker, changing the granularity of the Past/Next range picker should change the granularity of the Starting From picker\",\"Let\'s add the \\\"Metabase tips\\\" link for installers, too\",\"Errors when hiding/unhiding specific columns in table\",\"moving timelines and default interact poorly\",\"Sidebar stays open after entering a dashboard\'s fullscreen mode\",\"Exports fail when certain columns are hidden and a field is remapped\",\"Random comma in \\\"Display values\\\" section of data model settings for a field\",\"Selecting language Indonesian causes error\",\"Can not get the minimum or maximum of some SQL fields\",\"MAX/MIN aggregation on categories incorrectly inferred as numbers\",\"[Data Permissions] Saved questions showing in the list of databases\",\"Textbox on dashboards are difficult move and missing options\",\"Permission graph does not support schemas with slashes\",\"Backend should deserialize dashboard `Starting From`/`Exclude` datetime filters\",\"Datetime shortcut \\\"Relative dates...\\\" should default to \\\"Past\\\" filters\",\"Embedding/Public sharing of questions does not show download button in the footer\",\"Dashboard shows scrollbar in fullscreen\",\"Subscriptions button shown on dashboard in fullscreen\",\"Global search input is shorter than the field\",\"Popover menu position floating too far initiator\"]},{\"version\":\"v0.42.4\",\"released\":\"2022-04-07\",\"patch\":true,\"highlights\":[]},{\"version\":\"v0.42.3\",\"released\":\"2022-03-23\",\"patch\":true,\"highlights\":[\"Exclude /_internals from production build (#21162)\",\"Upgrade MySQL/MariaDB JDBC driver to version 2.7.5\",\"Comma Separate Numbers filter not working as it previously did\",\"Markdown parsing on backend doesn\'t support autolinks\",\"Subscription fails, when there\'s specific characters that causes Markdown failure\",\"Custom Column allows aggregation functions together with algebra, which fails on query\",\"Cannot connect Google Analytics because of deprecated OAuth OOB\",\"Postgres certificate SSL key reference incorrect\",\"Embedding with Locked parameters does not allow numeric values\",\"Models should not be shareable (embedding/public)\",\"BigQuery: Aggregating by a datetime in a saved question fails because of bad aliasing\",\"\\\"Saved\\\" overlay in data model UI in weird location on smaller screen\",\"\\\"Compare to the rest\\\" action in drill-through menu looks busted\",\"Autocomplete suggestions are not working for most of the database tables\",\"Permissions paths validation is `GET` API endpoints is too strict; causes numerous endpoints to 500 if unknown entry is present\",\"Main page loading spinner spins forever on API error\",\"Cannot use Data Selector when going directly to a question in new tab (or browser refresh)\",\"\\\"Show error details\\\" in Query Builder should be toggleable\",\"No visual feedback when setting column properties in Admin > Data Model\",\"QP/MBQL: `[:relative-datetime :current]` doesn\'t work inside `[:between]` filter\",\"Icon on empty activity page is misaligned\",\"Google Analytics updated Credentials aren\'t used for Connection\",\"Google Analytics database connection stopped working.\",\"Binning not working in table with a single row\",\"Fix error in send-abandonment-emails task\",\"Can\'t change Google Analytics DB settings\",\"when adding google analytics as source, it\'s not clear that I have to enable the API\"]},{\"version\":\"v0.42.2\",\"released\":\"2022-02-28\",\"patch\":true,\"highlights\":[\"Dashboards breaks when there\'s filters to cards that a user don\'t have permissions to view\",\"Questions with Field Filter with widget type \\\"None\\\" will not show results\",\"Can\'t combine saved questions on a dashboard card \",\"Setting a filter to \\\"Locked\\\" in Embedding question is not possible\",\"Nested queries with long Data Model names causes failing query with incorrect aliasing\",\"Dropdown list filtering not working, when there\'s nulls\",\"BigQuery - nested query generating bad aliases, when columns are renamed in Data Model\",\"Summarizing with implicit join does not allow subsequent joins and nested query\",\"Databases shows sync-spinner and doesn\'t allow to remove it or do a forced sync\"]},{\"version\":\"v0.42.1\",\"released\":\"2022-02-17\",\"patch\":true,\"highlights\":[\"Filter dropdown only allows filtering on \\\"starts with\\\"\",\"Unable to filter dashboards for dashboard subscription emails\",\"Dashboard filter with defaults, doesn\'t work if values are removed, query fails\",\"Pulse Question Alert to Slack sending cropped images\",\"Cannot remove Google Sign-in setup\",\"Embed dashboard Field Filter cannot work when choosing single option\",\"Custom expression - Count needs parentheses, but deletes them afterwards\",\"Cannot open Model sidebar in some cases\",\"BigQuery incorrectly aliasing, which can make the query fail\",\"Filtering on nested questions causes error in Public and Embedding\",\"BigQuery nested query with ambiguous columns causes error\",\"Setting a filter to \\\"Locked\\\" in Embedding is not possible\",\"Remove unused dep on aleph (and thus unused transient dep on Netty)\",\"Oracle queries don\'t work when aliases (auto-generated or otherwise) contain double quotes or null characters\",\"When no-data user views a nested question, then all editing options are exposed\",\"When no-data user views a nested question, then \\\"Ask question\\\" and \\\"Browse data\\\" appears\",\"Oracle fails queries on joins with tables with long display names\",\"Pivot Table: Cannot change name of fields used for \\\"values\\\"\"]},{\"version\":\"v0.42.0\",\"released\":\"2022-02-08\",\"patch\":false,\"highlights\":[\"Waterfall static viz default settings\",\"\\\"By coordinates\\\" map in People X-ray shows a nonsensical pin map\",\"Pins do not appear on pin map\",\"\\\"Explore results\\\" shown for no-data users resulting in blank screen when clicked\",\"Blank screen when accessing Models with no-data user\",\"Secret connection property file path is not retained when revisiting database edit page\",\"Licensing page goes into reload-loop if token is expired\",\"Descriptions missing in search results\",\" the Time picker AM and PM color can not be distinguished obviously\",\"Horizontal scroll of pinned table doesn\'t work on Firefox\",\"Metadata tooltip popup on colum header casues data table to reset for number columns that are all NULLs \",\"Certain visualization_settings can cause empty/missing columns on export\",\"Postgres unnecessarily casts `timestamptz` and `date` columns to `timestamp` inside `date_trunc()` \",\"Alert Stopped email is Unhelpful\",\"Exports ignore column ordering regression in v0.41.6\",\"Premature calls to `to-sql` inside `sql.qp/->honeysql` methods\",\"Visualization \\\"auto-viz\\\" doesn\'t keep existing settings, when changing fields returned\",\"Can\'t add a filter if the value isn\'t in the field filters dropdown\",\"Clean up database guide usability during configuration\",\"defsetting `:tag` metadata should be on the arglists themselves, not the var\",\"Clean up how we show deprecated database drivers\",\"SQLite/Redshift/SQL Server/MySQL queries don\'t work correctly with multiple column aliases with same name but different case\",\"Archived sub-collections are still showing in Permissions\",\"Clean up how we show deprecated database drivers\",\"XLSX exports are leaving temporary files, which can block instance from working\",\"Add a way to return to previous page from sign in cases\",\"Consolidate first db sync modal and X-ray selection\",\"[Epic] Migrate Slack implementation from Bot to App\",\"Improve Filters for 42\",\"Clean Up Settings Navigation\"]},{\"version\":\"v0.41.6\",\"released\":\"2022-01-14\",\"patch\":true,\"highlights\":[\"Specific visualization_settings can cause empty export\",\"Cannot change Field Filter reference to another schema/table if viewing the question directly\",\"Upgrade Log4j to 2.17.1\",\"Names of schemas or namespaces in the Data Model should wrap\",\"Broken layout on Data Model page on locales with longer text\"]},{\"version\":\"v0.41.5\",\"released\":\"2021-12-16\",\"patch\":true,\"highlights\":[\"Upgrade Log4j to 2.16.0\",\"X-rays fails if there\'s a filter in the question\",\"XLSX export does not respect \\\"Separator style\\\"\",\"One cannot change any of the LDAP Settings once it\'s been initially setup\",\"Custom Expression `coalesce` is using wrong field reference when nested query\",\"Custom Expression `case` is using wrong field reference when nested query\",\"Dashboard causes permission error, when \\\"Click Behavior\\\" linking to dashboard/question without access\",\"Site URL validation too strict, doesn\'t accept underscore\",\"Reverse proxy reset email should use site URL in email body and not localhost\"]},{\"version\":\"v0.41.4\",\"released\":\"2021-12-10\",\"patch\":true,\"highlights\":[]},{\"version\":\"v0.41.3.1\",\"released\":\"2021-12-02\",\"patch\":true,\"highlights\":[\"BigQuery and Google Analytics drivers broken on x.41.3\",\"BigQuery connection error on 0.41.1\"]},{\"version\":\"v0.41.3\",\"released\":\"2021-12-01\",\"patch\":true,\"highlights\":[\"Static viz creates Picaso painting, when data is unordered Timeseries\",\"Harmonize Google dependency versions, which could cause conflict between GA and new BigQuery driver\",\"Saving/updating questions can take a very long time (seconds or minutes) on large instances\",\"Funnel chart showing retained NaN% when all rows from aggregate column are zero\",\"Changing a (old) pivoted table to less than 3 columns results in blank screen\",\"Exports fails, when there\'s invalid visualization `column_settings` references\",\"Cannot send test emails before creating subscription, when using non-default filter values\",\"Native editor autocomplete suggestions makes object lookup without `limit`\",\"Strip whitespace from Google sign-in client IDs\",\"Validate Google sign-in client IDs\",\"Dashboard causes permission error, when \\\"Click Behavior\\\" linking to dashboard/question without access\",\"Clicking on legend in native question breaks the UI\",\"Trend tile on dashboard differs from tile on full screen\"]},{\"version\":\"v0.41.2\",\"released\":\"2021-11-09\",\"patch\":true,\"highlights\":[\"Frontend crashes when opening admin database permissions page\",\"Cannot access Notebook for questions that uses a Custom Column as joining column\",\"Requests to `GET /api/card/123` is making slow queries on larger instances\",\"BigQuery can cause conflict with some column names like `source`\",\"\\\"Verify this question\\\" button is shown even when content moderation feature is not enabled\",\"New BigQuery driver with \\\"Project ID (override)\\\" defined causes different Field Filter references\",\"Dashboard subscription send by Email fails with xlsx attachements\",\"Textbox markdown links on images difficult to click\",\"Some questions with old field dimensions or changed columns cannot be viewed, because of Javascript loop\",\"Multi-column join interface defaults binning for numeric fields causing incorrect results\",\"Sandboxing queries fails with caching is enabled\",\"Changing redshift db details leads to closed or broken resource pool\",\"Audit visualizations does not show correct information, when there\'s more than 1000 aggregated dates\",\"\\\"Set up your own alert\\\" text needs padding \",\"Dashboard Subscriptions are not deactivated, when dashboard is archived\",\"Update Uberjar builds on CircleCI to new build script\",\"ED25519 keys not working for built-in SSH tunnels\",\"Pin Maps with more than 1000 results (LeafletTilePinMap) not working with native queries\"]},{\"version\":\"v0.41.1\",\"released\":\"2021-10-21\",\"patch\":true,\"highlights\":[\"Not all endpoints are called, when doing FullApp embedding\",\"XLSX export of large columns fails because of formatting limitations\",\"Caching on 0.41.0 caches results for very long time (does not respect settings defined)\",\"Exporting large amount of data can result in OutOfMemory\",\"Chart descriptions (except table) is not shown in dashboards\",\"Better approach for column ordering in exports\",\"Remapped (display value) columns are dropped in downloads\",\"Tools for fixing errors problems with postgres semantics of limits (blank display of error table)\",\"Filtering null-column via the drill-through action menu causes blank screen\",\"Data Model shows blank page if there are any hidden tables in the database\",\"Columns missing from exports, when viz settings are using older field dimensions\",\"Pulses with rounded floats render a hanging decimal point in 0.41.0\",\"Raise MB_DB_CONNECTION_TIMEOUT_MS to 10000 as default\",\"Pulse/Subscription table cards with two columns (string, integer) fail to render\",\"[Add Database > Presto] Multiple JDBC field options\",\"Impossible to choose fields from different schema on Field Filters\",\"In email subscription, the original question title is shown instead of the curated title (v41)\",\"Audit > Questions > Total runtime displays link instead of an actual time\",\"KeyExchange signature verification failed for key type=ssh-rsa\",\"Export to XLSX can fail, when there\'s a very high integer value\",\"Questions -> all questions in Audit feature sorts by null values\",\"Allow caching of fonts and images\",\"Dashboard Subscription test email button does not show error messages\",\"EE Audit App frontend does not display error messages if queries fail\",\"Dashboard Textbox does not render links unless using Markdown\",\"Pin map only containing null location results causes the frontend to constantly reload or blank page\",\"X-Rays: Table field is shown as \\\"null\\\" in the title\",\"Custom Column with the same name as a table column returns incorrect results when grouped\",\"Adding data series to dashboard widget lags then sometimes hangs the UI\"]},{\"version\":\"v0.41.0\",\"released\":\"2021-10-06\",\"patch\":false,\"highlights\":[\"Went setting up multiple Dashboard Subscriptions, \\\"Send email now\\\" always sends the first one you set up until you refresh the page\",\"Pull in translations for 0.41\",\"Export in 0.41.0-rc1 does not include aggregated columns\",\"Whitelabel color options are not translatable\",\"Error inserting to view_log in 41-RC1\",\"Fix filter alignment in emails with many or long values\",\"Whitelabel includes `Metabase` in the subject for Alerts\",\"XLSX download fails, when settings still has the old `k:mm` hour-format instead of `HH:mm`\",\"History of last edited questions\",\"Search fields in `Tools > Errors` should be disabled when there are no questions\",\"\\\"Rerun Selected\\\" button is always enabled (even when there are no broken questions)\",\"Dragging dashboards filters makes them hidden while dragging\",\"Fix x-ray dashboards crash on first open\",\"Fix Audit logging not showing ad-hoc native queries\",\"X-ray dashboards crash on first opening\",\"Send to Slack/Send email now buttons on dashboard subscriptions send the wrong dashboard\",\"master - the upper-corner Run/Reload button has become very big\",\"Schemas with only hidden tables are shown in the data selector\",\"Saved Question: changing the breakout field (summarize) removes order-by (sort)\",\"Notebook Join UI display wrong table name with multiple join (master)\",\"Active filter widget are not using whitelabel color on border\",\"Data point value can be slightly cut-off for the top Y-axis values\",\"Dashboard sticky filter section is visible even when there aren\'t any filters\",\"Click Behavior does not work with old Pivot\",\"BigQuery Custom Column difficult to use because of name restrictions\",\"Revision history does not update until page reload\",\"Visualizations are not always using whitelabel colors by default\",\"BigQuery Custom Expression function `Percentile` and `Median` not using correct backtick quoting\",\"BigQuery `BIGNUMERIC` is recognized as `type/*` and displayed as string\",\"Joining behavior on datetime columns needs to be clearer\"]},{\"version\":\"v0.40.5\",\"released\":\"2021-09-21\",\"patch\":true,\"highlights\":[\"🤖 backported \\\"GeoJSON URL validation fix\\\"\",\"Grid map causes frontend reload or blank screen, when hovering the grids if there is no metric\",\"Cannot create more than 2 metrics, when UI language is Turkish - screen goes blank or displays \\\"Something went wrong\\\"\",\"Visualizations with more than 100 series just shows a blank chart\",\"Data point values uses formatting Style of first serie on all series\"]},{\"version\":\"v0.40.4\",\"released\":\"2021-09-09\",\"patch\":true,\"highlights\":[\"Dashboard filter autocomplete not working with mixed Search/Dropdown when dropdown has a `null` value\",\"Not possible to delete Dashboard Subscription unless dashboard is in root collection\",\"Possible to not input recipient of Subscription, which will then cause blank screen\",\"Valid Email settings disappear on save, but re-appear after refresh\",\"Unable to click \\\"Learn more\\\" on custom expression\",\"Editing an alert causes it to be deleted in some circumstances\",\"New databases with \\\"This is a large database ...\\\" still uses the default sync+scan settings\",\"Adding cards to dashboard via search can cause the card to show spinner until browser refresh\",\"Cannot login with OpenAM SAML since 1.38.3\",\"Native question \\\"Filter widget type\\\"=\\\"None\\\" hides the filter widget even after changing it to something else\"]},{\"version\":\"v0.40.3.1\",\"released\":\"2021-08-26\",\"patch\":true,\"highlights\":[]},{\"version\":\"v0.40.3\",\"released\":\"2021-08-25\",\"patch\":true,\"highlights\":[\"🤖 backported \\\"Keep `collection_id` of dashboard subscriptions in sync with same field on dashboard\\\"\",\"Run-overlay not going away on GUI question\",\"Dashboard causes scrollbars to constantly go on/off depending on viewport size \",\"Serialization `--mode skip` incorrectly updates some objects\",\"Serialization crashes on dump if there\'s no collections\",\"Serialization: Cannot load into empty/blank target\",\"Clicking the column formatting button when the sidebar is already open should correctly open that column\'s formatting sidebar\",\"Dashboard Subscription doesn\'t follow the order of the cards on the dashboard\",\"Clicking away from Sandbox modal breaks perms page\"]},{\"version\":\"v0.40.2\",\"released\":\"2021-08-03\",\"patch\":true,\"highlights\":[\"Update strings for 0.40.2\",\"Docs for 40.2\",\"Snippet folder permissions are always applied to root\",\"Cannot start development in VS Code because of missing Node.js\",\"Search widget on question builder hangs tab, API field search limit not respected\",\"Only 50 groups are displayed\",\"People search dropdown goes outside of the screen\",\"Only 50 users shown in email autocomplete and \\\"Other user\'s personal collection\\\"\",\"Dashboard - Adding ‘Click Behavior’ to an image field converts image to URL\",\"Cannot upgrade to v0.40.x on AWS Elastic Beanstalk due to AWS Inspector not being available in certain regions\",\"Add Metabase Cloud link to admin settings for hosted instances\",\"Fix dashboard card hovering buttons drag behaviour\",\"Elastic Beanstalk nginx config is not updated on latest EB docker images\",\"Cannot deactivate users after the first 50 users\",\"Tabs in the Audit section look broken\",\"Duplication of the displayed table\",\"Allow selecting text in Textbox cards, while dashboard is in edit-mode\",\"Metabase on old AWS Elastic Beanstalk (Amazon Linux w/ old Docker) upgrade to 0.40 failed\",\"Popover footer is displaced when using filter with a search input\",\"Public Sharing footer is double-size because action buttons are stacked\",\"Error when setting column type to Number in data model settings\",\"Site URL can sometimes be incorrectly defined during startup\",\"Padding needed for button on map settings page\",\"LDAP/Email settings gets cleared if validation fails\",\"Serialization: Visualization column settings lost\",\"Waterfall visualization does not work with ordinal X-axis\",\"Clicking \\\"Cancel\\\" on collection archive modal should let you stay in that same collection\",\"Snowflake Connector Requires Deprecated Region Id\",\"Modify instead of replace default EB nginx config\"]},{\"version\":\"v0.40.1\",\"released\":\"2021-07-14\",\"patch\":true,\"highlights\":[\"An error occurs when opening a public question with filters having default parameters\",\"Remove Multi-Release from manifest\",\"Questions filters does not work in Embedded/Public\",\"Long titles in collections push out the last-edited-by and last-edited-at columns\",\"Only first 50 databases are displayed\",\"After hiding the column and then setting a required default value for SQL field filter (connected to that column) shows all fields as hidden and breaks SQL filters completely\",\"Global search suggestions dropdown appears behind the dataset search widget when starting a simple question\",\"Clean up the user-facing strings for coercion options\",\"Clicking Visualize in Notebook makes the question \\\"dirty\\\" even if no changes was made\"]},{\"version\":\"v0.40.0\",\"released\":\"2021-07-08\",\"patch\":false,\"highlights\":[\"Avoid error when user searches with no data perms\",\"Updated saved question data picker - styling improvements\",\"The pinned items from the main collection are not showed on the front page anymore\",\"[0.40 blocker] Handle personal collections better in the new saved question data picker\",\"Remove \\\"Something went wrong\\\"\",\"Filter flag causes overlay for required \\\"Number\\\" filter with the default value set\",\"Do not show Cloud CTA for Enterprise Edition\",\"The list of collections available on homepage \\\"Our analytics\\\" depends on the name of the first 50 objects\",\"Filter feature flag causes Run-overlay of results in Native editor unless editor is expanded\",\"Error message missing when logging in to a disabled account with Google sign-in\",\"unix-timestamp->honeysql implementation for h2 is incorrect for microseconds\",\"Fix funnel appearance\",\"Confusing UI when adding GeoJSON with no identifiers\",\"Better error handling when adding malformed GeoJSON\",\"Can\'t archive a question from the Question page\",\"Can\'t move item to \\\"Our analytics\\\" using drag-n-drop\",\"Can\'t \\\"Select All\\\" collection items if all items are pinned\",\"Bulk archive doesn\'t work\",\"Selecting bin count on intermediate data question fails\",\"Collections Metadata FE Implementation\",\"Group by on a `:Coercion/YYYYMMDDHHMMSSBytes->Temporal` postgres column fails\",\"Double binning menu for date fields when using Saved Question (Native)\",\"Cannot filter only on longitude/latitude range - UX is forcing user to fill out values for both fields\",\"Bug in values on data points for waterfall charts\",\"Table view on Permissions shows error on browser refresh\",\"Password login on SSO instance drops the redirect URL\",\"No error is reported when adding SQLite database that doesn\'t exist\",\"Specific combination of filters can cause frontend reload or blank screen\",\"Dashboard Contains filter doesn\'t remain when clicking on Question title\",\"Normal login errors are not surfaced if SSO is also active\"]},{\"version\":\"v0.39.4\",\"released\":\"2021-06-16\",\"patch\":true,\"highlights\":[\"Javascript error when enabling JWT authentication\",\"Switch to column settings when sidebar is already open\",\"Questions on MongoDB return \'No results!\' after upgrade from 0.38.5 to 0.39.0 when filtering against array \",\"Login blocked till timeout if Metabase can\'t reach GeoJS API\",\"Missing tooltip for sharing individual question\",\"Histograms should filter out null x values\",\"Shifted chart values on line with ordinal x axis\",\"Don\'t show Custom Expression helper, when input is not in focus\",\"Dashboard filters dropdown only list the first 100 values\",\"Cannot use arithmetic between two `case()` function in Custom Expression\",\"LDAP login fails with Group Sync when user is assigned to 1 group\",\"LDAP auth errors with \\\"did not match stored password\\\" if `givenName` or `sn` is missing\",\"Cannot join Saved Questions that themselves contains joins\",\"Human-reable numering not working properly\",\"Time series filter and granularity widgets at bottom of screen are missing\",\"LDAP group sync - LDAPException after removing user from a mapped group\",\"Dashboard text cards aren\'t scrolling\"]},{\"version\":\"v0.39.3\",\"released\":\"2021-05-27\",\"patch\":true,\"highlights\":[\"Feature flag causes problems with Number filters in Native query\",\"Revoking access to users in multiple groups does not correctly cleanup GTAP\",\"LDAP settings form hitting wrong API endpoint on save\",\"ExpressionEditor loses value when user resizes browser window\",\"ExpressionEditor loses value when user clicks away from associated name input\",\"Filter dropdown not working for non-data users, when field has 300+ distinct values.\",\"Tooltip only shows first Y-axis value when X-axis is numeric and style is Ordinal/Histogram\",\"Gauge visualization on small screens can cause frontend refresh on hover\",\"Serialization: `field-literal` converted to `field` since 1.39.0\",\"Serialization dumps with static references instead of paths in 1.39.0\",\"Fix Serialization P1s\",\"Incorrect result + loss of user input when summarizing with Saved Question\",\"Some places shows `{0}` placeholder instead of expected value\",\"Serialization load-process does not update `source-table` in joins, leading to broken questions\",\"Unchecking \\\"Remember me\\\" box has no effect -- close the browser and reopen, then go back to your MB instance and you\'re still logged in\",\"Serialization `dump` includes Personal Collections\",\"Serialization: Nested question references questions in other collection are moved and becomes corrupted\",\"Serialization: Snippet folders and Collections collide on `dump` because of missing namespace separation\",\"Serialization: Snippets are not transferred correctly, leading to incorrect references and broken queries\",\"Serialization: Click Behavior not translating entitiy ID on dump, potentially referencing wrong entities on load\",\"Wrong LDAP port input (non-numeric) can cause complete lockout\",\"Nested queries using metric got wrong SQL\",\"Cannot aggregate question with unix timestamp column that is converted/cast in Metabase\",\"Test LDAP settings before saving\",\"Nested queries using metrics need to include all columns used in metric filters\"]},{\"version\":\"v0.39.2\",\"released\":\"2021-05-17\",\"patch\":true,\"highlights\":[\"Regression combining Druid date filters with dimension filters\",\"Regression in filtering Druid table where greater than date\",\"Variable Field Type after upgrade \\\"Input to parse-value-to-field-type does not match schema\\\"\",\"Whitelabel favicon does not work correctly in all browsers\",\"Show right versions on enterprise custom builds\",\"Not possible to select pinned collection item using checkbox\",\"The new \\\"contains\\\" behavior for field value lookup doesn\'t work outside of dashboards\",\"Cannot restore table visibility in Data Model, when database is down\",\"LDAP user authorization failed with `$` in password\",\"Difficult to use some filters, when user has no data permissions [FE - Filter widget stops working if API endpoint returns 403]\",\"Serialization: Dashboard cards are corrupted, when questions are outside of dashboard collection\",\"Collection tree loader causes UI jump\",\"Filters with dropdown lists uses query on the database\",\"Login Failing for LDAP if user email isn\'t lowercase\",\"Startup warning about unsupported class will impact performance\",\"Auth Returns 400 Bad Request instead of 401 Unauthorized upon wrong credentials submission\",\"Need better instructions for setting up Google Auth\"]},{\"version\":\"v0.39.1\",\"released\":\"2021-04-27\",\"patch\":true,\"highlights\":[\"Tooltip shows incorrect values on unaggregated data with breakout\",\"Can\'t use parentheses as expected in filter expressions\",\"UI prevents adding 2 parameters to `Percentile()` function\",\"Login logo is left-aligned on EE, when whitelabel features are enabled\",\"No loading spinner when clicking a Collection on the home page\",\"Tooltip on unaggregated data does not show summed value like the visualization\",\"Table with multiple Entity Key columns incorrectly filtering on \\\"Connected To\\\" drill-through\"]},{\"version\":\"v0.39.0.1\",\"released\":\"2021-04-20\",\"patch\":false,\"highlights\":[\"Cannot select category Field Filter in Native query on 0.39.0\",\"map category/location to string so we can treat them like string/= in UI\"]},{\"version\":\"v0.39.0\",\"released\":\"2021-04-19\",\"patch\":false,\"highlights\":[\"Strings with placeholders like {0} aren\'t translating correctly\",\"Wrong tooltip labels and values for multiple series charts in dashboard\",\"Add feature flag for the new 0.39.0 dashboard filter types\",\"Pulse fails when visualization_settings is referring to a field-literal column\",\"Login History not recording correct IP address\",\"Add an ENV var setting for typeahead search\",\"BigQuery with filter after aggregation of join table fails query with wrong alias reference on 38.x\",\"Dashboard Textbox images are 100% width\",\"Questions based on Saved Questions is not using the same query for date filters leading to wrong results\",\"0.39 string translations\",\"0.39 Docs\",\"Add missing \\\"is\\\" assertions to various tests\",\"Custom Expression autocomplete operator selection is appended to what was typed\",\"Custom Expression formula starts with high cursor placement on Firefox\",\"Custom Expression filter not setting the \\\"Done\\\" button to current state of the formula until onblur\",\"Custom Expression editor is removing spaces too aggressive\",\"Hitting return when modifying a custom expression incorrectly discards changes\",\"metabase/metabase-enterprise-head Docker image doesn\'t have enterprise extensions\",\"Custom expressions: UI is too wide when shown in the sidebar\",\"Search: some results are as being in a folder which doesn\'t exist in the data reference\",\"Error saving metric in data reference\",\"Dashboard Subscription Filters: Set Parameter Values\",\"Normalize queries in URL fragments on FE\",\"Support string and number filter operators in dashboard parameter filters \",\"defsetting macro throw an Exception if you try to define a setting that\'s already defined in a different namespace\",\"Fix render error when removing a dashboard parameter\",\"Upgrade HoneySQL version to latest\",\"Dashboard Filter Improvements (to support large-scale rollout)\",\"SSH Connectivity Improvements\",\"MBQL Refactor: Combine various Field clauses into one new clause\"]},{\"version\":\"v0.38.4\",\"released\":\"2021-04-12\",\"patch\":true,\"highlights\":[\"Not possible to position Y-axis if there\'s only one series\",\"Tooltip on unaggregated data does not show summed value like the visualization\",\"For a new Custom column, I can set Style to \\\"Currency\\\", but cannot choose the Unit of Currency\",\"Add Kyrgyz Som to currency list\"]},{\"version\":\"v0.38.3\",\"released\":\"2021-04-01\",\"patch\":true,\"highlights\":[\"Overflow text on Ask a question page \",\"Filtering on coerced column doesn\'t always know its coerced\",\"Wrong series label in multiple series scatterplot\",\"Dashboard Subscription fails for all SQL questions with a Field Filter on date column connected on dashboard\",\"Dashboard Subscription Emails do not work with filtered Native Queries\",\"Dashboard Subscription sidebar broken for Sandboxed users\",\"Provide more logging information on permission errors when creating Cards\",\" In Settings > Email, Save Changes is enabled even when there are no changes\",\"Exports always uses UTC as timezone instead of the selected Report Timezone\",\"Invalid Redirect Location After SAML Sign-in via Full App Embed\",\"Cannot download XLSX if there\'s more than 1 million results\",\"Frontend load issue: SMTP Email\",\"Pie chart sometimes does not show total\",\"Users with collections \\\"edit\\\" permissions and no data access permissions can\'t edit question metadata\",\"Add Bitcoin as a unit of currency\",\"Column \\\"Custom title\\\" not working in tooltips\",\"Schema sync does not update changes in column type case\",\"Error on visualization change of a question with SQL queries view only permission\",\"Line chart dots don\'t have `cursor: pointer` when hovering\"]},{\"version\":\"v0.38.2\",\"released\":\"2021-03-17\",\"patch\":true,\"highlights\":[\"Data model not showing PostgreSQL tables when they are partitioned\",\"Migrate old pre-1.37 \\\"Custom Drill-through\\\" settings to x.37+ \\\"Click Behavior\\\"\",\"Regression with URL links\"]},{\"version\":\"v0.38.1\",\"released\":\"2021-03-03\",\"patch\":true,\"highlights\":[\"Serialization `dump` of aggregated questions are not copied over on `load`\",\"Serialization doesn\'t update Sub-Query variable reference\",\"Oracle, BigQuery filtering by column with day-of-week bucketing not working\",\"Pivot Table export not working on unsaved questions\",\"Pivot Table does not work for users without data permissions\",\"Pivot Table not working with Sandboxed user\",\"BigQuery: Joins in the query builder generate invalid table aliases\",\"BigQuery: Question Stays running until timeout when query is error in Native Query\",\"Serialization: Archived items are included in `dump`\",\"Breadcrumbs can be confusing (the current one \\\"seems\\\" clickable when it\'s not)\",\"regexextract breaks query on sandboxed table\",\"Multi-level aggregations fails when filter is the last section\",\"Pivot queries aren\'t recorded to query execution log\",\"Start of Week not applied to Field Filter in Native question, which can lead to incorrect results\",\"In Safari 14, add-grouping button disappears randomly but consistently\",\"Serialization does not initialize 3rd party drivers when loading a dump\",\"Wrong day names are displayed when using not-Sunday as start of the week and grouping by \\\"Day of week\\\"\",\"Difficult to see which cells has \\\"Click behavior\\\" vs normal behavior\",\"Object Detail previous/next buttons not working correctly\",\"Global number formatting does not apply to percentages\",\"Native question filter widget reordering doesn\'t work\"]},{\"version\":\"v0.38.0.1\",\"released\":\"2021-02-19\",\"patch\":false,\"highlights\":[]},{\"version\":\"v0.38.0\",\"released\":\"2021-02-16\",\"patch\":false,\"highlights\":[\"Sandboxed question with `case` Custom Field doesn\'t substitute the \\\"else\\\" argument\'s table\",\"Custom Expression using `case()` function fails when referencing the same column names\",\"Filtering a Custom Column does not give correct results when using \\\"Not equal to\\\"\",\"Cannot remove columns via QB sidebar, then query fails, but works if being removed via Notebook\",\"fix(rotate-encryption-key) settings-last-updated is not encrypted\",\"For Pivot Tables, download popup doesn\'t show\",\"Dashboard Subscriptions: Have to click the close button multiple times after viewing a Subscription\",\"Advanced Sandboxing ignores Data Model features like Object Detail of FK\",\"Publish \\\"latest\\\" OSS JAR\",\"Custom GeoJSON files are not sorted in the dropdown\",\"user@password JDBC connection strings for application DB no longer work\",\"Shrunken bubbles shown in question for null values\",\"Drilling down by a Region Map assigns the wrong value to the filter\",\"Using \\\"Reset to defaults\\\" on textbox causes it to become a corrupted card on dashboard\",\"Add a lightweight notify api endpoint\",\"Sandboxing on tables with remapped FK (Display Values) causes query to fail\",\"Allow usage of PKCS-12 certificates with Postgres connections\",\"dump-to-h2 does not return a non-zero exit code on failure\",\"Advanced Sandboxing using questions that return more/other columns than the sandboxed table is not possible anymore, but the errors are not helpful\",\"Bar chart x-axis positions can cause different spacing depending on the dates returned\",\"Custom Columns breaks Pivot Table\",\"Pivot tables broken on dashboard after resize\",\"dump-to-h2 with --dump-plaintext should check for presence of MB_ENCRYPTION_SECRET_KEY\",\"Right alignment of pivot table value cells looks broken\",\"Don\'t inform admins about MB cloud on EE instances\",\"add cmd rotate-encryption-key\",\"Token check retry is too aggressive\",\"Login page should automatically focus on the email input field\",\"Dashboard subscriptions including cards no longer in dashboard\",\"UI should update when a collection changes parent\"]},{\"version\":\"v0.37.9\",\"released\":\"2021-02-11\",\"patch\":true,\"highlights\":[]},{\"version\":\"v0.37.8\",\"released\":\"2021-01-29\",\"patch\":true,\"highlights\":[\"Cannot add (date) filter if calendar is collapsed\"]},{\"version\":\"v0.37.7\",\"released\":\"2021-01-20\",\"patch\":true,\"highlights\":[]},{\"version\":\"v0.37.6\",\"released\":\"2021-01-13\",\"patch\":true,\"highlights\":[]},{\"version\":\"v0.37.5\",\"released\":\"2021-01-05\",\"patch\":true,\"highlights\":[\"Linked filters breaking SQL questions on v0.37.2\",\"Embedding loading slow\",\"Cannot toggle off \'Automatically run queries when doing simple filtering and summarizing\' \"]},{\"version\":\"v0.37.4\",\"released\":\"2020-12-17\",\"patch\":true,\"highlights\":[\"Error in Query: Input to aggregation-name does not match schema\",\"Revert #13895\",\"Exports always uses UTC as timezone instead of the selected Report Timezone\",\"Between Dates filter behaves inconsistently based on whether the column is from a joined table or not\"]},{\"version\":\"v0.37.3\",\"released\":\"2020-12-03\",\"patch\":true,\"highlights\":[\"Fix chain filtering with temporal string params like \'last32weeks\'\",\"Linked filters breaking SQL questions on v0.37.2\",\"Running with timezone `Europe/Moscow` shows Pulse timezone as `MT` instead of `MSK` and sends pulses on incorrect time\",\"Order fields to dump by ID\",\"Remove object count from log output\"]},{\"version\":\"v0.37.2\",\"released\":\"2020-11-16\",\"patch\":true,\"highlights\":[\"When visualization returns `null` (No results), then UI becomes broken\"]},{\"version\":\"v0.37.1\",\"released\":\"2020-11-12\",\"patch\":true,\"highlights\":[\"Table schema sync performance impact\",\"v0.37.0.2 doesn\'t sync Vertica schema\",\"Pie chart shows spinner, when returned measure/value is `null` or `0`\",\"Wrong day names are displayed when using not-Sunday as start of the week and grouping by \\\"Day of week\\\"\",\"When result row is `null`, then frontend incorrectly shows as \\\"No results!\\\"\",\"Snowflake tables with a GEOGRAPHY column cannot be explored\",\"Cannot edit BigQuery settings without providing service account JSON again\",\"Sync crashes with OOM on very large columns/row samples [proposal]\",\"500 stack overflow error on collection/graph API call\",\"Custom Column after aggregation creates wrong query and fails\",\"The expression editor shouldn\'t start in error mode without any user input\",\"Pulse attachment file sent without file extension\",\"Metric with unnamed Custom Expression breaks Data Model for table\",\"Nested queries with duplicate column names fail\",\"pulse attachment file(question name) Korean support problem\",\"Pulse Bar Chart Negative Values Formatting\"]},{\"version\":\"v0.37.0.2\",\"released\":\"2020-10-26\",\"patch\":false,\"highlights\":[]},{\"version\":\"v0.36.8.2\",\"released\":\"2020-10-26\",\"patch\":true,\"highlights\":[]},{\"version\":\"v0.37.0.1\",\"released\":\"2020-10-23\",\"patch\":false,\"highlights\":[]},{\"version\":\"v0.36.8.1\",\"released\":\"2020-10-23\",\"patch\":true,\"highlights\":[]},{\"version\":\"v0.37.0\",\"released\":\"2020-10-22\",\"patch\":false,\"highlights\":[\"Fix null handling in filters regression\",\"Add translation for Bulgarian\",\"0.37.0-rc3: Click behavior to Dashboard shown on Public/Embedded\",\"NO_COLOR/MB_COLORIZE_LOGS does not remove all ansi codes\",\"0.37.0-rc3: Filtering a joined table column by \\\"Is not\\\" or \\\"Does not contain\\\" fails\",\"Update translations for final 0.37 release\",\"0.37.0-rc2: Monday week start displays incorrectly on bar chart\",\"0.37.0-rc2: Linked filter showing all values (not filtering)\",\"Only get substrings in fingerprinting when supported [ci drivers]\",\"0.37.0-rc2: log4j should not output to file by default\",\"0.37-RC2: we should suppress drag behavior when custom click behavior is set\",\"0.37-RC2: disable Done button in cases where click behavior target isn\'t specified\",\"0.37-RC2: weird edit state when saving a dashboard with incomplete click behavior\",\"0.37-RC2: Interactivity summary tokens squashed on small dashboard cards\",\"0.37.0-rc2: Hovering on custom map no longer displays region name, displays region identifier instead\",\"0.37.0-rc1: \\\"Click behavior\\\" to URL for non-table card, doesn\'t show reference fields to use as variables\",\"0.37.0-rc1: Variables from Saved Question are referencing the same question\",\"0.37.0-rc2: Cannot create custom drill-through to dashboard\",\"0.37-rc1: after clicking a custom link that passes a value to a param, clicking Back shouldn\'t bring that value to the original dashboard\",\"0.37-rc1: When mapping dashboard filters to columns, SQL questions should display the name of the column mapped to the field filter\",\"0.37-rc1: customizing a dashboard card\'s click behavior without specifying a destination causes strange behavior\",\"0.37-rc1: canceling the dashboard archive action takes you to the collection\",\"Embedded versions of new chain filters endpoints \",\"\\\"Does not contain\\\" and \\\"Is not\\\" filter also removes nulls\",\"Docs - 37 release - new dashboard functionality\",\"forward slash on table name causes ORA-01424 and blocks the sync step\",\"Update login layout and illustration.\",\"MySQL grouping on a TIME field is not working\",\"Field Filter variables in SQL question don’t show table name when connecting filters in dashboard\",\"Upgrade to log4j 2.x\"]},{\"version\":\"v0.36.8\",\"released\":\"2020-10-22\",\"patch\":true,\"highlights\":[]},{\"version\":\"v0.36.7\",\"released\":\"2020-10-09\",\"patch\":true,\"highlights\":[\"Presto not respecting SSL and always uses http instead of https\",\"Footer (with export/fullscreen/refresh buttons) on Public/Embedded questions disappears when using Premium Embedding\",\"Postgres sync not respecting SSH tunneling\"]},{\"version\":\"v0.36.6\",\"released\":\"2020-09-15T22:58:04.727Z\",\"patch\":true,\"highlights\":[\"Various bug fixes\"]},{\"version\":\"v0.36.5.1\",\"released\":\"2020-09-11T23:16:26.199Z\",\"patch\":true,\"highlights\":[\"Remappings should work on broken out fields\"]},{\"version\":\"v0.36.4\",\"released\":\"2020-08-17T22:41:20.449Z\",\"patch\":true,\"highlights\":[\"Various bug fixes\"]},{\"version\":\"v0.36.3\",\"released\":\"2020-08-04T23:57:45.595Z\",\"patch\":true,\"highlights\":[\"Support for externally linked tables\"]},{\"version\":\"v0.36.2\",\"released\":\"2020-07-31T17:46:34.479Z\",\"patch\":true,\"highlights\":[\"Various bug fixes\"]},{\"version\":\"v0.36.1\",\"released\":\"2020-07-30T18:10:44.459Z\",\"patch\":true,\"highlights\":[\"Various bug fixes\"]},{\"version\":\"v0.36.0\",\"released\":\"2020-07-21T19:56:40.066Z\",\"patch\":false,\"highlights\":[\"SQL/native query snippets\",\"Language selection\"]},{\"version\":\"v0.35.4\",\"released\":\"2020-05-29T17:31:58.191Z\",\"patch\":true,\"highlights\":[\"Security fix for BigQuery and SparkSQL\",\"Turkish translation available again\",\"More than 20 additional bug fixes and enhancements\"]},{\"version\":\"v0.35.3\",\"released\":\"2020-04-21T21:18:24.959Z\",\"patch\":true,\"highlights\":[\"Various bug fixes\"]},{\"version\":\"v0.35.2\",\"released\":\"2020-04-10T23:03:53.756Z\",\"patch\":true,\"highlights\":[\"Fix email and premium embedding settings\",\"Fix table permissions for database without a schema\",\"Fix \\\"Error reducing result rows\\\" error\"]},{\"version\":\"v0.35.1\",\"released\":\"2020-04-02T21:52:06.867Z\",\"patch\":true,\"highlights\":[\"Issue with date field filters after v0.35.0 upgrade\",\"Unable to filter on manually JOINed table\"]},{\"version\":\"v0.35.0\",\"released\":\"2020-03-25T18:29:17.286Z\",\"patch\":false,\"highlights\":[\"Filter expressions, string extracts, and more\",\"Reference saved questions in your SQL queries\",\"Performance improvements\"]},{\"version\":\"v0.34.3\",\"released\":\"2020-02-25T20:47:03.897Z\",\"patch\":true,\"highlights\":[\"Line, area, bar, combo, and scatter charts now allow a maximum of 100 series instead of 20.\",\"Chart labels now have more options to show significant decimal values.\",\"Various bug fixes\"]},{\"version\":\"v0.34.2\",\"released\":\"2020-02-05T22:02:15.277Z\",\"patch\":true,\"highlights\":[\"Various bug fixes\"]},{\"version\":\"v0.34.1\",\"released\":\"2020-01-14T00:02:42.489Z\",\"patch\":true,\"highlights\":[\"Various bug fixes\"]},{\"version\":\"v0.34.0\",\"released\":\"2019-12-20T01:21:39.568Z\",\"patch\":false,\"highlights\":[\"Added support for variables and field filters in native Mongo queries\",\"Added option to display data values on Line, Bar, and Area charts\",\"Many Timezone fixes\"]},{\"version\":\"v0.33.7.3\",\"released\":\"2019-12-17T01:45:45.720Z\",\"patch\":true,\"highlights\":[\"Important security fix for Google Auth login\"]},{\"version\":\"v0.33.7\",\"released\":\"2019-12-13T20:35:14.667Z\",\"patch\":true,\"highlights\":[\"Important security fix for Google Auth login\"]},{\"version\":\"v0.33.6\",\"released\":\"2019-11-19T20:35:14.667Z\",\"patch\":true,\"highlights\":[\"Fixed regression that could cause saved questions to fail to render (#11297)\",\"Fixed regression where No Results icon didn\'t show (#11282)\",\"Pie chart visual improvements (#10837)\"]},{\"version\":\"v0.33.5\",\"released\":\"2019-11-08T20:35:14.667Z\",\"patch\":true,\"highlights\":[\"Added Slovak translation\",\"Fixed support for MySQL 8 with the default authentication method\",\"Fixed issues with X-axis label formatting in timeseries charts\"]},{\"version\":\"v0.33.4\",\"released\":\"2019-10-08T20:35:14.667Z\",\"patch\":true,\"highlights\":[\"Custom expression support for joined columns\",\"Fixed issue with filtering by month-of-year in MongoDB\",\"Misc Bug Fixes\"]},{\"version\":\"v0.33.3\",\"released\":\"2019-09-20T08:09:36.358Z\",\"patch\":true,\"highlights\":[\"Chinese and Persian translations now available again\",\"Misc Bug Fixes \"]},{\"version\":\"v0.33.2\",\"released\":\"2019-09-04T08:09:36.358Z\",\"patch\":true,\"highlights\":[\"Fixed Cards not saving\",\"Fixed searrch not working \"]},{\"version\":\"v0.33.1\",\"released\":\"2019-09-04T08:09:36.358Z\",\"patch\":true,\"highlights\":[\"Fixed conditional formatting not working\",\"Fixed an issue where some previously saved column settings were not applied \",\"Fixed an issue where pulses were not loading \"]},{\"version\":\"v0.33.0\",\"released\":\"2019-08-19T08:09:36.358Z\",\"patch\":false,\"highlights\":[\"Notebook mode + Simple Query Mode\",\"Joins\",\"Post Aggregation filters\"]},{\"version\":\"v0.32.10\",\"released\":\"2019-07-28T08:09:36.358Z\",\"patch\":true,\"highlights\":[\"Fix User can\'t logout / gets automatically logged in.\",\"Fix No data displayed when pivoting data\",\"Fixed Dashboard Filters on Linked Entities Broke\"]},{\"version\":\"v0.32.9\",\"released\":\"2019-06-14T08:09:36.358Z\",\"patch\":true,\"highlights\":[\"Fix issues connecting to MongoDB Atlas Cluster\",\"Fix database addition on setup\",\"Fixed numeric category error with Postgres\"]},{\"version\":\"v0.32.8\",\"released\":\"2019-05-13T08:09:36.358Z\",\"patch\":true,\"highlights\":[\"Fix i18n\"]},{\"version\":\"v0.32.7\",\"released\":\"2019-05-09T08:09:36.358Z\",\"patch\":true,\"highlights\":[\"Fix published SHA Hash\"]},{\"version\":\"v0.32.6\",\"released\":\"2019-05-08T12:09:36.358Z\",\"patch\":true,\"highlights\":[\"Fixed regression where Dashboards would fail to fully populate\",\"Performance improvements when running queries\",\"Security improvements\"]},{\"version\":\"v0.32.5\",\"released\":\"2019-04-20T12:09:36.358Z\",\"patch\":true,\"highlights\":[\"Improve long-running query handling\",\"Fix H2 to MySQL/Postgres migration issue\",\"Fix issue with embedded maps with custom GeoJSON\"]},{\"version\":\"v0.32.4\",\"released\":\"2019-04-09T12:09:36.358Z\",\"patch\":true,\"highlights\":[\"Fix issue where Google Auth login did not work\",\"FFix issue where Google Auth login did not work\"]},{\"version\":\"v0.32.3\",\"released\":\"2019-04-08T12:09:36.358Z\",\"patch\":true,\"highlights\":[\"Fixed Snowflake connection issues\",\"Fixed Dashboard copy\",\"Fixed non-root context logins\"]},{\"version\":\"v0.32.2\",\"released\":\"2019-04-03T12:09:36.358Z\",\"patch\":true,\"highlights\":[\"Fixed dashboard date filters \",\"Fixed SSL error using Quartz w/ MySQL\",\"Fix colors in dashboards\"]},{\"version\":\"v0.32.1\",\"released\":\"2019-03-29T12:09:36.358Z\",\"patch\":true,\"highlights\":[\"Fixed MySQL connections with SSL\",\"Fixed table sync issue\"]},{\"version\":\"v0.32.0\",\"released\":\"2019-03-28T12:09:36.358Z\",\"patch\":false,\"highlights\":[\"Modular Drivers (reducing memory consumption)\",\"Async queries (improving responsiveness)\",\"Reduced memory consumption.\"]},{\"version\":\"v0.31.2\",\"released\":\"2018-12-07T12:09:36.358Z\",\"patch\":true,\"highlights\":[\"Added German translation\",\"Fixed Heroku out-of-memory errors\",\"Fixed issue with Slack-based Pulses due to rate limiting.\"]},{\"version\":\"v0.31.1\",\"released\":\"2018-11-21T12:09:36.358Z\",\"patch\":true,\"highlights\":[\"Ability to clone dashboards\",\"Faster startup time and lower memory consumption\",\"Migration issue fixes.\"]},{\"version\":\"v0.31.0\",\"released\":\"2018-11-08T12:09:36.358Z\",\"patch\":false,\"highlights\":[\"New visualizations and combo charts\",\"Granular formatting controls\",\"Snowflake Support\"]},{\"version\":\"v0.30.4\",\"released\":\"2018-09-27T12:09:36.358Z\",\"patch\":true,\"highlights\":[\"Metabase fails to launch in Chinese\",\"Fix token status checking\",\"Fix BigQuery SQL parameters with encrypted DB details\"]},{\"version\":\"v0.30.3\",\"released\":\"2018-09-13T12:09:36.358Z\",\"patch\":true,\"highlights\":[\"Localization for Chinese, Japanese, Turkish, Persian\",\"Self referencing FK leads to exception\",\"Security improvements\"]},{\"version\":\"v0.30.2\",\"released\":\"2018-09-06T12:09:36.358Z\",\"patch\":true,\"highlights\":[\"Localization for French + Norwegian\",\"Stability fixes for HTTP/2\"]},{\"version\":\"v0.30.1\",\"released\":\"2018-08-08T12:09:36.358Z\",\"patch\":true,\"highlights\":[\"Localization for Portuguese\",\"Timezone fix\",\"SQL Template tag re-ordering fix\"]},{\"version\":\"v0.30.0\",\"released\":\"2018-08-08T12:09:36.358Z\",\"patch\":false,\"highlights\":[\"App wide search\",\"Enhanced Collection permissions\",\"Comparison X-Rays\"]},{\"version\":\"v0.29.3\",\"released\":\"2018-05-12T12:09:36.358Z\",\"patch\":true,\"highlights\":[\"Fix X-ray rules loading on Oracle JVM 8\"]},{\"version\":\"v0.29.2\",\"released\":\"2018-05-10T12:09:36.358Z\",\"patch\":true,\"highlights\":[\"Fix Spark Driver\"]},{\"version\":\"v0.29.1\",\"released\":\"2018-05-10T11:09:36.358Z\",\"patch\":true,\"highlights\":[\"Better heroku memory consumption\",\"Fixed X-Ray Bugs\",\"Drill through from line chart selects wrong date\"]},{\"version\":\"v0.29.0\",\"released\":\"2018-05-01T11:09:36.358Z\",\"patch\":false,\"highlights\":[\"New and Improved X-Rays\",\"Search field values\",\"Spark SQL Support\"]},{\"version\":\"v0.28.6\",\"released\":\"2018-04-12T11:09:36.358Z\",\"patch\":true,\"highlights\":[\"Fix chart rendering in pulses\"]},{\"version\":\"v0.28.5\",\"released\":\"2018-04-04T11:09:36.358Z\",\"patch\":true,\"highlights\":[\"Fix memory consumption for SQL templates\",\"Fix public dashboards parameter validation\",\"Fix Unable to add cards to dashboards or search for cards, StackOverflowError on backend\"]},{\"version\":\"v0.28.4\",\"released\":\"2018-03-29T11:09:36.358Z\",\"patch\":true,\"highlights\":[\"Fix broken embedded dashboards\",\"Fix migration regression\",\"Fix input typing bug\"]},{\"version\":\"v0.28.3\",\"released\":\"2018-03-23T11:09:36.358Z\",\"patch\":true,\"highlights\":[\"Security improvements\"]},{\"version\":\"v0.28.2\",\"released\":\"2018-03-20T11:09:36.358Z\",\"patch\":true,\"highlights\":[\"Security improvements\",\"Sort on custom and saved metrics\",\"Performance improvements for large numbers of questions and dashboards\"]},{\"version\":\"v0.28.1\",\"released\":\"2018-02-09T11:09:36.358Z\",\"patch\":true,\"highlights\":[\"Fix admin panel update string\",\"Fix pulse rendering bug\",\"Fix CSV & XLS download bug\"]},{\"version\":\"v0.28.0\",\"released\":\"2018-02-07T11:09:36.358Z\",\"patch\":false,\"highlights\":[\"Text Cards in Dashboards\",\"Pulse + Alert attachments\",\"Performance Improvements\"]},{\"version\":\"v0.27.2\",\"released\":\"2017-12-12T11:09:36.358Z\",\"patch\":true,\"highlights\":[\"Migration bug fix\"]},{\"version\":\"v0.27.1\",\"released\":\"2017-12-01T11:09:36.358Z\",\"patch\":true,\"highlights\":[\"Migration bug fix\",\"Apply filters to embedded downloads\"]},{\"version\":\"v0.27.0\",\"released\":\"2017-11-27T11:09:36.358Z\",\"patch\":false,\"highlights\":[\"Alerts\",\"X-Ray insights\",\"Charting improvements\"]},{\"version\":\"v0.26.2\",\"released\":\"2017-09-27T11:09:36.358Z\",\"patch\":true,\"highlights\":[\"Update Redshift Driver\",\"Support Java 9\",\"Fix performance issue with fields listing\"]},{\"version\":\"v0.26.1\",\"released\":\"2017-09-27T11:09:36.358Z\",\"patch\":true,\"highlights\":[\"Fix migration issue on MySQL\"]},{\"version\":\"v0.26.0\",\"released\":\"2017-09-26T11:09:36.358Z\",\"patch\":true,\"highlights\":[\"Segment + Metric X-Rays and Comparisons\",\"Better control over metadata introspection process\",\"Improved Timezone support and bug fixes\"]},{\"version\":\"v0.25.2\",\"released\":\"2017-08-09T11:09:36.358Z\",\"patch\":true,\"highlights\":[\"Bug and performance fixes\"]},{\"version\":\"v0.25.1\",\"released\":\"2017-07-27T11:09:36.358Z\",\"patch\":true,\"highlights\":[\"After upgrading to 0.25, unknown protocol error.\",\"Don\'t show saved questions in the permissions database lists\",\"Elastic beanstalk upgrades broken in 0.25 \"]},{\"version\":\"v0.25.0\",\"released\":\"2017-07-25T11:09:36.358Z\",\"patch\":false,\"highlights\":[\"Nested questions\",\"Enum and custom remapping support\",\"LDAP authentication support\"]},{\"version\":\"v0.24.2\",\"released\":\"2017-06-01T11:09:36.358Z\",\"patch\":true,\"highlights\":[\"Misc Bug fixes\"]},{\"version\":\"v0.24.1\",\"released\":\"2017-05-10T11:09:36.358Z\",\"patch\":true,\"highlights\":[\"Fix upgrades with MySQL/Mariadb\"]},{\"version\":\"v0.24.0\",\"released\":\"2017-05-10T11:09:36.358Z\",\"patch\":false,\"highlights\":[\"Drill-through + Actions\",\"Result Caching\",\"Presto Driver\"]},{\"version\":\"v0.23.1\",\"released\":\"2017-03-30T11:09:36.358Z\",\"patch\":true,\"highlights\":[\"Filter widgets for SQL Template Variables\",\"Fix spurious startup error\",\"Java 7 startup bug fixed\"]},{\"version\":\"v0.23.0\",\"released\":\"2017-03-21T11:09:36.358Z\",\"patch\":false,\"highlights\":[\"Public links for cards + dashboards\",\"Embedding cards + dashboards in other applications\",\"Encryption of database credentials\"]},{\"version\":\"v0.22.2\",\"released\":\"2017-01-10T11:09:36.358Z\",\"patch\":true,\"highlights\":[\"Fix startup on OpenJDK 7\"]},{\"version\":\"v0.22.1\",\"released\":\"2017-01-10T11:09:36.358Z\",\"patch\":true,\"highlights\":[\"IMPORTANT: Closed a Collections Permissions security hole\",\"Improved startup performance\",\"Bug fixes\"]},{\"version\":\"v0.22.0\",\"released\":\"2017-01-10T11:09:36.358Z\",\"patch\":false,\"highlights\":[\"Collections + Collections Permissions\",\"Multiple Aggregations\",\"Custom Expressions\"]},{\"version\":\"v0.21.1\",\"released\":\"2016-12-08T11:09:36.358Z\",\"patch\":true,\"highlights\":[\"BigQuery bug fixes\",\"Charting bug fixes\"]},{\"version\":\"v0.21.0\",\"released\":\"2016-12-08T11:09:36.358Z\",\"patch\":false,\"highlights\":[\"Google Analytics Driver\",\"Vertica Driver\",\"Better Time + Date Filters\"]},{\"version\":\"v0.20.3\",\"released\":\"2016-10-26T11:09:36.358Z\",\"patch\":true,\"highlights\":[\"Fix H2->MySQL/PostgreSQL migrations, part 2\"]},{\"version\":\"v0.20.2\",\"released\":\"2016-10-25T11:09:36.358Z\",\"patch\":true,\"highlights\":[\"Support Oracle 10+11\",\"Fix H2->MySQL/PostgreSQL migrations\",\"Revision timestamp fix\"]},{\"version\":\"v0.20.1\",\"released\":\"2016-10-18T11:09:36.358Z\",\"patch\":true,\"highlights\":[\"Lots of bug fixes\"]},{\"version\":\"v0.20.0\",\"released\":\"2016-10-11T11:09:36.358Z\",\"patch\":false,\"highlights\":[\"Data access permissions\",\"Oracle Driver\",\"Charting improvements\"]},{\"version\":\"v0.19.3\",\"released\":\"2016-08-12T11:09:36.358Z\",\"patch\":true,\"highlights\":[\"fix Dashboard editing header\"]},{\"version\":\"v0.19.2\",\"released\":\"2016-08-10T11:09:36.358Z\",\"patch\":true,\"highlights\":[\"fix Dashboard chart titles\",\"fix pin map saving\"]},{\"version\":\"v0.19.1\",\"released\":\"2016-08-04T11:09:36.358Z\",\"patch\":true,\"highlights\":[\"fix Dashboard Filter Editing\",\"fix CSV Download of SQL Templates\",\"fix Metabot enabled toggle\"]},{\"version\":\"v0.19.0\",\"released\":\"2016-08-01T21:09:36.358Z\",\"patch\":false,\"highlights\":[\"SSO via Google Accounts\",\"SQL Templates\",\"Better charting controls\"]},{\"version\":\"v0.18.1\",\"released\":\"2016-06-29T21:09:36.358Z\",\"patch\":true,\"highlights\":[\"Fix for Hour of day sorting bug\",\"Fix for Column ordering bug in BigQuery\",\"Fix for Mongo charting bug\"]},{\"version\":\"v0.18.0\",\"released\":\"2016-06-022T21:09:36.358Z\",\"patch\":false,\"highlights\":[\"Dashboard Filters\",\"Crate.IO Support\",\"Checklist for Metabase Admins\",\"Converting Metabase Questions -> SQL\"]},{\"version\":\"v0.17.1\",\"released\":\"2016-05-04T21:09:36.358Z\",\"patch\":true,\"highlights\":[\"Fix for Line chart ordering bug\",\"Fix for Time granularity bugs\"]},{\"version\":\"v0.17.0\",\"released\":\"2016-05-04T21:09:36.358Z\",\"patch\":false,\"highlights\":[\"Tags + Search for Saved Questions\",\"Calculated columns\",\"Faster Syncing of Metadata\",\"Lots of database driver improvements and bug fixes\"]},{\"version\":\"v0.16.1\",\"released\":\"2016-05-04T21:09:36.358Z\",\"patch\":true,\"highlights\":[\"Fixes for several time alignment issues (timezones)\",\"Resolved problem with SQL Server db connections\"]},{\"version\":\"v0.16.0\",\"released\":\"2016-05-04T21:09:36.358Z\",\"patch\":false,\"highlights\":[\"Fullscreen (and fabulous) Dashboards\",\"Say hello to Metabot in Slack\"]}]}');
 INSERT INTO `setting` (`key`, `value`) VALUES
-('version-info-last-checked', '2022-06-15T06:15:00.034513Z');
+('version-info-last-checked', '2022-06-21T18:15:00.009542Z');
 
 -- --------------------------------------------------------
 
@@ -1770,14 +2223,98 @@ INSERT INTO `setting` (`key`, `value`) VALUES
 --
 
 CREATE TABLE `task_history` (
-  `id` int(11) NOT NULL,
-  `task` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Name of the task',
-  `db_id` int(11) DEFAULT NULL,
-  `started_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6),
-  `ended_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6),
-  `duration` int(11) NOT NULL,
-  `task_details` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `id` int NOT NULL,
+  `task` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Name of the task',
+  `db_id` int DEFAULT NULL,
+  `started_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  `ended_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+  `duration` int NOT NULL,
+  `task_details` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Timing and metadata info about background/quartz processes';
+
+--
+-- Dumping data for table `task_history`
+--
+
+INSERT INTO `task_history` (`id`, `task`, `db_id`, `started_at`, `ended_at`, `duration`, `task_details`) VALUES
+(1, 'send-pulses', NULL, '2022-06-16 06:00:00.018000', '2022-06-16 06:00:00.046000', 28, NULL),
+(2, 'task-history-cleanup', NULL, '2022-06-16 06:00:00.041000', '2022-06-16 06:00:00.045000', 4, NULL),
+(3, 'send-pulses', NULL, '2022-06-16 07:00:00.006000', '2022-06-16 07:00:00.009000', 3, NULL),
+(4, 'task-history-cleanup', NULL, '2022-06-16 07:00:00.020000', '2022-06-16 07:00:00.021000', 1, NULL),
+(5, 'send-pulses', NULL, '2022-06-16 08:00:00.007000', '2022-06-16 08:00:00.010000', 3, NULL),
+(6, 'task-history-cleanup', NULL, '2022-06-16 08:00:00.020000', '2022-06-16 08:00:00.021000', 1, NULL),
+(7, 'send-pulses', NULL, '2022-06-16 09:00:00.018000', '2022-06-16 09:00:00.021000', 3, NULL),
+(8, 'task-history-cleanup', NULL, '2022-06-16 09:00:00.034000', '2022-06-16 09:00:00.035000', 1, NULL),
+(9, 'send-pulses', NULL, '2022-06-16 10:00:00.009000', '2022-06-16 10:00:00.012000', 3, NULL),
+(10, 'task-history-cleanup', NULL, '2022-06-16 10:00:00.025000', '2022-06-16 10:00:00.026000', 1, NULL),
+(11, 'send-pulses', NULL, '2022-06-16 11:00:00.013000', '2022-06-16 11:00:00.018000', 5, NULL),
+(12, 'task-history-cleanup', NULL, '2022-06-16 11:00:00.061000', '2022-06-16 11:00:00.062000', 1, NULL),
+(13, 'send-pulses', NULL, '2022-06-16 12:00:00.040000', '2022-06-16 12:00:00.043000', 3, NULL),
+(14, 'task-history-cleanup', NULL, '2022-06-16 12:00:00.058000', '2022-06-16 12:00:00.059000', 1, NULL),
+(15, 'send-pulses', NULL, '2022-06-16 15:34:47.543000', '2022-06-16 15:34:47.547000', 4, NULL),
+(16, 'task-history-cleanup', NULL, '2022-06-16 15:34:47.617000', '2022-06-16 15:34:47.618000', 1, NULL),
+(17, 'task-history-cleanup', NULL, '2022-06-16 16:14:12.972000', '2022-06-16 16:14:12.973000', 1, NULL),
+(18, 'send-pulses', NULL, '2022-06-16 16:14:13.014000', '2022-06-16 16:14:13.017000', 3, NULL),
+(19, 'send-pulses', NULL, '2022-06-16 17:00:00.006000', '2022-06-16 17:00:00.009000', 3, NULL),
+(20, 'task-history-cleanup', NULL, '2022-06-16 17:00:00.027000', '2022-06-16 17:00:00.028000', 1, NULL),
+(21, 'send-pulses', NULL, '2022-06-16 18:00:00.008000', '2022-06-16 18:00:00.010000', 2, NULL),
+(22, 'task-history-cleanup', NULL, '2022-06-16 18:00:00.032000', '2022-06-16 18:00:00.033000', 1, NULL),
+(23, 'send-pulses', NULL, '2022-06-16 19:00:00.005000', '2022-06-16 19:00:00.008000', 3, NULL),
+(24, 'task-history-cleanup', NULL, '2022-06-16 19:00:00.034000', '2022-06-16 19:00:00.036000', 2, NULL),
+(25, 'send-pulses', NULL, '2022-06-16 20:00:00.008000', '2022-06-16 20:00:00.014000', 6, NULL),
+(26, 'task-history-cleanup', NULL, '2022-06-16 20:00:00.051000', '2022-06-16 20:00:00.052000', 1, NULL),
+(27, 'send-pulses', NULL, '2022-06-16 21:00:00.009000', '2022-06-16 21:00:00.012000', 3, NULL),
+(28, 'task-history-cleanup', NULL, '2022-06-16 21:00:00.033000', '2022-06-16 21:00:00.034000', 1, NULL),
+(29, 'send-pulses', NULL, '2022-06-17 02:03:50.109000', '2022-06-17 02:03:50.112000', 3, NULL),
+(30, 'task-history-cleanup', NULL, '2022-06-17 02:03:50.265000', '2022-06-17 02:03:50.267000', 2, NULL),
+(31, 'send-pulses', NULL, '2022-06-17 04:52:10.099000', '2022-06-17 04:52:10.102000', 3, NULL),
+(32, 'task-history-cleanup', NULL, '2022-06-17 04:52:10.121000', '2022-06-17 04:52:10.123000', 2, NULL),
+(33, 'send-pulses', NULL, '2022-06-17 05:00:00.009000', '2022-06-17 05:00:00.014000', 5, NULL),
+(34, 'task-history-cleanup', NULL, '2022-06-17 05:00:00.053000', '2022-06-17 05:00:00.054000', 1, NULL),
+(35, 'send-pulses', NULL, '2022-06-17 06:10:11.404000', '2022-06-17 06:10:11.408000', 4, NULL),
+(36, 'task-history-cleanup', NULL, '2022-06-17 06:10:11.450000', '2022-06-17 06:10:11.451000', 1, NULL),
+(37, 'send-pulses', NULL, '2022-06-17 07:00:00.013000', '2022-06-17 07:00:00.019000', 6, NULL),
+(38, 'task-history-cleanup', NULL, '2022-06-17 07:00:00.035000', '2022-06-17 07:00:00.036000', 1, NULL),
+(39, 'send-pulses', NULL, '2022-06-17 09:04:50.576000', '2022-06-17 09:04:50.579000', 3, NULL),
+(40, 'task-history-cleanup', NULL, '2022-06-17 09:04:50.739000', '2022-06-17 09:04:50.740000', 1, NULL),
+(41, 'send-pulses', NULL, '2022-06-17 10:00:00.007000', '2022-06-17 10:00:00.011000', 4, NULL),
+(42, 'task-history-cleanup', NULL, '2022-06-17 10:00:00.032000', '2022-06-17 10:00:00.034000', 2, NULL),
+(43, 'send-pulses', NULL, '2022-06-17 11:00:00.011000', '2022-06-17 11:00:00.014000', 3, NULL),
+(44, 'task-history-cleanup', NULL, '2022-06-17 11:00:00.023000', '2022-06-17 11:00:00.023000', 0, NULL),
+(45, 'send-pulses', NULL, '2022-06-17 12:00:00.028000', '2022-06-17 12:00:00.030000', 2, NULL),
+(46, 'task-history-cleanup', NULL, '2022-06-17 12:00:00.036000', '2022-06-17 12:00:00.036000', 0, NULL),
+(47, 'send-pulses', NULL, '2022-06-17 13:00:00.010000', '2022-06-17 13:00:00.014000', 4, NULL),
+(48, 'task-history-cleanup', NULL, '2022-06-17 13:00:00.022000', '2022-06-17 13:00:00.022000', 0, NULL),
+(49, 'send-pulses', NULL, '2022-06-17 14:00:00.009000', '2022-06-17 14:00:00.012000', 3, NULL),
+(50, 'task-history-cleanup', NULL, '2022-06-17 14:00:00.019000', '2022-06-17 14:00:00.020000', 1, NULL),
+(51, 'task-history-cleanup', NULL, '2022-06-21 09:00:00.027000', '2022-06-21 09:00:00.031000', 4, NULL),
+(52, 'send-pulses', NULL, '2022-06-21 09:00:00.010000', '2022-06-21 09:00:00.045000', 35, NULL),
+(53, 'send-pulses', NULL, '2022-06-21 10:00:00.011000', '2022-06-21 10:00:00.013000', 2, NULL),
+(54, 'task-history-cleanup', NULL, '2022-06-21 10:00:00.036000', '2022-06-21 10:00:00.037000', 1, NULL),
+(55, 'send-pulses', NULL, '2022-06-21 11:00:00.011000', '2022-06-21 11:00:00.013000', 2, NULL),
+(56, 'task-history-cleanup', NULL, '2022-06-21 11:00:00.030000', '2022-06-21 11:00:00.030000', 0, NULL),
+(57, 'send-pulses', NULL, '2022-06-21 12:00:00.037000', '2022-06-21 12:00:00.039000', 2, NULL),
+(58, 'task-history-cleanup', NULL, '2022-06-21 12:00:00.048000', '2022-06-21 12:00:00.049000', 1, NULL),
+(59, 'send-pulses', NULL, '2022-06-21 13:00:00.006000', '2022-06-21 13:00:00.009000', 3, NULL),
+(60, 'task-history-cleanup', NULL, '2022-06-21 13:00:00.020000', '2022-06-21 13:00:00.021000', 1, NULL),
+(61, 'send-pulses', NULL, '2022-06-21 14:00:00.008000', '2022-06-21 14:00:00.009000', 1, NULL),
+(62, 'task-history-cleanup', NULL, '2022-06-21 14:00:00.020000', '2022-06-21 14:00:00.020000', 0, NULL),
+(63, 'send-pulses', NULL, '2022-06-21 15:00:00.007000', '2022-06-21 15:00:00.009000', 2, NULL),
+(64, 'task-history-cleanup', NULL, '2022-06-21 15:00:00.035000', '2022-06-21 15:00:00.036000', 1, NULL),
+(65, 'send-pulses', NULL, '2022-06-21 16:00:00.008000', '2022-06-21 16:00:00.010000', 2, NULL),
+(66, 'task-history-cleanup', NULL, '2022-06-21 16:00:00.022000', '2022-06-21 16:00:00.023000', 1, NULL),
+(67, 'send-pulses', NULL, '2022-06-21 17:00:00.010000', '2022-06-21 17:00:00.013000', 3, NULL),
+(68, 'task-history-cleanup', NULL, '2022-06-21 17:00:00.025000', '2022-06-21 17:00:00.025000', 0, NULL),
+(69, 'send-pulses', NULL, '2022-06-21 18:00:00.014000', '2022-06-21 18:00:00.017000', 3, NULL),
+(70, 'task-history-cleanup', NULL, '2022-06-21 18:00:00.028000', '2022-06-21 18:00:00.028000', 0, NULL),
+(71, 'send-pulses', NULL, '2022-06-21 19:00:00.008000', '2022-06-21 19:00:00.011000', 3, NULL),
+(72, 'task-history-cleanup', NULL, '2022-06-21 19:00:00.019000', '2022-06-21 19:00:00.019000', 0, NULL),
+(73, 'send-pulses', NULL, '2022-06-21 20:00:00.013000', '2022-06-21 20:00:00.015000', 2, NULL),
+(74, 'task-history-cleanup', NULL, '2022-06-21 20:00:00.029000', '2022-06-21 20:00:00.030000', 1, NULL),
+(75, 'task-history-cleanup', NULL, '2022-06-24 09:00:00.892000', '2022-06-24 09:00:00.946000', 54, NULL),
+(76, 'send-pulses', NULL, '2022-06-24 09:00:00.757000', '2022-06-24 09:00:01.231000', 474, NULL),
+(77, 'send-pulses', NULL, '2022-06-24 10:00:00.017000', '2022-06-24 10:00:00.033000', 16, NULL),
+(78, 'task-history-cleanup', NULL, '2022-06-24 10:00:00.033000', '2022-06-24 10:00:00.040000', 7, NULL);
 
 -- --------------------------------------------------------
 
@@ -1786,15 +2323,15 @@ CREATE TABLE `task_history` (
 --
 
 CREATE TABLE `timeline` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Name of the timeline',
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Optional description of the timeline',
-  `icon` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `collection_id` int(11) DEFAULT NULL COMMENT 'ID of the collection containing the timeline',
+  `id` int NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Name of the timeline',
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Optional description of the timeline',
+  `icon` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `collection_id` int DEFAULT NULL COMMENT 'ID of the collection containing the timeline',
   `archived` bit(1) NOT NULL DEFAULT b'0' COMMENT 'Whether or not the timeline has been archived',
-  `creator_id` int(11) NOT NULL COMMENT 'ID of the user who created the timeline',
-  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) COMMENT 'The timestamp of when the timeline was created',
-  `updated_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) COMMENT 'The timestamp of when the timeline was updated',
+  `creator_id` int NOT NULL COMMENT 'ID of the user who created the timeline',
+  `created_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT 'The timestamp of when the timeline was created',
+  `updated_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT 'The timestamp of when the timeline was updated',
   `default` bit(1) NOT NULL DEFAULT b'0' COMMENT 'Boolean value indicating if the timeline is the default one for the containing Collection'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Timeline table to organize events';
 
@@ -1805,18 +2342,18 @@ CREATE TABLE `timeline` (
 --
 
 CREATE TABLE `timeline_event` (
-  `id` int(11) NOT NULL,
-  `timeline_id` int(11) NOT NULL COMMENT 'ID of the timeline containing the event',
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Name of the event',
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Optional markdown description of the event',
-  `timestamp` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6) COMMENT 'When the event happened',
+  `id` int NOT NULL,
+  `timeline_id` int NOT NULL COMMENT 'ID of the timeline containing the event',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Name of the event',
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Optional markdown description of the event',
+  `timestamp` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6) COMMENT 'When the event happened',
   `time_matters` bit(1) NOT NULL COMMENT 'Indicate whether the time component matters or if the timestamp should just serve to indicate the day of the event without any time associated to it.',
-  `timezone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Timezone to display the underlying UTC timestamp in for the client',
-  `icon` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `timezone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Timezone to display the underlying UTC timestamp in for the client',
+  `icon` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `archived` bit(1) NOT NULL DEFAULT b'0' COMMENT 'Whether or not the event has been archived',
-  `creator_id` int(11) NOT NULL COMMENT 'ID of the user who created the event',
-  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) COMMENT 'The timestamp of when the event was created',
-  `updated_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) COMMENT 'The timestamp of when the event was modified'
+  `creator_id` int NOT NULL COMMENT 'ID of the user who created the event',
+  `created_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT 'The timestamp of when the event was created',
+  `updated_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT 'The timestamp of when the event was modified'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Events table';
 
 -- --------------------------------------------------------
@@ -1826,12 +2363,12 @@ CREATE TABLE `timeline_event` (
 --
 
 CREATE TABLE `view_log` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `model` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `model_id` int(11) NOT NULL,
-  `timestamp` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
-  `metadata` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `id` int NOT NULL,
+  `user_id` int DEFAULT NULL,
+  `model` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` int NOT NULL,
+  `timestamp` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+  `metadata` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -2064,7 +2601,101 @@ INSERT INTO `view_log` (`id`, `user_id`, `model`, `model_id`, `timestamp`, `meta
 (223, 1, 'card', 6, '2022-06-15 10:12:13.810000', '{\"cached\":null,\"ignore_cache\":false}'),
 (224, 1, 'card', 7, '2022-06-15 10:12:55.923000', '{\"cached\":null,\"ignore_cache\":false}'),
 (225, 1, 'dashboard', 1, '2022-06-15 10:13:24.442000', '{\"cached\":null,\"ignore_cache\":null}'),
-(226, 1, 'dashboard', 1, '2022-06-15 10:14:06.835000', '{\"cached\":null,\"ignore_cache\":null}');
+(226, 1, 'dashboard', 1, '2022-06-15 10:14:06.835000', '{\"cached\":null,\"ignore_cache\":null}'),
+(227, 1, 'card', 2, '2022-06-16 05:52:17.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(228, 1, 'card', 2, '2022-06-16 05:52:19.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(229, 1, 'card', 5, '2022-06-16 05:52:27.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(230, 1, 'card', 5, '2022-06-16 05:52:28.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(231, 1, 'card', 7, '2022-06-16 05:52:31.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(232, 1, 'card', 7, '2022-06-16 05:52:32.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(233, 1, 'card', 2, '2022-06-16 05:52:38.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(234, 1, 'card', 2, '2022-06-16 05:52:39.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(235, 1, 'card', 7, '2022-06-16 05:52:42.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(236, 1, 'card', 7, '2022-06-16 05:52:43.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(237, 1, 'card', 2, '2022-06-21 09:16:47.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(238, 1, 'card', 2, '2022-06-21 09:16:49.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(239, 1, 'table', 5, '2022-06-21 09:32:16.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(240, 1, 'table', 5, '2022-06-21 09:35:59.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(241, 1, 'table', 5, '2022-06-21 09:36:05.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(242, 1, 'card', 8, '2022-06-21 10:26:56.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(243, 1, 'dashboard', 1, '2022-06-21 10:27:00.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(244, 1, 'card', 5, '2022-06-21 10:27:01.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(245, 1, 'card', 8, '2022-06-21 10:27:01.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(246, 1, 'card', 3, '2022-06-21 10:27:01.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(247, 1, 'card', 7, '2022-06-21 10:27:02.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(248, 1, 'card', 6, '2022-06-21 10:27:02.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(249, 1, 'card', 2, '2022-06-21 10:27:02.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(250, 1, 'card', 1, '2022-06-21 10:27:03.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(251, 1, 'card', 8, '2022-06-21 10:27:04.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(252, 1, 'dashboard', 1, '2022-06-21 10:27:33.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(253, 1, 'card', 8, '2022-06-21 10:27:43.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(254, 1, 'card', 8, '2022-06-21 10:27:45.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(255, 1, 'card', 8, '2022-06-21 10:28:09.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(256, 1, 'card', 8, '2022-06-21 10:28:11.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(257, 1, 'card', 9, '2022-06-21 10:31:29.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(258, 1, 'dashboard', 1, '2022-06-21 10:31:33.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(259, 1, 'card', 5, '2022-06-21 10:31:34.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(260, 1, 'card', 9, '2022-06-21 10:31:34.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(261, 1, 'card', 7, '2022-06-21 10:31:34.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(262, 1, 'card', 3, '2022-06-21 10:31:34.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(263, 1, 'card', 6, '2022-06-21 10:31:35.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(264, 1, 'card', 1, '2022-06-21 10:31:35.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(265, 1, 'card', 2, '2022-06-21 10:31:35.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(266, 1, 'card', 9, '2022-06-21 10:31:36.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(267, 1, 'card', 9, '2022-06-21 10:31:51.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(268, 1, 'card', 9, '2022-06-21 10:31:53.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(269, 1, 'dashboard', 1, '2022-06-21 10:32:23.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(270, 1, 'card', 5, '2022-06-21 10:32:24.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(271, 1, 'card', 3, '2022-06-21 10:32:24.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(272, 1, 'card', 7, '2022-06-21 10:32:25.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(273, 1, 'card', 1, '2022-06-21 10:32:25.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(274, 1, 'card', 6, '2022-06-21 10:32:26.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(275, 1, 'card', 2, '2022-06-21 10:32:26.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(276, 1, 'card', 9, '2022-06-21 10:32:27.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(277, 1, 'dashboard', 1, '2022-06-21 10:32:53.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(278, 1, 'card', 9, '2022-06-21 10:33:28.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(279, 1, 'card', 9, '2022-06-21 10:33:29.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(280, 1, 'card', 10, '2022-06-21 10:45:41.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(281, 1, 'dashboard', 1, '2022-06-21 10:45:45.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(282, 1, 'card', 5, '2022-06-21 10:45:46.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(283, 1, 'card', 3, '2022-06-21 10:45:47.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(284, 1, 'card', 10, '2022-06-21 10:45:47.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(285, 1, 'card', 7, '2022-06-21 10:45:47.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(286, 1, 'card', 2, '2022-06-21 10:45:48.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(287, 1, 'card', 1, '2022-06-21 10:45:48.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(288, 1, 'card', 6, '2022-06-21 10:45:48.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(289, 1, 'card', 9, '2022-06-21 10:45:49.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(290, 1, 'card', 10, '2022-06-21 10:45:49.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(291, 1, 'dashboard', 1, '2022-06-21 10:46:48.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(292, 1, 'card', 11, '2022-06-21 12:00:48.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(293, 1, 'dashboard', 1, '2022-06-21 12:00:53.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(294, 1, 'card', 5, '2022-06-21 12:00:54.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(295, 1, 'card', 7, '2022-06-21 12:00:55.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(296, 1, 'card', 3, '2022-06-21 12:00:55.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(297, 1, 'card', 11, '2022-06-21 12:00:55.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(298, 1, 'card', 2, '2022-06-21 12:00:56.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(299, 1, 'card', 1, '2022-06-21 12:00:56.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(300, 1, 'card', 6, '2022-06-21 12:00:56.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(301, 1, 'card', 9, '2022-06-21 12:00:57.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(302, 1, 'card', 10, '2022-06-21 12:00:57.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(303, 1, 'card', 11, '2022-06-21 12:02:17.000000', '{\"cached\":null,\"ignore_cache\":false}'),
+(304, 1, 'dashboard', 1, '2022-06-21 12:03:14.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(305, 1, 'table', 5, '2022-06-24 08:32:23.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(306, 1, 'table', 5, '2022-06-24 08:32:32.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(307, 1, 'table', 5, '2022-06-24 08:32:43.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(308, 1, 'table', 5, '2022-06-24 08:33:25.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(309, 1, 'table', 5, '2022-06-24 08:33:42.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(310, 1, 'table', 5, '2022-06-24 08:36:17.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(311, 1, 'table', 5, '2022-06-24 09:06:45.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(312, 1, 'table', 5, '2022-06-24 09:29:33.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(313, 1, 'table', 5, '2022-06-24 09:31:17.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(314, 1, 'table', 5, '2022-06-24 09:31:19.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(315, 1, 'table', 5, '2022-06-24 09:32:50.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(316, 1, 'table', 5, '2022-06-24 09:37:48.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(317, 1, 'table', 5, '2022-06-24 09:38:34.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(318, 1, 'table', 5, '2022-06-24 10:00:45.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(319, 1, 'table', 5, '2022-06-24 10:00:50.000000', '{\"cached\":null,\"ignore_cache\":null}'),
+(320, 1, 'table', 5, '2022-06-24 10:03:17.000000', '{\"cached\":null,\"ignore_cache\":null}');
 
 --
 -- Indexes for dumped tables
@@ -2618,283 +3249,283 @@ ALTER TABLE `view_log`
 -- AUTO_INCREMENT for table `activity`
 --
 ALTER TABLE `activity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `application_permissions_revision`
 --
 ALTER TABLE `application_permissions_revision`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `bookmark_ordering`
 --
 ALTER TABLE `bookmark_ordering`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `card_bookmark`
 --
 ALTER TABLE `card_bookmark`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `card_label`
 --
 ALTER TABLE `card_label`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `collection`
 --
 ALTER TABLE `collection`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `collection_bookmark`
 --
 ALTER TABLE `collection_bookmark`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `collection_permission_graph_revision`
 --
 ALTER TABLE `collection_permission_graph_revision`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `computation_job`
 --
 ALTER TABLE `computation_job`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `computation_job_result`
 --
 ALTER TABLE `computation_job_result`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `core_user`
 --
 ALTER TABLE `core_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `dashboardcard_series`
 --
 ALTER TABLE `dashboardcard_series`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `dashboard_bookmark`
 --
 ALTER TABLE `dashboard_bookmark`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `dashboard_favorite`
 --
 ALTER TABLE `dashboard_favorite`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `dependency`
 --
 ALTER TABLE `dependency`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `dimension`
 --
 ALTER TABLE `dimension`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `group_table_access_policy`
 --
 ALTER TABLE `group_table_access_policy`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `label`
 --
 ALTER TABLE `label`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `login_history`
 --
 ALTER TABLE `login_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `metabase_database`
 --
 ALTER TABLE `metabase_database`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `metabase_field`
 --
 ALTER TABLE `metabase_field`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `metabase_fieldvalues`
 --
 ALTER TABLE `metabase_fieldvalues`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `metabase_table`
 --
 ALTER TABLE `metabase_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `metric`
 --
 ALTER TABLE `metric`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `metric_important_field`
 --
 ALTER TABLE `metric_important_field`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `moderation_review`
 --
 ALTER TABLE `moderation_review`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `native_query_snippet`
 --
 ALTER TABLE `native_query_snippet`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `permissions_group`
 --
 ALTER TABLE `permissions_group`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `permissions_group_membership`
 --
 ALTER TABLE `permissions_group_membership`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `permissions_revision`
 --
 ALTER TABLE `permissions_revision`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pulse`
 --
 ALTER TABLE `pulse`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pulse_card`
 --
 ALTER TABLE `pulse_card`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pulse_channel`
 --
 ALTER TABLE `pulse_channel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pulse_channel_recipient`
 --
 ALTER TABLE `pulse_channel_recipient`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `query_execution`
 --
 ALTER TABLE `query_execution`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=221;
 
 --
 -- AUTO_INCREMENT for table `report_card`
 --
 ALTER TABLE `report_card`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `report_cardfavorite`
 --
 ALTER TABLE `report_cardfavorite`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `report_dashboard`
 --
 ALTER TABLE `report_dashboard`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `report_dashboardcard`
 --
 ALTER TABLE `report_dashboardcard`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `revision`
 --
 ALTER TABLE `revision`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `secret`
 --
 ALTER TABLE `secret`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `segment`
 --
 ALTER TABLE `segment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `task_history`
 --
 ALTER TABLE `task_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `timeline`
 --
 ALTER TABLE `timeline`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `timeline_event`
 --
 ALTER TABLE `timeline_event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `view_log`
 --
 ALTER TABLE `view_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=227;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=321;
 
 --
 -- Constraints for dumped tables
