@@ -25,7 +25,7 @@ db = mysql.connector.connect(
 
 mycursor = db.cursor()
 
-mycursor.execute("CREATE TABLE IF NOT EXISTS cleaned_online_retail (invoiceno TEXT, stockcode TEXT, description TEXT, quantity BIGINT, invoicedate TIMESTAMP, unitprice DOUBLE, customerid BIGINT, country TEXT, amount BIGINT)")
+mycursor.execute("CREATE TABLE IF NOT EXISTS cleaned_online_retail (invoiceno TEXT, stockcode TEXT, description TEXT, quantity BIGINT, invoicedate TIMESTAMP, unitprice DOUBLE, customerid BIGINT, country TEXT, cancel TINYINT(1), amount BIGINT)")
 
 
 cleaned_df = pd.read_csv ('../data/cleaned_online_retail.csv')
@@ -33,7 +33,7 @@ cleaned_df = pd.read_csv ('../data/cleaned_online_retail.csv')
 
 
 #Data inser into table
-user_query= "INSERT INTO cleaned_online_retail (invoiceno, stockcode, description, quantity, invoicedate, unitprice, customerid, country, amount) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+user_query= "INSERT INTO cleaned_online_retail (invoiceno, stockcode, description, quantity, invoicedate, unitprice, customerid, country, cancel, amount) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
 user_values= []
 
 for row in cleaned_df.itertuples():
@@ -45,6 +45,7 @@ for row in cleaned_df.itertuples():
   row.unitprice, 
   row.customerid, 
   row.country,
+  row.cancel,
   row.amount))
 
 
